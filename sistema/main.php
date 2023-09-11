@@ -1,5 +1,11 @@
+<?php 
+session_start();
 
-<!-- $conexion=mysqli_connect('localhost','root','','retrostep'); -->
+if(empty($_SESSION['active'])){
+    header('location: ../');
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +15,7 @@
     <link rel="stylesheet" href="../CSS/styleMain.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas</title>
+    <title>Home</title>
 </head>
 <body>
     <header class="header">
@@ -19,7 +25,7 @@
         </a>
         
         <div>
-            <a href="index.html">
+            <a href="../index.php">
                 <h1 class="Titulo">
                     RetroStep
                 </h1>
@@ -27,8 +33,8 @@
            
         </div>
         
-        <div class="logo">
-            <a href="../salir.php"><img src="../img/offwhite.gif" alt=""></a>
+        <div class="exitBtn">
+            <h2><a href="../salir.php">Salir</a></h2>
         </div>
        
         
@@ -72,8 +78,9 @@
         </tr>
 
         <?php
+            require_once "../conexion.php";
             $sql ="SELECT * from sneakers";
-            $result=mysqli_query($conexion,$sql);
+            $result=mysqli_query($connection,$sql);
 
             while($mostrar=mysqli_fetch_array($result)){
         ?>
