@@ -14,8 +14,9 @@
             }
             else{
                 require_once "conexion.php";
-                $user = $_POST['usuario'];
-                $pass = $_POST['clave'];
+                // Se añade la función de cifrado md5 para la contraseña
+                $user = mysqli_real_escape_string($connection, $_POST['usuario']);
+                $pass = md5(mysqli_real_escape_string($connection, $_POST['clave']));
 
                 $query = mysqli_query($connection, "SELECT * FROM users WHERE username = '$user' AND password = '$pass' ");
                 $result = mysqli_num_rows($query);
@@ -54,13 +55,13 @@
     <link rel="stylesheet" href="CSS/styleIndex.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pruebas</title>
+    <title>Bienvenido</title>
 </head>
 <body>
     <header class="header">
         
         <div>
-            <a href="index.html">
+            <a href="index.php">
                 <h1 class="Titulo">
                     RetroStep
                 </h1>
