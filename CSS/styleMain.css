@@ -26,19 +26,19 @@ body {
     position: static;
 
 }
-/* Estilos del logo */
-.header .logo {
+/* Estilos del exitBtn */
+.header .exitBtn {
     cursor: pointer;
+  
 }
 
 
-.header .logo img {
-    height: 70px;
-    width: auto;
+.header .exitBtn h2{
     transition: all 0.3s;
+    text-decoration: none;
 }
 
-.header .logo img:hover {
+.header .exitBtn h2:hover {
     transform: scale(1.2);
 }
 /* Estilos del Titulo */
