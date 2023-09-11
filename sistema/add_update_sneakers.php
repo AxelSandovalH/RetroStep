@@ -1,15 +1,15 @@
 <?php
-$host = "localhost";
-$usuario = "root";
-$contraseña = "";
-$base_de_datos = "retrostep";
-
+// $host = "localhost";
+// $usuario = "paco";
+// $contraseña = "";
+// $base_de_datos = "retrostep";
+require_once "../conexion.php"; //Se elimina la necesidad de escribir todo lo de arriba poniendo un "require"
 // Establecer conexión a la base de datos
-$conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+$connection = new mysqli($host, $user, $password, $db, $port);
 
 // Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión a la base de datos: " . $conexion->connect_error);
+if ($connection->connect_error) {
+    die("Error de conexión a la base de datos: " . $connection->connect_error);
 }
 
 // Recibir datos del formulario
@@ -22,7 +22,7 @@ $size = $_POST["Size"];
 // Verificar si ya existe un registro con el mismo modelo y talla
 $sql_verificar = "SELECT COUNT(*) AS count FROM sneakers WHERE Modelo = ? AND Size = ?";
 
-if ($stmt_verificar = $conexion->prepare($sql_verificar)) {
+if ($stmt_verificar = $connection->prepare($sql_verificar)) {
     // Vincular los parámetros
     $stmt_verificar->bind_param("si", $modelo, $size);
 
@@ -43,7 +43,7 @@ if ($stmt_verificar = $conexion->prepare($sql_verificar)) {
         // Si no existe, proceder con la inserción
         $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size) VALUES (?, ?, ?, ?, ?)";
 
-        if ($stmt_insertar = $conexion->prepare($sql_insertar)) {
+        if ($stmt_insertar = $connection->prepare($sql_insertar)) {
             // Vincular los parámetros
             $stmt_insertar->bind_param("ssdii", $marca, $modelo, $precio, $stock, $size);
 
@@ -59,13 +59,13 @@ if ($stmt_verificar = $conexion->prepare($sql_verificar)) {
             // Cerrar la consulta de inserción
             $stmt_insertar->close();
         } else {
-            echo "Error en la preparación de la consulta de inserción: " . $conexion->error;
+            echo "Error en la preparación de la consulta de inserción: " . $connection->error;
         }
     }
 } else {
-    echo "Error en la preparación de la consulta de verificación: " . $conexion->error;
+    echo "Error en la preparación de la consulta de verificación: " . $connection->error;
 }
 
 // Cerrar la conexión a la base de datos
-$conexion->close();
+$connection->close();
 ?>
