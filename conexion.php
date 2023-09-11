@@ -1,10 +1,10 @@
 <?php
     $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $db = 'retrostep';
-
-    $connection = @mysqli_connect($host, $user, $password, $db);
+    $user = 'paco';
+    $password = '2754';
+    $db = 'retro_step';
+    $port = '3307';
+    $connection = @mysqli_connect($host, $user, $password, $db, $port);
     if(!$connection){
         echo "Error en la conexión";
     }
