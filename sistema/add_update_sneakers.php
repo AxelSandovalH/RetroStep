@@ -1,9 +1,5 @@
 <?php
-// $host = "localhost";
-// $usuario = "paco";
-// $contraseña = "";
-// $base_de_datos = "retrostep";
-require_once "../conexion.php"; //Se elimina la necesidad de escribir todo lo de arriba poniendo un "require"
+require_once "../conexion.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
 // Establecer conexión a la base de datos
 $connection = new mysqli($host, $user, $password, $db, $port);
 
