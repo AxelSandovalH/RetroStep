@@ -1,4 +1,14 @@
 <?php 
+// Protección de rutas
+session_start();
+
+if(empty($_SESSION['active'])){
+    header('location: ../');
+
+}
+?>
+
+<?php 
 
 require_once "../conexion.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
                                 // Establecer conexión a la base de datos
