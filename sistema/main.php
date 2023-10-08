@@ -82,23 +82,24 @@ if(empty($_SESSION['active'])){
             $sql ="SELECT * from sneakers";
             $result=mysqli_query($connection,$sql);
 
-            while($mostrar=mysqli_fetch_array($result)){
+            while($column=mysqli_fetch_array($result)){
         ?>
         <!-- ... (código HTML anterior) ... -->
 
         <tr>
-            <td><?php echo $mostrar['Modelo']?></td>
-            <td><?php echo $mostrar['Marca']?></td>
-            <td><?php echo $mostrar['Size']?></td>
-            <td><?php echo $mostrar['Precio']?></td>
-            <td><?php echo $mostrar['Stock']?></td>
+            <td><?php echo $column['Modelo']?></td>
+            <td><?php echo $column['Marca']?></td>
+            <td><?php echo $column['Size']?></td>
+            <td><?php echo $column['Precio']?></td>
+            <td><?php echo $column['Stock']?></td>
             <td>
                 <a href="">
                     <button class="editar">Editar</button>
                 </a>
             </td>
             <td>
-                <a href="">
+                <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
+                <a class="link_borrar" href = "deleteSneaker.php?id=<?php echo $column['id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
             </td>
