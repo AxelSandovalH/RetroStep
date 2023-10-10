@@ -27,20 +27,13 @@ body {
 
 }
 /* Estilos del exitBtn */
-.header .exitBtn {
+.header img{
     cursor: pointer;
-  
+    height: 33px;
+    margin-top: 11px;
 }
 
 
-.header .exitBtn h2{
-    transition: all 0.3s;
-    text-decoration: none;
-}
-
-.header .exitBtn h2:hover {
-    transform: scale(1.2);
-}
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;

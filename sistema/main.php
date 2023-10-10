@@ -34,7 +34,7 @@ if(empty($_SESSION['active'])){
         </div>
         
         <div class="exitBtn">
-            <h2><a href="../salir.php">Salir</a></h2>
+            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
        
         
@@ -93,7 +93,7 @@ if(empty($_SESSION['active'])){
             <td><?php echo $column['Precio']?></td>
             <td><?php echo $column['Stock']?></td>
             <td>
-                <a href="">
+                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']?>">
                     <button class="editar">Editar</button>
                 </a>
             </td>
