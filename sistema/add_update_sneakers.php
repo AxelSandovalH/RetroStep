@@ -1,12 +1,6 @@
 <?php
 require_once "../conexion.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
 // Establecer conexión a la base de datos
-$connection = new mysqli($host, $user, $password, $db, $port);
-
-// Verificar la conexión
-if ($connection->connect_error) {
-    die("Error de conexión a la base de datos: " . $connection->connect_error);
-}
 
 // Recibir datos del formulario
 $modelo = $_POST["Modelo"];
