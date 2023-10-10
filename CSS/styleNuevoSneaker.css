@@ -217,6 +217,11 @@ hr{
     align-self: center;
 }
 
+#addSneaker #Cancelar a{
+    text-decoration: none;
+
+}
+
 #addSneaker #Cancelar:hover {
     border: solid 3px;
     transform: scale(1.1); /* Escala del botón al hacer hover */
