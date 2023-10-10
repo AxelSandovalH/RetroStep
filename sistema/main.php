@@ -93,7 +93,7 @@ if(empty($_SESSION['active'])){
             <td><?php echo $column['Precio']?></td>
             <td><?php echo $column['Stock']?></td>
             <td>
-                <a href="">
+                <a href="updateSneaker.php?id=<?php echo $column['id']?>">
                     <button class="editar">Editar</button>
                 </a>
             </td>
