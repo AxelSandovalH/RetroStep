@@ -219,6 +219,7 @@ hr{
     cursor: pointer;
     transition: all 0.3s;
     align-self: center;
+    margin-bottom: 15px;
 }
 
 #addSneaker #Cancelar a{

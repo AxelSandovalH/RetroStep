@@ -27,9 +27,10 @@ body {
 
 }
 /* Estilos del exitBtn */
-.header .exitBtn {
+.header img{
     cursor: pointer;
-  
+    height: 33px;
+    margin-top: 11px;
 }
 
 
@@ -156,9 +157,11 @@ body {
 }
 
 .borrarDato form {
-    display: grid;
+    display: block;
+    padding: 15px;
 }
 .borrarDato form a{
     text-decoration: none;
+    margin-right: 120px;
 }
 
