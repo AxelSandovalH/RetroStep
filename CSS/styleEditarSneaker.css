@@ -11,7 +11,7 @@
 
 body {
     /* Imagen de fondo */
-    background-image: url("../img/snkrsBackground.jpg") ; 
+    background-image: url("/img/snkrsBackground.jpg") ; 
     background-size: cover;
 }
 
@@ -24,21 +24,27 @@ body {
     height: 85px;
     padding: 5px 10%;
     position: static;
-
 }
-/* Estilos del exitBtn */
-.header img{
+/* Estilos del logo */
+.header .logo {
     cursor: pointer;
-    height: 33px;
-    margin-top: 11px;
 }
 
 
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover {
+    transform: scale(1.2);
+}
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;
     color: beige;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     transition: all 0.3s;
     font-weight: 800;
     /* font-family: 'Crimson Text', serif; */
@@ -133,59 +139,97 @@ hr{
     color: black;
 }
 
+.msgError{
+    color: black;
+}
 
-.TablaSneakers {
-    margin: 30px auto;
-    border-collapse: collapse;
+
+#addSneaker {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80%;
+    max-width: 500px;
+    padding: 20px;
     background-color: #F9F9F9;
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    table-layout: fixed;
-    justify-content: center;
-}
-
-.TablaContainerSneakers{
-    position: relative;
-    display: inline-block;
+    z-index: 1;
+    margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
+    margin-top: 75px;
 }
 
 
-.TablaSneakers th {
-    position: relative; 
-    background-color: #252B48;
-    color: white;
-    padding: 12px;
+
+#addSneaker header {
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 5px;
+    font-weight: 200;
 }
 
-.TablaSneakers th .add {
-    background-color: transparent;
+#addSneaker form {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+#addSneaker label {
+    margin-bottom: 5px;
+    color: #352F44;
+    font-size: 25px;
+}
+
+#addSneaker input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid ;
+    border-radius: 4px;
+}
+
+#addSneaker #Succes {
+    height: 45px;
+    width: 250px;
+    padding: 3px 5px; /* Tamaño reducido de los botones */
+    background-color: #59CE8F;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
- 
-
-
-.TablaSneakers th .add:hover {
-    background-color: #00FFCA;
-    
-}
-
-.TablaSneakers th {
-    background-color: #252B48;
-    color: white;
-    padding: 12px;
-}
-
-.TablaSneakers tr {
-    border-bottom: 1px solid #ddd;
+    border-radius: 16px;
+    cursor: pointer; 
     font-size: 20px;
-   
+    transition: all 0.3s; /* Animación de transición */
+    align-self: center;
 }
+
+#addSneaker #Succes:hover {
+    background-color: #00FFCA;
+    transform: scale(1.1); /* Escala del botón al hacer hover */
+}
+
+
+#addSneaker #Cancelar {
+    height: 45px;
+    width: 250px;
+    padding: 3px 5px; /* Tamaño reducido de los botones */
+    background-color: #F9F9F9;
+    color: red;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: center;
+}
+
+#addSneaker #Cancelar a{
+    text-decoration: none;
+}
+
+
+#addSneaker #Cancelar:hover {
+    border: solid 3px;
+    transform: scale(1.1); /* Escala del botón al hacer hover */
+    background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
+    color: darkred; /* Cambio de color de texto al hacer hover */
+}
+
