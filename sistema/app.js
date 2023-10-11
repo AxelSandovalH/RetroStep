@@ -37,3 +37,5 @@ userTable.addEventListener("click", function(event) {
         console.log("Borrar fila");
     }
 });
+
+
