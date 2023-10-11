@@ -9,10 +9,7 @@
     font-family: 'Manrope', sans-serif;
 }
 
-body {
-    background-image: url("../img/snkrsBackground.jpg");
-    background-size: cover;
-}
+
 
 /* Estilos del encabezado */
 .header {

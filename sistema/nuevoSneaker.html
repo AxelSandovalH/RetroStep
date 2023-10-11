@@ -48,7 +48,7 @@
     <div id="addSneaker">
         <header>Sneaker</header>
         
-        <form action="addSneakers.php" method="post">
+        <form action="addSneakers.php" method="post" enctype="multipart/form-data">
             <label for="Modelo">Modelo</label>
             <input name="Modelo" type="text" required>
             <label for="Marca">Marca</label>
@@ -75,6 +75,9 @@
                 <option value="12.5">12.5</option>
                 <option value="13.0">13.0</option>
             </select>
+            <label for="Imagen">Imagen</label>
+            <input type="file" name="Imagen" accept="image/*" required>
+
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             <button type="submit"  id="Succes">Agregar</button>
         </form>
