@@ -178,7 +178,7 @@ else{
             
      -->
             
-            <button type="reset" id="Cancelar"><a href="main.php">Cancelar</button></a>
+            <button type="" id="Cancelar"><a href="main.php">Cancelar</a></button>
             
             <button type="submit"  id="Succes">Actualizar sneaker</button>
         </form>

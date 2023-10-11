@@ -88,7 +88,7 @@ else{
         </div>
         
         <div class="exitBtn">
-            <h2><a href="../salir.php">Salir</a></h2>
+            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
        
         
