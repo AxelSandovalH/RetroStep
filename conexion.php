@@ -1,8 +1,8 @@
 <?php
     $host = 'localhost';
-    $user = 'paco';
-    $password = '2754';
-    $db = 'retro_step';
+    $user = 'jl';
+    $password = '123';
+    $db = 'retrostepdb';
     $port = '3307';
     $connection = @mysqli_connect($host, $user, $password, $db, $port);
     if(!$connection){

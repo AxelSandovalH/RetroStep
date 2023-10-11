@@ -70,11 +70,11 @@ if(empty($_SESSION['active'])){
         </th>
         </tr>
         <tr>
-            <td>Modelo</td>
-            <td>Marca</td>
-            <td>Talla</td>
-            <td>Precio</td>
-            <td>Stock</td>
+            <td><b>Modelo</b></td>
+            <td><b>Marca</b></td>
+            <td><b>Talla</b></td>
+            <td><b>Precio</b></td>
+            <td><b>Stock</b></td>
         </tr>
 
         <?php
