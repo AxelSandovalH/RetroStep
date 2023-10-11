@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+
 /* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Manrope', sans-serif;
-    /* font-size: 40px; */
 }
 
 body {
-    /* Imagen de fondo */
-    background-image: url("../img/snkrsBackground.jpg") ; 
+    background-image: url("../img/snkrsBackground.jpg");
     background-size: cover;
 }
 
@@ -23,16 +22,13 @@ body {
     align-items: center;
     height: 85px;
     padding: 5px 10%;
-    position: static;
-
 }
-/* Estilos del exitBtn */
-.header img{
+
+.header img {
     cursor: pointer;
     height: 33px;
     margin-top: 11px;
 }
-
 
 /* Estilos del Titulo */
 .header div h1 {
@@ -41,24 +37,17 @@ body {
     padding: 0 20px;
     transition: all 0.3s;
     font-weight: 800;
-    /* font-family: 'Crimson Text', serif; */
-    
-    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
 }
 
 .header div h1:hover {
     color: #00ffd0;
     cursor: pointer;
-    
-    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
+    transform: scale(1.5) translateX(0);
 }
-
-
 
 /* Estilos del menú hamburguesa */
 .header .menu-icon i {
-    font-size: 30px
-    
+    font-size: 30px;
 }
 
 .header .menu-icon i:hover {
@@ -76,18 +65,15 @@ body {
 .side-menu {
     position: fixed;
     top: 0;
-    left: -250px; 
+    left: -250px;
     width: 250px;
     height: 100%;
     background-color: #252B48;
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2; /* Set a higher z-index value */
+    z-index: 2;
 }
-
-
-
 
 .side-menu header {
     text-align: center;
@@ -96,7 +82,6 @@ body {
 }
 
 .side-menu ul {
-    
     list-style: none;
     padding: 0;
 }
@@ -120,7 +105,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3; /* Ensure the X button is above both menu and login */
+    z-index: 3;
     transition: transform 0.3s;
 }
 
@@ -128,34 +113,42 @@ body {
     transform: scale(1.2);
 }
 
-hr{
+hr {
     border-color: black;
     color: black;
 }
 
+/* Estilos para el contenedor de las sneaker cards */
+.TablaContainerSneakers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
 /* Estilos para sneaker-card */
 .sneaker-card {
-    background-color: #fff; /* Fondo blanco */
-    border: 1px solid #ddd; /* Borde delgada */
-    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
     padding: 20px;
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
 }
 
 /* Estilos para sneaker-info */
 .sneaker-info {
-    margin-bottom: 10px; /* Espacio entre la información y acciones */
+    margin-bottom: 10px;
 }
 
 .sneaker-info h2 {
-    font-size: 20px; /* Tamaño de fuente para el modelo */
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .sneaker-info p {
-    font-size: 16px; /* Tamaño de fuente para las demás informaciones */
+    font-size: 16px;
     margin-bottom: 5px;
 }
 
