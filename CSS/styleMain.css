@@ -133,59 +133,65 @@ hr{
     color: black;
 }
 
-
-.TablaSneakers {
-    margin: 30px auto;
-    border-collapse: collapse;
-    width: 80%;
-    background-color: #F9F9F9;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    table-layout: fixed;
-    justify-content: center;
+/* Estilos para sneaker-card */
+.sneaker-card {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde delgada */
+    margin-bottom: 20px; /* Espacio entre las tarjetas */
+    padding: 20px;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
-.TablaContainerSneakers{
-    position: relative;
-    display: inline-block;
+/* Estilos para sneaker-info */
+.sneaker-info {
+    margin-bottom: 10px; /* Espacio entre la información y acciones */
 }
 
-
-.TablaSneakers th {
-    position: relative; 
-    background-color: #252B48;
-    color: white;
-    padding: 12px;
+.sneaker-info h2 {
+    font-size: 20px; /* Tamaño de fuente para el modelo */
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.TablaSneakers th .add {
-    background-color: transparent;
-    color: white;
+.sneaker-info p {
+    font-size: 16px; /* Tamaño de fuente para las demás informaciones */
+    margin-bottom: 5px;
+}
+
+/* Estilos para sneaker-actions */
+.sneaker-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sneaker-actions a {
+    text-decoration: none;
+}
+
+/* Estilos para botones de editar y eliminar */
+.sneaker-actions button {
+    padding: 5px 10px;
+    font-size: 14px;
     border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
- 
-
-
-.TablaSneakers th .add:hover {
-    background-color: #00FFCA;
-    
 }
 
-.TablaSneakers th {
-    background-color: #252B48;
+.sneaker-actions .editar {
+    background-color: #2196F3;
     color: white;
-    padding: 12px;
 }
 
-.TablaSneakers tr {
-    border-bottom: 1px solid #ddd;
-    font-size: 20px;
-   
+.sneaker-actions .eliminar {
+    background-color: #f44336;
+    color: white;
+}
+
+.sneaker-actions .editar:hover {
+    background-color: #0a6dc9;
+}
+
+.sneaker-actions .eliminar:hover {
+    background-color: #e53935;
+    color: white;
 }
