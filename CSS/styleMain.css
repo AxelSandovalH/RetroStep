@@ -33,7 +33,6 @@ body {
     margin-top: 11px;
 }
 
-
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;
@@ -52,8 +51,6 @@ body {
     
     transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
 }
-
-
 
 /* Estilos del menú hamburguesa */
 .header .menu-icon i {
@@ -85,9 +82,6 @@ body {
     border: solid 1px;
     z-index: 2; /* Set a higher z-index value */
 }
-
-
-
 
 .side-menu header {
     text-align: center;
@@ -133,7 +127,6 @@ hr{
     color: black;
 }
 
-
 .TablaSneakers {
     margin: 30px auto;
     border-collapse: collapse;
@@ -149,7 +142,6 @@ hr{
     position: relative;
     display: inline-block;
 }
-
 
 .TablaSneakers th {
     position: relative; 
@@ -170,8 +162,6 @@ hr{
     top: 0;
     right: 0;
 }
- 
-
 
 .TablaSneakers th .add:hover {
     background-color: #00FFCA;
