@@ -5,11 +5,9 @@ if(empty($_SESSION['active'])){
     header('location: ../');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styleMain.css">
     <meta charset="UTF-8">
@@ -18,7 +16,6 @@ if(empty($_SESSION['active'])){
 </head>
 <body>
     <header class="header">
-        
         <a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
         </a>
@@ -29,17 +26,20 @@ if(empty($_SESSION['active'])){
                     RetroStep
                 </h1>
             </a>
-           
         </div>
         
         <div class="exitBtn">
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
-       
-        
+
+        <div class="add-sneaker">
+            <a href="nuevoSneaker.html">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
     </header>
     <div class="side-menu" id="side-menu">
-        <header >Categorias
+        <header>Categorias
             <button id="x">
                 x
             </button>
@@ -56,12 +56,6 @@ if(empty($_SESSION['active'])){
     </div>
 
     <div class="TablaContainerSneakers">
-    <!-- Botón para agregar un nuevo tenis -->
-    <a href="nuevoSneaker.html">
-        <button class="agregar">
-            Agregar Nuevo Tenis
-        </button>
-    </a>
     <?php
     require_once "../conexion.php";
     $sql = "SELECT * from sneakers";
