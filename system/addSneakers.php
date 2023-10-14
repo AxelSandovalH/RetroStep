@@ -6,7 +6,7 @@ require_once "../connection.php"; //Se elimina la necesidad de escribir las vari
 $sneaker_name = $_POST["sneaker_name"];
 $sneaker_brand = $_POST["brand_name"];
 $price = $_POST["price"];
-$stock = $_POST["stock"];
+$stock = $_POST["stock_quantity"];
 $sneaker_size = $_POST["size_number"];
 
 // Verificar si ya existe un registro con el mismo modelo y talla
