@@ -79,7 +79,12 @@ if(empty($_SESSION['active'])){
 
         <?php
             require_once "../connection.php";
-            $sql ="SELECT * from sneakers";
+
+            $sql = 
+            "SELECT * from sneaker
+            INNER JOIN stock
+            ON sneaker.sneaker_id = stock.sneaker_id;";
+
             $result=mysqli_query($connection,$sql);
 
             while($column=mysqli_fetch_array($result)){
@@ -87,19 +92,19 @@ if(empty($_SESSION['active'])){
         <!-- ... (código HTML anterior) ... -->
 
         <tr>
-            <td><?php echo $column['Modelo']?></td>
-            <td><?php echo $column['Marca']?></td>
-            <td><?php echo $column['Size']?></td>
-            <td><?php echo $column['Precio']?></td>
-            <td><?php echo $column['Stock']?></td>
+            <td><?php echo $column['sneaker_name']?></td>
+            <td><?php echo $column['brand_name']?></td>
+            <td><?php echo $column['size_number']?></td>
+            <td><?php echo $column['price']?></td>
+            <td><?php echo $column['stock_quantity']?></td>
             <td>
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']?>">
+                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['sneaker_id']?>">
                     <button class="editar">Editar</button>
                 </a>
             </td>
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
-                <a class="link_borrar" href = "deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href = "deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
             </td>
