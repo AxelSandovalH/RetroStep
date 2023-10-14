@@ -78,7 +78,7 @@ if(empty($_SESSION['active'])){
         </tr>
 
         <?php
-            require_once "../conexion.php";
+            require_once "../connection.php";
             $sql ="SELECT * from sneakers";
             $result=mysqli_query($connection,$sql);
 
