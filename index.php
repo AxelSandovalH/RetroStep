@@ -3,7 +3,7 @@
     session_start();
 
     if(!empty($_SESSION['active'])){
-        header('location: sistema/main.php');
+        header('location: system/main.php');
 
     }
     else{
@@ -30,7 +30,7 @@
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user'] = $data['username'];
 
-                    header('location: sistema/main.php');
+                    header('location: system/main.php');
                     
                 }
                 else{

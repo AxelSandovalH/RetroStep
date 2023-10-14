@@ -34,7 +34,7 @@ if(empty($_SESSION['active'])){
         </div>
         
         <div class="exitBtn">
-            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
         </div>
        
         
