@@ -13,7 +13,7 @@
                 $alert = 'Ingrese su usuario y clave';
             }
             else{
-                require_once "conexion.php";
+                require_once "connection.php";
                 // Se añade la función de cifrado md5 para la contraseña
                 $user = mysqli_real_escape_string($connection, $_POST['usuario']);
                 $pass = md5(mysqli_real_escape_string($connection, $_POST['clave']));
