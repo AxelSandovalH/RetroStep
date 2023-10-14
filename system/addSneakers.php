@@ -3,18 +3,18 @@ require_once "../connection.php"; //Se elimina la necesidad de escribir las vari
 // Establecer conexión a la base de datos
 
 // Recibir datos del formulario
-$modelo = $_POST["Modelo"];
-$marca = $_POST["Marca"];
-$precio = $_POST["Precio"];
-$stock = $_POST["Stock"];
-$size = $_POST["Size"];
+$sneaker_name = $_POST["sneaker_name"];
+$sneaker_brand = $_POST["brand_name"];
+$price = $_POST["price"];
+$stock = $_POST["stock"];
+$sneaker_size = $_POST["size_number"];
 
 // Verificar si ya existe un registro con el mismo modelo y talla
-$sql_verificar = "SELECT COUNT(*) AS count FROM sneakers WHERE Modelo = ? AND Size = ?";
+$sql_verificar = "SELECT COUNT(*) AS count FROM sneaker WHERE sneaker_name = ? AND size_number = ?";
 
 if ($stmt_verificar = $connection->prepare($sql_verificar)) {
     // Vincular los parámetros
-    $stmt_verificar->bind_param("si", $modelo, $size);
+    $stmt_verificar->bind_param("si", $sneaker_name, $sneaker_size);
 
     // Ejecutar la consulta de verificación
     $stmt_verificar->execute();
@@ -31,11 +31,11 @@ if ($stmt_verificar = $connection->prepare($sql_verificar)) {
         echo "Ya existe un registro con el mismo modelo y talla.";
     } else {
         // Si no existe, proceder con la inserción
-        $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size) VALUES (?, ?, ?, ?, ?)";
+        $sql_insertar = "INSERT INTO sneaker (brand_name, sneaker_name, price, stock, size) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt_insertar = $connection->prepare($sql_insertar)) {
             // Vincular los parámetros
-            $stmt_insertar->bind_param("ssdii", $marca, $modelo, $precio, $stock, $size);
+            $stmt_insertar->bind_param("ssdii", $sneaker_brand, $sneaker_name, $price, $stock, $sneaker_size);
 
             // Ejecutar la consulta de inserción
             if ($stmt_insertar->execute()) {

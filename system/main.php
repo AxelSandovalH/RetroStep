@@ -61,7 +61,7 @@ if(empty($_SESSION['active'])){
     <table class="TablaSneakers" id="sneakersTable">
         <tr class="Encabezado">
             <th colspan="7">Sneakers
-                <a href="./nuevoSneaker.html">
+                <a href="./newSneaker.html">
                     <button class="add">
                         +
                     </button>
