@@ -27,7 +27,7 @@ if(!empty($_POST)){
         header("location: main.php");
     }
     else{
-        echo("Erro al eliminar");
+        echo("Error al eliminar");
     }
 }
 
