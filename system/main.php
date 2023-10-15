@@ -83,7 +83,8 @@ if(empty($_SESSION['active'])){
             $sql = 
             "SELECT * from sneaker
             INNER JOIN stock
-            ON sneaker.sneaker_id = stock.sneaker_id;";
+            ON sneaker.sneaker_id = stock.sneaker_id
+            WHERE sneaker.deleted_at IS NULL;";
 
             $result=mysqli_query($connection,$sql);
 

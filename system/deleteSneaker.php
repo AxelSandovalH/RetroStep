@@ -15,12 +15,13 @@ require_once "../connection.php"; //Se elimina la necesidad de escribir las vari
 
 //Espera
 if(!empty($_POST)){
- $id = $_POST['idSneaker'];
+ $sneaker_id = $_POST['sneaker_id'];
 
  $queryDelete = mysqli_query($connection, 
- "DELETE FROM sneakers
+ "UPDATE sneaker
+  SET deleted_at = CURRENT_TIMESTAMP
   WHERE 
-  id = $id");
+  sneaker_id = $sneaker_id");
 
     if($queryDelete){
         header("location: main.php");
@@ -36,21 +37,24 @@ if(empty($_REQUEST['id'])){
 
 else{
 
-    $id = $_REQUEST['id'];
+    $sneaker_id = $_REQUEST['id'];
     $query = mysqli_query($connection, 
     
-    "SELECT * from sneakers WHERE 
-    id = $id;");
+    "SELECT * from sneaker
+    INNER JOIN stock
+    ON sneaker.sneaker_id = stock.sneaker_id
+    WHERE sneaker.sneaker_id = $sneaker_id AND stock.sneaker_id = $sneaker_id");
     
     $result = mysqli_num_rows($query);
 
     if($result > 0){
         while($column = mysqli_fetch_array($query)){
-            $modelo = $column["Modelo"];
-            $marca = $column["Marca"];
-            $precio = $column["Precio"];
-            $stock = $column["Stock"];
-            $size = $column["Size"];
+
+            $sneaker_name = $column["sneaker_name"];
+            $brand_name = $column["brand_name"];
+            $price = $column["price"];
+            $stock_quantity = $column["stock_quantity"];
+            $size_number = $column["size_number"];
         }
     }
     else{
@@ -97,13 +101,13 @@ else{
     <section id="container">
         <div class="borrarDato">
             <h2>¿Estás seguro que quieres borrar el siguiente sneaker?</h2>
-            <p><span>Modelo: <?php echo $modelo; ?></span></p>
-            <p><span>Marca: <?php echo $marca; ?></span></p>
-            <p><span>Precio: <?php echo $precio; ?></span></p>
-            <p><span>Stock: <?php echo $stock; ?></span></p>
+            <p><span>Modelo: <?php echo $sneaker_name; ?></span></p>
+            <p><span>Marca: <?php echo $brand_name; ?></span></p>
+            <p><span>Precio: <?php echo $price; ?></span></p>
+            <p><span>Stock: <?php echo $stock_quantity; ?></span></p>
 
             <form method="post" action="">
-                <input type="hidden" name ="idSneaker" value = "<?php echo $id?>">
+                <input type="hidden" name ="sneaker_id" value = "<?php echo $sneaker_id?>">
                 <a href="main.php" class = "btnCancelar">Cancelar</a>
                 <input type="submit" value="Aceptar" class="btnAceptar">
             </form>
