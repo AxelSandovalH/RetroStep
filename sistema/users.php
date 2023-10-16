@@ -7,25 +7,26 @@ if(empty($_SESSION['active'])){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/styleMain.css">
+    <link rel="stylesheet" href="../CSS/styleUsers.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Usuarios</title>
 </head>
 <body>
     <header class="header">
         
-        <a href="#" id="menu" class="menu-icon">
+        <!-- <a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
-        </a>
+        </a> -->
         
         <div>
-            <a href="../index.php">
+            <a href="../">
                 <h1 class="Titulo">
                     RetroStep
                 </h1>
@@ -33,41 +34,36 @@ if(empty($_SESSION['active'])){
            
         </div>
         
+        <div class="logo">
+            <img src="./img/offwhite.gif" alt="">
+        </div>
+       
         <div class="exitBtn">
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
-       
         
     </header>
-    <div class="side-menu" id="side-menu">
-        <header>Categorias
+    <!-- <div class="side-menu" id="side-menu">
+        <header >Sneakers
             <button id="x">
                 x
             </button>
         </header>
         <hr>
         <ul>
-            <li><a href="#">Lujo</a></li>
-            <li><a href="#">LifeStyle</a></li>
-            <li><a href="#">Futbol</a></li>
-            <li><a href="#">Basquetball</a></li>
-            <li><a href="#">Running</a></li>
-            <li><a href="#">Tenis</a></li>
+            <li><a href="./adminusers.html">AdminUsers</a></li>
+            <li><a href="#">Sport</a></li>
+            <li><a href="#">caminata</a></li>
         </ul>
+    </div> -->
 
-        <header>Administrador</header>
-        <hr>
-        <ul>
-            <li><a href="users.php">Usuarios</a></li>
-        </ul>
-    </div>
-<!-- Aquí se agrega la tabla de los tenis -->
-    
-<div class="TablaContainerSneakers">
-    <table class="TablaSneakers" id="sneakersTable">
+    <!----------------------------------------------------------->
+
+    <div class="TablaContainerUsers">
+    <table class="TablaUsers" id="usersTable">
         <tr class="Encabezado">
-            <th colspan="7">Sneakers
-                <a href="./nuevoSneaker.html">
+            <th colspan="7">Usuarios
+                <a href="addUsers.php">
                     <button class="add">
                         +
                     </button>
@@ -76,16 +72,22 @@ if(empty($_SESSION['active'])){
         </th>
         </tr>
         <tr>
-            <td><b>Modelo</b></td>
-            <td><b>Marca</b></td>
-            <td><b>Talla</b></td>
-            <td><b>Precio</b></td>
-            <td><b>Stock</b></td>
+            <td><b>ID</b></td>
+            <td><b>Username</b></td>
+            <td><b>Email</b></td>
+            <td><b>Rol</b></td>
+            <!-- <td><b>Email</b></td>
+            <td><b>Rol</b></td>
+            <td><b>Creado</b></td> -->
+        </tr>
         </tr>
 
         <?php
             require_once "../conexion.php";
-            $sql ="SELECT * from sneakers";
+            $sql ="SELECT * FROM roles
+            INNER JOIN users 
+            ON roles.idRol = users.rol";
+
             $result=mysqli_query($connection,$sql);
 
             while($column=mysqli_fetch_array($result)){
@@ -93,19 +95,18 @@ if(empty($_SESSION['active'])){
         <!-- ... (código HTML anterior) ... -->
 
         <tr>
-            <td><?php echo $column['Modelo']?></td>
-            <td><?php echo $column['Marca']?></td>
-            <td><?php echo $column['Size']?></td>
-            <td><?php echo $column['Precio']?></td>
-            <td><?php echo $column['Stock']?></td>
+            <td><?php echo $column['id']?></td>
+            <td><?php echo $column['username']?></td>
+            <td><?php echo $column['email']?></td>
+            <td><?php echo $column['rol_name']?></td>
             <td>
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']?>">
+                <a class="link_editar" href="editUsers.php?id=<?php echo $column['id']?>">
                     <button class="editar">Editar</button>
                 </a>
             </td>
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
-                <a class="link_borrar" href = "deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href = "deleteUsers.php?id=<?php echo $column['id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
             </td>
