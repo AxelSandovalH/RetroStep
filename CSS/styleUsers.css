@@ -132,19 +132,21 @@ hr{
 }
 
 .TablaUsers {
-    margin: 30px auto;
+    margin: 30px auto; /* Auto en lugar de solo margin: 30px; */
     border-collapse: collapse;
     width: 80%;
     background-color: #F9F9F9;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    table-layout: fixed;
     justify-content: center;
+    table-layout: auto;
+    text-align: center;
 }
+
 
 .TablaContainerUsers{
     position: relative;
-    display: inline-block;
+    text-align: center;
 }
 
 .TablaUsers th {
@@ -169,7 +171,6 @@ hr{
 
 .TablaUsers th .add:hover {
     background-color: #00FFCA;
-    
 }
 
 .TablaUsers th {
@@ -181,7 +182,6 @@ hr{
 .TablaUsers tr {
     border-bottom: 1px solid #ddd;
     font-size: 20px;
-   
 }
 
 .TablaUsers .editar {
@@ -201,7 +201,7 @@ hr{
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
-  
+
 .TablaUsers .editar:hover {
     background: rgb(26, 33, 113);
     box-shadow: 0 0 20px 5px rgb(26, 33, 113);
@@ -210,13 +210,13 @@ hr{
     transition: all 0.2s ease-out;
     color: white;
 }
-  
+
 .TablaUsers .editar:hover::before {
     -webkit-animation: sh02 0.5s 0s linear;
     -moz-animation: sh02 0.5s 0s linear;
     animation: sh02 0.5s 0s linear;
 }
-  
+
 .TablaUsers .editar::before {
     content: '';
     display: block;
@@ -234,23 +234,23 @@ hr{
     -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
 }
-  
+
 @keyframes sh02 {
     from {
-      opacity: 0;
-      left: 0%;
+        opacity: 0;
+        left: 0%;
     }
-  
+
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  
+
     to {
-      opacity: 0;
-      left: 100%;
+        opacity: 0;
+        left: 100%;
     }
 }
-  
+
 .TablaUsers .editar:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
@@ -276,22 +276,21 @@ hr{
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
-  
+
 .TablaUsers .eliminar:hover {
     background: rgb(189, 36, 36);
-    /* box-shadow: 0 0 20px 5px rgb(189, 36, 36); */
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
     color: white;
 }
-  
+
 .TablaUsers .eliminar:hover::before {
     -webkit-animation: sh02 0.5s 0s linear;
     -moz-animation: sh02 0.5s 0s linear;
     animation: sh02 0.5s 0s linear;
 }
-  
+
 .TablaUsers .eliminar::before {
     content: '';
     display: block;
@@ -309,23 +308,23 @@ hr{
     -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
 }
-  
+
 @keyframes sh02 {
     from {
-      opacity: 0;
-      left: 0%;
+        opacity: 0;
+        left: 0%;
     }
-  
+
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  
+
     to {
-      opacity: 0;
-      left: 100%;
+        opacity: 0;
+        left: 100%;
     }
 }
-  
+
 .TablaUsers .eliminar:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
