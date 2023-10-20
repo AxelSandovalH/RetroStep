@@ -53,6 +53,12 @@ if(empty($_SESSION['active'])){
             <li><a href="#">Running</a></li>
             <li><a href="#">Tenis</a></li>
         </ul>
+
+        <header>Administrador</header>
+        <hr>
+        <ul>
+            <li><a href="users.php">Usuarios</a></li>
+        </ul>
     </div>
 
     <div class="TablaContainerSneakers">

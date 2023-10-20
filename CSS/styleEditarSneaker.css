@@ -153,11 +153,10 @@ hr{
     max-width: 500px;
     padding: 20px;
     background-color: #F9F9F9;
-    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 1;
     margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
-    margin-top: 75px;
 }
 
 
@@ -219,6 +218,7 @@ hr{
     cursor: pointer;
     transition: all 0.3s;
     align-self: center;
+    margin-bottom: 15px;
 }
 
 #addSneaker #Cancelar a{

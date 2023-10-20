@@ -1,19 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
-
 /* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Manrope', sans-serif;
+    /* font-size: 40px; */
 }
 
-
+body {
+    /* Imagen de fondo */
+    background-image: url("../img/snkrsBackground.jpg") ; 
+    background-size: cover;
+}
 
 td {
     padding: 15px;
 }
+
 /* Estilos del encabezado */
 .header {
     background-color: #252B48;
@@ -22,9 +27,11 @@ td {
     align-items: center;
     height: 85px;
     padding: 5px 10%;
+    position: static;
 }
 
-.header img {
+/* Estilos del exitBtn */
+.header img{
     cursor: pointer;
     height: 33px;
     margin-top: 11px;
@@ -37,17 +44,22 @@ td {
     padding: 0 20px;
     transition: all 0.3s;
     font-weight: 800;
+    /* font-family: 'Crimson Text', serif; */
+    
+    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
 }
 
 .header div h1:hover {
     color: #00ffd0;
     cursor: pointer;
-    transform: scale(1.5) translateX(0);
+    
+    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
 }
 
 /* Estilos del menú hamburguesa */
-.header .menu-icon i {
-    font-size: 30px;
+/* .header .menu-icon i {
+    font-size: 30px
+    
 }
 
 .header .menu-icon i:hover {
@@ -59,20 +71,20 @@ td {
     background-color: #e2f1f8;
     color: white;
     transform: scale(1.1);
-}
+} */
 
 /* Estilos del menú lateral */
-.side-menu {
+/* .side-menu {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -250px; 
     width: 250px;
     height: 100%;
     background-color: #252B48;
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2;
+    z-index: 2; 
 }
 
 .side-menu header {
@@ -82,6 +94,7 @@ td {
 }
 
 .side-menu ul {
+    
     list-style: none;
     padding: 0;
 }
@@ -105,92 +118,73 @@ td {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3;
+    z-index: 3; 
     transition: transform 0.3s;
 }
 
 .side-menu #x:hover {
     transform: scale(1.2);
-}
+} */
 
-hr {
+hr{
     border-color: black;
     color: black;
 }
 
-/* Estilos para el contenedor de las sneaker cards */
-.TablaContainerSneakers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-/* Estilos para sneaker-card */
-.sneaker-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-}
-
-/* Estilos para sneaker-info */
-.sneaker-info {
-    margin-bottom: 10px;
+.TablaUsers {
+    margin: 30px auto; /* Auto en lugar de solo margin: 30px; */
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    table-layout: auto;
+    text-align: center;
 }
 
 
-.sneaker-info h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.TablaContainerUsers{
+    position: relative;
+    text-align: center;
 }
 
-.sneaker-info p {
-    font-size: 16px;
-    margin-bottom: 5px;
+.TablaUsers th {
+    position: relative; 
+    background-color: #252B48;
+    color: white;
+    padding: 12px;
 }
 
-/* Estilos para sneaker-actions */
-.sneaker-actions {
-    display: flex;
-    justify-content: space-between;
-}
-
-.sneaker-actions a {
-    text-decoration: none;
-}
-
-/* Estilos para botones de editar y eliminar */
-.sneaker-actions button {
-    padding: 5px 10px;
-    font-size: 14px;
+.TablaUsers th .add {
+    background-color: transparent;
+    color: white;
     border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-.sneaker-actions .editar {
-    background-color: #2196F3;
+.TablaUsers th .add:hover {
+    background-color: #00FFCA;
+}
+
+.TablaUsers th {
+    background-color: #252B48;
     color: white;
+    padding: 12px;
 }
 
-.sneaker-actions .eliminar {
-    background-color: #f44336;
-    color: white;
+.TablaUsers tr {
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
 }
 
-.sneaker-actions .editar:hover {
-    background-color: #0a6dc9;
-}
-
-.sneaker-actions .eliminar:hover {
-    background-color: #e53935;
-    color: white;
-}
-
-.TablaSneakers .editar {
+.TablaUsers .editar {
     position: relative;
     padding: 10px 20px;
     border-radius: 7px;
@@ -207,8 +201,8 @@ hr {
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
-  
-.TablaSneakers .editar:hover {
+
+.TablaUsers .editar:hover {
     background: rgb(26, 33, 113);
     box-shadow: 0 0 20px 5px rgb(26, 33, 113);
     -webkit-transition: all 0.2s ease-out;
@@ -216,14 +210,14 @@ hr {
     transition: all 0.2s ease-out;
     color: white;
 }
-  
-.TablaSneakers .editar:hover::before {
+
+.TablaUsers .editar:hover::before {
     -webkit-animation: sh02 0.5s 0s linear;
     -moz-animation: sh02 0.5s 0s linear;
     animation: sh02 0.5s 0s linear;
 }
-  
-.TablaSneakers .editar::before {
+
+.TablaUsers .editar::before {
     content: '';
     display: block;
     width: 0px;
@@ -240,24 +234,24 @@ hr {
     -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
 }
-  
+
 @keyframes sh02 {
     from {
-      opacity: 0;
-      left: 0%;
+        opacity: 0;
+        left: 0%;
     }
-  
+
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  
+
     to {
-      opacity: 0;
-      left: 100%;
+        opacity: 0;
+        left: 100%;
     }
 }
-  
-.TablaSneakers .editar:active {
+
+.TablaUsers .editar:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
     -moz-transition: box-shadow 0.2s ease-in;
@@ -265,7 +259,7 @@ hr {
 }
 
 /* Eliminar btn */
-.TablaSneakers .eliminar {
+.TablaUsers .eliminar {
     position: relative;
     padding: 10px 20px;
     border-radius: 7px;
@@ -282,23 +276,22 @@ hr {
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
-  
-.TablaSneakers .eliminar:hover {
+
+.TablaUsers .eliminar:hover {
     background: rgb(189, 36, 36);
-    /* box-shadow: 0 0 20px 5px rgb(189, 36, 36); */
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
     color: white;
 }
-  
-.TablaSneakers .eliminar:hover::before {
+
+.TablaUsers .eliminar:hover::before {
     -webkit-animation: sh02 0.5s 0s linear;
     -moz-animation: sh02 0.5s 0s linear;
     animation: sh02 0.5s 0s linear;
 }
-  
-.TablaSneakers .eliminar::before {
+
+.TablaUsers .eliminar::before {
     content: '';
     display: block;
     width: 0px;
@@ -315,24 +308,24 @@ hr {
     -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
 }
-  
+
 @keyframes sh02 {
     from {
-      opacity: 0;
-      left: 0%;
+        opacity: 0;
+        left: 0%;
     }
-  
+
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  
+
     to {
-      opacity: 0;
-      left: 100%;
+        opacity: 0;
+        left: 100%;
     }
 }
-  
-.TablaSneakers .eliminar:active {
+
+.TablaUsers .eliminar:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
     -moz-transition: box-shadow 0.2s ease-in;
