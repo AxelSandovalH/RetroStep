@@ -1,10 +1,3 @@
-<?php 
-session_start();
-
-if(empty($_SESSION['active'])){
-    header('location: ../');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,12 +25,8 @@ if(empty($_SESSION['active'])){
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
 
-        <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
     </header>
+    
     <div class="side-menu" id="side-menu">
         <header>Categorias
             <button id="x">
@@ -90,6 +79,10 @@ if(empty($_SESSION['active'])){
     }
     ?>
     </div>
+
+    <a href="nuevoSneaker.html" class="add-sneaker fixed-button">
+        <i class="fas fa-plus"></i>
+    </a>
 
     <script src="app.js"></script>
 </body>

@@ -9,6 +9,32 @@
     font-family: 'Manrope', sans-serif;
 }
 
+.add-sneaker {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1;
+    right: 20px;
+    background-color: #0074d9;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+}
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2; /* Puedes ajustar el valor de z-index según sea necesario para superposición */
+    background-color: #0074d9;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+}
 
 
 td {
