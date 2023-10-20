@@ -46,8 +46,10 @@ td {
 }
 
 /* Estilos del menú hamburguesa */
+
 .header .menu-icon i {
-    font-size: 30px;
+    font-size: 30px
+    
 }
 
 .header .menu-icon i:hover {
@@ -55,12 +57,11 @@ td {
     transform: scale(1.1);
 }
 
-.header .menu-icon:hover {
+.header .menu-icon button:hover {
     background-color: #e2f1f8;
     color: white;
     transform: scale(1.1);
 }
-
 /* Estilos del menú lateral */
 .side-menu {
     position: fixed;
