@@ -1,6 +1,5 @@
 <?php
-require_once "../conexion.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
-// Establecer conexión a la base de datos
+require_once "../conexion.php";
 
 // Recibir datos del formulario
 $modelo = $_POST["Modelo"];
@@ -31,19 +30,29 @@ if ($stmt_verificar = $connection->prepare($sql_verificar)) {
         echo "Ya existe un registro con el mismo modelo y talla.";
     } else {
         // Si no existe, proceder con la inserción
-        $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size) VALUES (?, ?, ?, ?, ?)";
+        $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size, Imagen) VALUES (?, ?, ?, ?, ?, ?)";
 
         if ($stmt_insertar = $connection->prepare($sql_insertar)) {
-            // Vincular los parámetros
-            $stmt_insertar->bind_param("ssdii", $marca, $modelo, $precio, $stock, $size);
+            // Vincular los parámetros, incluyendo la imagen
+            $stmt_insertar->bind_param("ssdiis", $marca, $modelo, $precio, $stock, $size, $rutaDeImagen);
 
-            // Ejecutar la consulta de inserción
-            if ($stmt_insertar->execute()) {
-                echo "Los datos se han agregado correctamente.";
-                header("Location: main.php");
-
+            // Manejar la subida de la imagen
+            if (isset($_FILES['Imagen']) && $_FILES['Imagen']['error'] === 0) {
+                $rutaDeImagen = 'ruta/donde/guardar/imagen.jpg'; // Ruta donde deseas guardar la imagen
+                
+                if (move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaDeImagen)) {
+                    // Ejecutar la consulta de inserción
+                    if ($stmt_insertar->execute()) {
+                        echo "Los datos se han agregado correctamente.";
+                        header("Location: main.php");
+                    } else {
+                        echo "Error al agregar los datos: " . $stmt_insertar->error;
+                    }
+                } else {
+                    echo "Error al cargar la imagen.";
+                }
             } else {
-                echo "Error al agregar los datos: " . $stmt_insertar->error;
+                echo "No se ha cargado ninguna imagen.";
             }
 
             // Cerrar la consulta de inserción

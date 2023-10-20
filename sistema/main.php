@@ -3,14 +3,11 @@ session_start();
 
 if(empty($_SESSION['active'])){
     header('location: ../');
-
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styleMain.css">
     <meta charset="UTF-8">
@@ -19,7 +16,6 @@ if(empty($_SESSION['active'])){
 </head>
 <body>
     <header class="header">
-        
         <a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
         </a>
@@ -30,14 +26,17 @@ if(empty($_SESSION['active'])){
                     RetroStep
                 </h1>
             </a>
-           
         </div>
         
         <div class="exitBtn">
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
-       
-        
+
+        <div class="add-sneaker">
+            <a href="nuevoSneaker.html">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -61,62 +60,37 @@ if(empty($_SESSION['active'])){
             <li><a href="users.php">Usuarios</a></li>
         </ul>
     </div>
-<!-- Aquí se agrega la tabla de los tenis -->
-    
-<div class="TablaContainerSneakers">
-    <table class="TablaSneakers" id="sneakersTable">
-        <tr class="Encabezado">
-            <th colspan="7">Sneakers
-                <a href="./nuevoSneaker.html">
-                    <button class="add">
-                        +
-                    </button>
-                </a>
-            
-        </th>
-        </tr>
-        <tr>
-            <td><b>Modelo</b></td>
-            <td><b>Marca</b></td>
-            <td><b>Talla</b></td>
-            <td><b>Precio</b></td>
-            <td><b>Stock</b></td>
-        </tr>
 
-        <?php
-            require_once "../conexion.php";
-            $sql ="SELECT * from sneakers";
-            $result=mysqli_query($connection,$sql);
+    <div class="TablaContainerSneakers">
+    <?php
+    require_once "../conexion.php";
+    $sql = "SELECT * from sneakers";
+    $result = mysqli_query($connection, $sql);
 
-            while($column=mysqli_fetch_array($result)){
-        ?>
-        <!-- ... (código HTML anterior) ... -->
-
-        <tr>
-            <td><?php echo $column['Modelo']?></td>
-            <td><?php echo $column['Marca']?></td>
-            <td><?php echo $column['Size']?></td>
-            <td><?php echo $column['Precio']?></td>
-            <td><?php echo $column['Stock']?></td>
-            <td>
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']?>">
+    while ($column = mysqli_fetch_array($result)) {
+    ?>
+        <div class="sneaker-card">
+            <div class="sneaker-info">
+                <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
+                <p>Marca: <?php echo $column['Marca']; ?></p>
+                <p>Talla: <?php echo $column['Size']; ?></p>
+                <p>Precio: <?php echo $column['Precio']; ?></p>
+                <p>Stock: <?php echo $column['Stock']; ?></p>
+            </div>
+            <div class="sneaker-actions">
+                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-            </td>
-            <td>
-                <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
-                <a class="link_borrar" href = "deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
-            </td>
-        </tr>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
+    </div>
 
-
-        <?php
-        }
-        ?>
-    </table>
-    
     <script src="app.js"></script>
 </body>
 </html>
