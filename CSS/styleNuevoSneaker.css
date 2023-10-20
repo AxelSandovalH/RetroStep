@@ -193,6 +193,7 @@ hr {
     height: 45px;
     width: 250px;
     padding: 3px 5px;
+    padding: 8px 5px; /* Tamaño reducido de los botones */
     background-color: #F9F9F9;
     color: red;
     border: none;
@@ -200,6 +201,8 @@ hr {
     cursor: pointer;
     transition: all 0.3s;
     align-self: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 #addSneaker #Cancelar a {
