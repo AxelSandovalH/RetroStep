@@ -20,17 +20,8 @@ if(empty($_SESSION['active'])){
 </head>
 <body>
     <header class="header">
-<<<<<<< HEAD:system/users.php
-<<<<<<<< HEAD:system/users.php
         
         <!-- <a href="#" id="menu" class="menu-icon">
-========
-        <a href="#" id="menu" class="menu-icon">
->>>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/main.php
-=======
-        
-        <!-- <a href="#" id="menu" class="menu-icon">
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
             <i class="fas fa-bars"></i>
         </a> -->
         
@@ -40,10 +31,7 @@ if(empty($_SESSION['active'])){
                     RetroStep
                 </h1>
             </a>
-<<<<<<< HEAD:system/users.php
-=======
            
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
         </div>
         
         <div class="logo">
@@ -53,28 +41,10 @@ if(empty($_SESSION['active'])){
         <div class="exitBtn">
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
-<<<<<<< HEAD:system/users.php
-<<<<<<<< HEAD:system/users.php
-=======
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
         
     </header>
     <!-- <div class="side-menu" id="side-menu">
         <header >Sneakers
-<<<<<<< HEAD:system/users.php
-========
-
-        <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
-    </header>
-    <div class="side-menu" id="side-menu">
-        <header>Categorias
->>>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/main.php
-=======
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
             <button id="x">
                 x
             </button>
@@ -85,10 +55,6 @@ if(empty($_SESSION['active'])){
             <li><a href="#">Sport</a></li>
             <li><a href="#">caminata</a></li>
         </ul>
-<<<<<<< HEAD:system/users.php
-<<<<<<<< HEAD:system/users.php
-=======
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
     </div> -->
 
     <!----------------------------------------------------------->
@@ -117,7 +83,7 @@ if(empty($_SESSION['active'])){
         </tr>
 
         <?php
-            require_once "../conexion.php";
+            require_once "../connection.php";
             $sql ="SELECT * FROM roles
             INNER JOIN users 
             ON roles.idRol = users.rol";
@@ -141,48 +107,6 @@ if(empty($_SESSION['active'])){
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
                 <a class="link_borrar" href = "deleteUsers.php?id=<?php echo $column['id']; ?>">
-<<<<<<< HEAD:system/users.php
-========
-
-        <header>Administrador</header>
-        <hr>
-        <ul>
-            <li><a href="users.php">Usuarios</a></li>
-        </ul>
-    </div>
-
-    <div class="TablaContainerSneakers">
-    <?php
-    require_once "../conexion.php";
-    $sql = "SELECT * from sneakers";
-    $result = mysqli_query($connection, $sql);
-
-    while ($column = mysqli_fetch_array($result)) {
-    ?>
-        <div class="sneaker-card">
-            <div class="sneaker-info">
-                <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
-                <p>Marca: <?php echo $column['Marca']; ?></p>
-                <p>Talla: <?php echo $column['Size']; ?></p>
-                <p>Precio: <?php echo $column['Precio']; ?></p>
-                <p>Stock: <?php echo $column['Stock']; ?></p>
-            </div>
-            <div class="sneaker-actions">
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
-                    <button class="editar">Editar</button>
-                </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>">
->>>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/main.php
-                    <button class="eliminar">Eliminar</button>
-                </a>
-            </div>
-        </div>
-    <?php
-    }
-    ?>
-    </div>
-
-=======
                     <button class="eliminar">Eliminar</button>
                 </a>
             </td>
@@ -194,7 +118,6 @@ if(empty($_SESSION['active'])){
         ?>
     </table>
     
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
     <script src="app.js"></script>
 </body>
 </html>

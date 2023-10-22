@@ -1,5 +1,5 @@
 <?php
-require_once "../conexion.php";
+require_once "../connection.php";
 
 // Recibir datos del formulario
 $modelo = $_POST["Modelo"];

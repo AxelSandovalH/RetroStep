@@ -1,6 +1,6 @@
 <?php 
 
-    require_once "../conexion.php";             // Establecer conexión a la base de datos
+    require_once "../connection.php";             // Establecer conexión a la base de datos
     //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
 
 
