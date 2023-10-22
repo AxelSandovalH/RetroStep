@@ -42,8 +42,23 @@ if ($stmt_verificar = $connection->prepare($sql_verificar)) {
                 echo "Los datos se han agregado correctamente.";
                 header("Location: main.php");
 
+            // Manejar la subida de la imagen
+            if (isset($_FILES['Imagen']) && $_FILES['Imagen']['error'] === 0) {
+                $rutaDeImagen = 'ruta/donde/guardar/imagen.jpg'; // Ruta donde deseas guardar la imagen
+                
+                if (move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaDeImagen)) {
+                    // Ejecutar la consulta de inserción
+                    if ($stmt_insertar->execute()) {
+                        echo "Los datos se han agregado correctamente.";
+                        header("Location: main.php");
+                    } else {
+                        echo "Error al agregar los datos: " . $stmt_insertar->error;
+                    }
+                } else {
+                    echo "Error al cargar la imagen.";
+                }
             } else {
-                echo "Error al agregar los datos: " . $stmt_insertar->error;
+                echo "No se ha cargado ninguna imagen.";
             }
 
             // Cerrar la consulta de inserción
