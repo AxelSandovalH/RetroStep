@@ -26,21 +26,14 @@ body {
     position: static;
 
 }
-/* Estilos del logo */
-.header .logo {
+
+/* Estilos del exitBtn */
+.header img{
     cursor: pointer;
+    height: 33px;
+    margin-top: 11px;
 }
 
-
-.header .logo img {
-    height: 70px;
-    width: auto;
-    transition: all 0.3s;
-}
-
-.header .logo img:hover {
-    transform: scale(1.2);
-}
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;
@@ -63,7 +56,7 @@ body {
 
 
 /* Estilos del menú hamburguesa */
-.header .menu-icon i {
+/* .header .menu-icon i {
     font-size: 30px
     
 }
@@ -77,10 +70,10 @@ body {
     background-color: #e2f1f8;
     color: white;
     transform: scale(1.1);
-}
+} */
 
 /* Estilos del menú lateral */
-.side-menu {
+/* .side-menu {
     position: fixed;
     top: 0;
     left: -250px; 
@@ -90,7 +83,7 @@ body {
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2; /* Set a higher z-index value */
+    z-index: 2; 
 }
 
 
@@ -127,7 +120,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3; /* Ensure the X button is above both menu and login */
+    z-index: 3; 
     transition: transform 0.3s;
 }
 
@@ -138,52 +131,61 @@ body {
 hr{
     border-color: black;
     color: black;
-}
-/* Estilos del login */
+} */
 
-#Login {
+
+#addUser {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 80%;
+    max-width: 500px;
     padding: 20px;
-    background-color: #F9F9F9; /* Fondo blanco */
-    /* border: 2px solid #252B48; Marco sólido */
-    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3); /* Sombra */
-    border-radius: 10px; /* Bordes redondeados */
-    z-index: 1; /* Set a lower z-index value */
+    background-color: #F9F9F9;
+    box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 1;
+    margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
 }
-#Login header {
+
+#Rol {
+    height: 38px;
+    border-radius: 5px;
+    border: 1px solid;
+    
+}
+
+#addUser header {
     text-align: center;
     font-size: 50px;
     margin-bottom: 5px;
     font-weight: 200;
 }
 
-#Login form {
+#addUser form {
     display: flex;
     flex-direction: column;
     font-weight: 500;
 }
 
-#Login label {
+#addUser label {
     margin-bottom: 5px;
     color: #352F44;
     font-size: 25px;
 }
 
-#Login input {
+#addUser input {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid ;
     border-radius: 4px;
 }
 
-#Login #Succes {
+#addUser #Succes {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; /* Tamaño reducido de los botones */
+    padding: 3px 5px; 
     background-color: #59CE8F;
     color: white;
     border: none;
@@ -194,16 +196,16 @@ hr{
     align-self: center;
 }
 
-#Login #Succes:hover {
+#addUser #Succes:hover {
     background-color: #00FFCA;
     transform: scale(1.1); /* Escala del botón al hacer hover */
 }
 
 
-#Login #Cancelar {
+#addUser #Cancelar {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; /* Tamaño reducido de los botones */
+    padding: 8px 5px; /* Tamaño reducido de los botones */
     background-color: #F9F9F9;
     color: red;
     border: none;
@@ -211,11 +213,37 @@ hr{
     cursor: pointer;
     transition: all 0.3s;
     align-self: center;
+    text-align: center;
+    text-decoration: none;
 }
 
-#Login #Cancelar:hover {
-    border: solid 3px;
+#addUser #Cancelar a{
+    text-decoration: none;
+
+}
+
+#addUser #Cancelar:hover {
+    border: solid 1px;
     transform: scale(1.1); /* Escala del botón al hacer hover */
     background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
     color: darkred; /* Cambio de color de texto al hacer hover */
+}
+
+.alert{
+    width: 100%;
+    background: #66e07d66;
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+.msg_error{
+    color: #e65656;
+}
+
+.msg_save{
+    color: #126e00;
+}
+
+.alert p{
+    padding: 10px;
 }
