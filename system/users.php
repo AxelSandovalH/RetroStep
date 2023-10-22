@@ -3,18 +3,6 @@ session_start();
 
 if(empty($_SESSION['active'])){
     header('location: ../');
-<<<<<<< HEAD:system/users.php
-}
-?>
-<<<<<<<< HEAD:system/users.php
-
-
-========
->>>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/main.php
-<!DOCTYPE html>
-<html lang="en">
-<head>
-=======
 
 }
 ?>
@@ -24,7 +12,6 @@ if(empty($_SESSION['active'])){
 <html lang="en">
 <head>
     
->>>>>>> e1d9758a8457b32ed3fcd9a07a975f50300b5ef0:sistema/users.php
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styleUsers.css">
     <meta charset="UTF-8">
