@@ -41,7 +41,7 @@ if ($stmt_verificar = $connection->prepare($sql_verificar)) {
             if ($stmt_insertar->execute()) {
                 echo "Los datos se han agregado correctamente.";
                 header("Location: main.php");
-
+            }
             // Manejar la subida de la imagen
             if (isset($_FILES['Imagen']) && $_FILES['Imagen']['error'] === 0) {
                 $rutaDeImagen = 'ruta/donde/guardar/imagen.jpg'; // Ruta donde deseas guardar la imagen
