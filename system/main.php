@@ -33,7 +33,7 @@ if(empty($_SESSION['active'])){
         </div>
 
         <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
+            <a href="newSneaker.php">
                 <i class="fas fa-plus"></i>
             </a>
         </div>
@@ -64,24 +64,26 @@ if(empty($_SESSION['active'])){
     <div class="TablaContainerSneakers">
     <?php
     require_once "../connection.php";
-    $sql = "SELECT * from sneakers";
+    $sql = "SELECT * from sneaker
+            INNER JOIN stock
+            ON sneaker.sneaker_id = stock.sneaker_id;";
     $result = mysqli_query($connection, $sql);
 
     while ($column = mysqli_fetch_array($result)) {
     ?>
         <div class="sneaker-card">
             <div class="sneaker-info">
-                <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
-                <p>Marca: <?php echo $column['Marca']; ?></p>
-                <p>Talla: <?php echo $column['Size']; ?></p>
-                <p>Precio: <?php echo $column['Precio']; ?></p>
-                <p>Stock: <?php echo $column['Stock']; ?></p>
+                <h2>Modelo: <?php echo $column['sneaker_name']; ?></h2>
+                <p>Marca: <?php echo $column['brand_name']; ?></p>
+                <p>Talla: <?php echo $column['size_number']; ?></p>
+                <p>Precio: <?php echo $column['price']; ?></p>
+                <p>Stock: <?php echo $column['stock_quantity']; ?></p>
             </div>
             <div class="sneaker-actions">
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
             </div>
