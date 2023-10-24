@@ -35,7 +35,7 @@ if ($stmt_verificar = $connection->prepare($sql_verificar)) {
         echo "Ya existe un registro con el mismo modelo y talla.";
     } else {
         // Si no existe, proceder con la inserción
-        $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size, ) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql_insertar = "INSERT INTO sneakers (Marca, Modelo, Precio, Stock, Size, imagen_url) VALUES (?, ?, ?, ?, ?, ?)";
 
         if ($stmt_insertar = $connection->prepare($sql_insertar)) {
             // Vincular los parámetros usando consultas preparadas

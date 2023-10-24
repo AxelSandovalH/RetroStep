@@ -69,6 +69,9 @@ if(empty($_SESSION['active'])){
     while ($column = mysqli_fetch_array($result)) {
     ?>
         <div class="sneaker-card">
+            <div class="sneaker-image">
+                <img src="<?php echo $column['imagen_url']; ?>" alt="Imagen del sneaker">
+            </div>
             <div class="sneaker-info">
                 <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
                 <p>Marca: <?php echo $column['Marca']; ?></p>
