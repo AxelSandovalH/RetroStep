@@ -90,13 +90,10 @@ if(empty($_SESSION['active'])){
     ?>
     </div>
 
-    <!-- <button id="add-sneaker-button" class="add-sneaker-button">
-        <i class="fas fa-plus"></i> 
-    </button> -->
 
     <a href="nuevoSneaker.html" class="add-sneaker-button">
         <i class="fas fa-plus"></i>
     </a>
-    
+    <script src="app.js"></script>
 </body>
 </html>
