@@ -9,7 +9,22 @@
     font-family: 'Manrope', sans-serif;
 }
 
+.add-sneaker-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px 20px;
+    cursor: pointer;
+}
 
+.add-sneaker-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
 
 td {
     padding: 15px;

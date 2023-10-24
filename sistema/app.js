@@ -39,3 +39,9 @@ userTable.addEventListener("click", function(event) {
 });
 
 
+//Botón flotante add-sneaker-button
+
+const addButton = document.getElementById("add-sneaker-button");
+addButton.addEventListener("click", function() {
+    window.location.href="nuevoSneaker.html";
+});

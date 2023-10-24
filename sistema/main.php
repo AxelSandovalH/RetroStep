@@ -15,6 +15,8 @@ if(empty($_SESSION['active'])){
     <title>Home</title>
 </head>
 <body>
+
+    
     <header class="header">
         <a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
@@ -32,11 +34,8 @@ if(empty($_SESSION['active'])){
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
 
-        <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
+       
+</div>
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -91,6 +90,13 @@ if(empty($_SESSION['active'])){
     ?>
     </div>
 
-    <script src="app.js"></script>
+    <!-- <button id="add-sneaker-button" class="add-sneaker-button">
+        <i class="fas fa-plus"></i> 
+    </button> -->
+
+    <a href="nuevoSneaker.html" class="add-sneaker-button">
+        <i class="fas fa-plus"></i>
+    </a>
+    
 </body>
 </html>
