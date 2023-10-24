@@ -1,79 +1,95 @@
-<?php 
+<?php
+require_once "../connection.php"; // Establecer conexión a la base de datos
+//Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
 
-    require_once "../connection.php";             // Establecer conexión a la base de datos
-    //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
+// Protección de rutas
+session_start();
 
-
-    // Protección de rutas
-    session_start();
-
-    if(empty($_SESSION['active'])){
-        header('location: ../');
-    }
-
-
-    if(!empty($_POST))
-    {
-        $alert = '';
-        if(empty($_POST['Modelo']) || empty($_POST['Marca']) || empty($_POST['Precio']) || empty($_POST['Stock']) || empty($_POST['Size'])){
-            $alert = '<p class="msg_error">Todos los campos son obligatorios</p>';
-        }else{
-            $id_modelo = $_POST['id'];
-            $modelo = $_POST['Modelo'];
-            $marca = $_POST['Marca'];
-            $precio = $_POST['Precio'];
-            $stock = $_POST['Stock'];
-            $size = $_POST['Size'];
-
-            $query = mysqli_query($connection, " SELECT * FROM sneakers WHERE (Modelo = '$modelo' AND id != '$id_modelo') ");
-            $result = mysqli_fetch_array($query);
-
-            if($result > 0){
-                
-                $alert = '<p class="msg_error">El modelo ya existe.</p>';
-
-            }else{
-
-                $sql_update = mysqli_query($connection, "UPDATE sneakers
-                                                            SET Modelo = '$modelo', Marca = '$marca', Precio = '$precio', Stock = '$stock', `Size` = '$size' 
-                                                            WHERE id = $id_modelo ");
-
-            }
-            if($sql_update){
-                $alert = '<p class="msg_save">Datos actualizados correctamente.</p>';
-            }else{
-                $alert = '<p class="msg_error">Error al actualizar los datos.</p>';
-            }
-        }
-    }
-    
-    
-    //Recopilar los datos a editar
-    if(empty($_GET['id'])){
-        header('location: ../');
-    }
-    $idSneaker = $_GET['id'];
-    $sql = mysqli_query($connection, "SELECT s.id, s.Modelo, s.Marca, s.Size, s.Stock, s.Precio
-                                        FROM sneakers s
-                                        WHERE id = $idSneaker");
-    $result_sql = mysqli_num_rows($sql);
-
-    if($result_sql == 0){
-        header('location: ../');
-    }else{
-        while($data = mysqli_fetch_array($sql)){
-            $id_modelo = $data['id'];
-            $modelo = $data['Modelo'];
-            $marca = $data['Marca'];
-            $precio = $data['Precio'];
-            $stock = $data['Stock'];
-            $size = $data['Size'];
-        }
-    }
+if (empty($_SESSION['active'])) {
+    header('location: ../');
+}
 
 ?>
 
+<?php
 
+if (!empty($_POST)) {
+    $alert = '';
+    if (empty($_POST['sneaker_name']) || empty($_POST['brand_name']) || empty($_POST['price']) || empty($_POST['stock_quantity']) || empty($_POST['size_number'])) {
+        $alert = '<p class="msg_error">Todos los campos son obligatorios</p>';
+    } else {
+        $sneaker_id = $_POST['sneaker_id'];
+        $sneaker_name = $_POST['sneaker_name'];
+        $brand_name = $_POST['brand_name'];
+        $price = $_POST['price'];
+        $stock_quantity = $_POST['stock_quantity'];
+        $size_number = $_POST['size_number'];
+
+        $query = mysqli_query($connection, "SELECT * from sneaker
+        WHERE sneaker_name = '$sneaker_name' AND sneaker_id != $sneaker_id");
+        $result = mysqli_fetch_array($query);
+
+        if ($result > 0) {
+            $alert = '<p class="msg_error">El modelo ya existe.</p>';
+        } else {
+            // Verificar si la nueva talla ($size_number) existe en la tabla "size"
+            $sql_check_size = "SELECT size_number FROM size WHERE size_number = $size_number";
+            $result_size = mysqli_query($connection, $sql_check_size);
+
+            if (mysqli_num_rows($result_size) > 0) {
+                // La talla existe, entonces podemos continuar con la actualización
+                $sql_update_sneaker = "UPDATE sneaker 
+                SET sneaker_name = '$sneaker_name', brand_name = '$brand_name', price = $price 
+                WHERE sneaker_id = $sneaker_id";
+
+                $sql_update_stock = "UPDATE stock 
+                SET size_number = $size_number 
+                WHERE sneaker_id = $sneaker_id";
+
+                // Iniciar una transacción para garantizar que ambas actualizaciones se realicen o ninguna
+                mysqli_begin_transaction($connection);
+
+                // Ejecutar las consultas de actualización
+                if (mysqli_query($connection, $sql_update_sneaker) && mysqli_query($connection, $sql_update_stock)) {
+                    mysqli_commit($connection);
+                    $alert = '<p class="msg_save">Datos actualizados correctamente.</p>';
+                } else {
+                    mysqli_rollback($connection);
+                    $alert = '<p class="msg_error">Error al actualizar los datos: ' . mysqli_error($connection) . '</p>';
+                }
+            } else {
+                // La talla no existe en la tabla "size," mostrar un mensaje de error
+                $alert = '<p class="msg_error">La talla especificada no existe en la tabla "size."</p>';
+            }
+        }
+    }
+}
+
+// Recopilar los datos a editar
+if (empty($_GET['sneaker_id'])) {
+    header('location: ../');
+}
+
+$idSneaker = $_GET['sneaker_id'];
+$sql = mysqli_query($connection, "SELECT * from sneaker
+                                    INNER JOIN stock
+                                    ON sneaker.sneaker_id = stock.sneaker_id
+                                    WHERE sneaker.sneaker_id = $idSneaker;");
+$result_sql = mysqli_num_rows($sql);
+
+if ($result_sql == 0) {
+    header('location: ../');
+} else {
+    while ($column = mysqli_fetch_array($sql)) {
+        $sneaker_id = $column['sneaker_id'];
+        $sneaker_name = $column['sneaker_name'];
+        $brand_name = $column['brand_name'];
+        $price = $column['price'];
+        $stock_quantity = $column['stock_quantity'];
+        $size_number = $column['size_number'];
+    }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -81,7 +97,7 @@
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/styleNuevoSneaker.css">
+    <link rel="stylesheet" href="../CSS/styleEditSneaker.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Sneaker</title>
@@ -124,48 +140,55 @@
 
     <div id="addSneaker">
         <header>Update Sneaker</header>
-        
-        <form action="add_sneakers.php" method="post">
-            <input type="hidden" name="idSneaker" value="<?php echo $id_modelo; ?>">
+        <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
+
+        <form action="" method="post">
+            <input type="hidden" name="sneaker_id" value="<?php echo $sneaker_id; ?>">
             <label for="Modelo">Modelo</label>
-            <input name="Modelo" type="text" value="<?php echo $modelo; ?>" required>
+            <input name="sneaker_name" type="text" value="<?php echo $sneaker_name; ?>" readonly>
             <label for="Marca">Marca</label>
-            <input name="Marca" type="text" value="<?php echo $marca; ?>" required>
-            <label for="Precio">Precio</label>
-            <input name="Precio" type="number" value="<?php echo $precio; ?>" required>
-            <label for="Stock">Stock</label>
-            <input name="Stock" type="number" value="<?php echo $stock; ?>" required>
-            <label for="Size">Size</label>
-            <input type="number" name="Size"  value="<?php echo $size; ?>"required>
-            <!-- <select name="Size" type="number">
-                <option value="3">3</option>
-                <option value="3.5">3.5</option>
-                <option value="4">4</option>
-                <option value="4.5">4.5</option>
-                <option value="5">5</option>
-                <option value="5.5">5.5</option>
-                <option value="6">6</option>
-                <option value="6.5">6.5</option>
-                <option value="7">7</option>
-                <option value="7.5">7.5</option>
-                <option value="8">8</option>
-                <option value="8.5">8.5</option>
-                <option value="9">9</option>
-                <option value="9.5">9.5</option>
-                <option value="10">10</option>
-                <option value="10.5">10.5</option>
-                <option value="11">11</option>
-                <option value="11.5">11.5</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
+            <select name="brand_name" required>
+                <?php
+                $sql_brands = "SELECT brand_name FROM brand";
+                $result_brands = mysqli_query($connection, $sql_brands);
+                
+                if (mysqli_num_rows($result_brands) > 0) {
+                    while ($row = mysqli_fetch_assoc($result_brands)) {
+                        $brand_option = $row['brand_name'];
+                        $selected = ($brand_option == $brand_name) ? "selected" : "";
+                        echo "<option value='$brand_option' $selected>$brand_option</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay marcas disponibles</option>";
+                }
+                ?>
             </select>
-            
-     -->
+            <label for="Precio">Precio</label>
+            <input name="price" type="number" value="<?php echo $price; ?>" required>
+            <label for="Stock">Stock</label>
+            <input name="stock_quantity" type="number" value="<?php echo $stock_quantity; ?>" required>
+            <label for="Size">Size</label>
+            <label for="size_number">Talla</label>
+            <select name="size_number" required>
+                <?php
+                $sql_sizes = "SELECT size_number FROM size";
+                $result_sizes = mysqli_query($connection, $sql_sizes);
+                
+                if (mysqli_num_rows($result_sizes) > 0) {
+                    while ($row = mysqli_fetch_assoc($result_sizes)) {
+                        $size_option = $row['size_number'];
+                        $selected = ($size_option == $size_number) ? "selected" : "";
+                        echo "<option value='$size_option' $selected>$size_option</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay tallas disponibles</option>";
+                }
+                ?>
+            </select>
             
             <a href="./main.php" id="Cancelar">Cancelar</a>
             
-            <button type="submit"  id="Succes">Actualizar</button>
+            <button type="submit" id="Succes">Actualizar</button>
         </form>
     </div>
     
