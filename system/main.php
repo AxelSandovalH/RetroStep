@@ -66,7 +66,8 @@ if(empty($_SESSION['active'])){
     require_once "../connection.php";
     $sql = "SELECT * from sneaker
             INNER JOIN stock
-            ON sneaker.sneaker_id = stock.sneaker_id;";
+            ON sneaker.sneaker_id = stock.sneaker_id
+            WHERE deleted_at IS NULL;";
     $result = mysqli_query($connection, $sql);
 
     while ($column = mysqli_fetch_array($result)) {
@@ -80,10 +81,12 @@ if(empty($_SESSION['active'])){
                 <p>Stock: <?php echo $column['stock_quantity']; ?></p>
             </div>
             <div class="sneaker-actions">
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['sneaker_id']; ?>">
+
+                <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>">
+                
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="eliminar">Eliminar</button>
                 </a>
             </div>
