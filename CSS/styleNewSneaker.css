@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+
 /* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Manrope', sans-serif;
-    /* font-size: 40px; */
 }
 
 body {
-    /* Imagen de fondo */
-    background-image: url("/img/snkrsBackground.jpg") ; 
+    background-image: url("/img/snkrsBackground.jpg");
     background-size: cover;
 }
 
@@ -19,18 +18,17 @@ body {
 .header {
     background-color: #252B48;
     display: flex;
-    justify-content: space-between;
+    justify-content: space between;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
     position: static;
-
 }
+
 /* Estilos del logo */
 .header .logo {
     cursor: pointer;
 }
-
 
 .header .logo img {
     height: 70px;
@@ -41,6 +39,7 @@ body {
 .header .logo img:hover {
     transform: scale(1.2);
 }
+
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;
@@ -48,24 +47,17 @@ body {
     padding: 0 20px;
     transition: all 0.3s;
     font-weight: 800;
-    /* font-family: 'Crimson Text', serif; */
-    
-    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
 }
 
 .header div h1:hover {
     color: #00ffd0;
     cursor: pointer;
-    
-    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
+    transform: scale(1.5) translateX(0);
 }
-
-
 
 /* Estilos del menú hamburguesa */
 .header .menu-icon i {
-    font-size: 30px
-    
+    font-size: 30px;
 }
 
 .header .menu-icon i:hover {
@@ -83,36 +75,32 @@ body {
 .side-menu {
     position: fixed;
     top: 0;
-    left: -250px; 
+    left: -250px;
     width: 250px;
     height: 100%;
     background-color: #252B48;
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2; /* Set a higher z-index value */
+    z-index: 2;
 }
 
-
-
-
-.side-menu header {
+side-menu header {
     text-align: center;
     color: white;
     font-size: 30px;
 }
 
-.side-menu ul {
-    
+side-menu ul {
     list-style: none;
     padding: 0;
 }
 
-.side-menu ul li {
+side-menu ul li {
     margin-bottom: 15px;
 }
 
-.side-menu ul li a {
+side-menu ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -127,7 +115,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3; /* Ensure the X button is above both menu and login */
+    z-index: 3;
     transition: transform 0.3s;
 }
 
@@ -135,17 +123,17 @@ body {
     transform: scale(1.2);
 }
 
-hr{
+hr {
     border-color: black;
     color: black;
 }
 
-
+/* Estilos para la ventana de "Nuevo Sneaker" */
 #addSneaker {
-    position: absolute;
-    top: 55%;
+    position: relative;
+    top: 50px; /* La mitad de la altura del encabezado (85px) */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 80%;
     max-width: 500px;
     padding: 20px;
@@ -153,10 +141,8 @@ hr{
     box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 1;
-    margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
+    margin-bottom: 100px;
 }
-
-
 
 #addSneaker header {
     text-align: center;
@@ -180,33 +166,33 @@ hr{
 #addSneaker input {
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 4px;
 }
 
 #addSneaker #Succes {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; /* Tamaño reducido de los botones */
+    padding: 3px 5px;
     background-color: #59CE8F;
     color: white;
     border: none;
     border-radius: 16px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 20px;
-    transition: all 0.3s; /* Animación de transición */
+    transition: all 0.3s;
     align-self: center;
 }
 
 #addSneaker #Succes:hover {
     background-color: #00FFCA;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
+    transform: scale(1.1);
 }
-
 
 #addSneaker #Cancelar {
     height: 45px;
     width: 250px;
+    padding: 3px 5px;
     padding: 8px 5px; /* Tamaño reducido de los botones */
     background-color: #F9F9F9;
     color: red;
@@ -219,15 +205,22 @@ hr{
     text-decoration: none;
 }
 
-#addSneaker #Cancelar a{
+#addSneaker #Cancelar a {
     text-decoration: none;
-
 }
 
 #addSneaker #Cancelar:hover {
     border: solid 3px;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
-    background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
-    color: darkred; /* Cambio de color de texto al hacer hover */
+    transform: scale(1.1);
+    background-color: #FFD0D0;
+    color: darkred;
 }
 
+/* Estilos adicionales para hacer #addSneaker responsivo */
+@media (max-width: 768px) {
+    #addSneaker {
+        top: 5%; /* Ajusta la posición vertical para pantallas más pequeñas */
+        right: 5%; /* Ajusta la posición horizontal para pantallas más pequeñas */
+        width: 90%; /* Ajusta el ancho para pantallas más pequeñas */
+    }
+}
