@@ -21,6 +21,11 @@ if(!empty($_POST)){
     $stock_quantity = $_POST["stock_quantity"];
     $size_number = $_POST["size_number"];
     $category_name = $_POST["category_name"];
+    $nombre_imagen = $_FILES['imagen']['name'];
+    $temporal = $_FILES['imagen']['tmp_name'];
+    $carpeta = "../img";
+    $ruta = $carpeta . '/' . $nombre_imagen;
+    move_uploaded_file($temporal, $carpeta . '/' . $nombre_imagen);
 
     $querySelect = mysqli_query($connection, 
     "SELECT * FROM sneaker 
@@ -43,7 +48,7 @@ if(!empty($_POST)){
         INSERT INTO category (category_name) VALUES ('$category_name')
         ON DUPLICATE KEY UPDATE category_name = '$category_name';
         
-        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name');
+        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
         -- Obtener el 'sneaker_id' recién generado
         SET @sneaker_id = LAST_INSERT_ID();
 
@@ -51,7 +56,7 @@ if(!empty($_POST)){
         INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
        
 
-
+            
             if($queryInsert){
                 header("location: main.php");
             }
@@ -136,7 +141,7 @@ if(!empty($_POST)){
     <div id="addSneaker">
         <header>Agregar sneaker</header>
         
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="Modelo">Modelo</label>
             <input name="sneaker_name" type="text" required>
             <label for="Marca">Marca</label>
@@ -165,6 +170,8 @@ if(!empty($_POST)){
             </select>
             <label for="Category">Category</label>
             <input type="text" name="category_name" required>
+            <label for="imagen">Imagen</label>
+            <input type="file" name="imagen">
             
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             

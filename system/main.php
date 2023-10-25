@@ -103,7 +103,7 @@ if(empty($_SESSION['active'])){
     </div>
 
 
-    <a href="nuevoSneaker.html" class="add-sneaker-button">
+    <a href="newSneaker.php" class="add-sneaker-button">
         <i class="fas fa-plus"></i>
     </a>
     <script src="app.js"></script>
