@@ -83,9 +83,11 @@ if(empty($_SESSION['active'])){
                 <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                     <button class="eliminar">Eliminar</button>
                 </a>
+
+
             </div>
         </div>
     <?php

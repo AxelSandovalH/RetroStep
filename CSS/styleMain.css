@@ -134,54 +134,32 @@ hr {
 }
 
 /* Estilos para el contenedor de las sneaker cards */
-.TablaContainerSneakers {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 0 -10px; /* Elimina los márgenes laterales */
-}
-
-/* Estilos para sneaker-card */
+/* Agrega estos estilos CSS para las sneaker cards */
 .sneaker-card {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: calc(33.33% - 20px); /* Calcula el ancho máximo para 3 tarjetas por fila */
-    box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho */
-    margin-bottom: 20px;
-    text-align: center; /* Centra el contenido */
-}
-
-/* Estilos para sneaker-info */
-.sneaker-info {
-    margin-bottom: 10px;
-}
-
-.sneaker-info h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.sneaker-info p {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-/* Estilos para sneaker-image */
-.sneaker-image {
+    flex: 0 0 calc(33.33% - 20px); /* Ancho máximo para 3 tarjetas por fila */
+    margin: 0 10px 20px 0; /* Espaciado entre tarjetas */
     text-align: center;
+    position: relative;
 }
 
-.sneaker-image img {
-    max-width: 100%;
-    height: auto;
+.TablaContainerSneakers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinear las tarjetas hacia la izquierda */
 }
+
 
 /* Estilos para sneaker-actions */
 .sneaker-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
 }
@@ -216,6 +194,19 @@ hr {
     background-color: #e53935;
     color: white;
 }
+/* Estilos para sneaker-image */
+.sneaker-image {
+    text-align: center;
+}
+
+.sneaker-image img {
+    max-width: 100%;
+    max-height: 200px; /* Establece la altura máxima deseada */
+    width: auto;
+    height: auto;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
 
 .TablaSneakers .editar {
     position: relative;
