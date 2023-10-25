@@ -83,7 +83,7 @@ if(empty($_SESSION['active'])){
         </tr>
 
         <?php
-            require_once "../conexion.php";
+            require_once "../connection.php";
             $sql ="SELECT * FROM roles
             INNER JOIN users 
             ON roles.idRol = users.rol";

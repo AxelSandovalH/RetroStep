@@ -21,18 +21,22 @@ if(!empty($_POST)){
     $stock_quantity = $_POST["stock_quantity"];
     $size_number = $_POST["size_number"];
     $category_name = $_POST["category_name"];
+    $nombre_imagen = $_FILES['imagen']['name'];
+    $temporal = $_FILES['imagen']['tmp_name'];
+    $carpeta = "../img";
+    $ruta = $carpeta . '/' . $nombre_imagen;
+    move_uploaded_file($temporal, $carpeta . '/' . $nombre_imagen);
 
     $querySelect = mysqli_query($connection, 
     "SELECT * FROM sneaker 
     WHERE (sneaker_name = '$sneaker_name')");
 
     $result = mysqli_fetch_array($querySelect);
-    
+
     if($result > 0){
         echo '<p class ="msgError">Ese modelo ya existe</p>';
     }
     else{
-        $id_stock = rand(1, 100);
 
         $queryInsert = mysqli_multi_query($connection, 
         "INSERT INTO brand (brand_name) VALUES ('$brand_name')
@@ -44,20 +48,25 @@ if(!empty($_POST)){
         INSERT INTO category (category_name) VALUES ('$category_name')
         ON DUPLICATE KEY UPDATE category_name = '$category_name';
         
-        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name');
-        INSERT INTO stock (stock_quantity, id_stock) VALUES ($stock_quantity, $id_stock);
-        INSERT INTO sneaker_stock (sneaker_id, id_stock) VALUE (?, $id_stock)");
+        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
+        -- Obtener el 'sneaker_id' recién generado
+        SET @sneaker_id = LAST_INSERT_ID();
+
+        -- Insertar en la tabla 'stock' con 'sneaker_id' y 'stock_quantity'
+        INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
        
 
-
+            
             if($queryInsert){
                 header("location: main.php");
             }
             else{
-                echo '<p class = "msgError"> Error al insertar </p>';
+                echo "Error: " . mysqli_error($connection);
+                echo "Filas afectadas: " . mysqli_affected_rows($connection);
+
             }
     }
-    }
+}
 // $query = mysqli_query($connection, 
 
 // "SELECT * from sneaker
@@ -132,7 +141,7 @@ if(!empty($_POST)){
     <div id="addSneaker">
         <header>Agregar sneaker</header>
         
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <label for="Modelo">Modelo</label>
             <input name="sneaker_name" type="text" required>
             <label for="Marca">Marca</label>
@@ -142,35 +151,27 @@ if(!empty($_POST)){
             <label for="Stock">Stock</label>
             <input name="stock_quantity" type="number" required>
             <label for="Size">Size</label>
-            <input type="number" name="size_number" required>
+            <select name="size_number" required>
+                <option value="6.0">6.0</option>
+                <option value="6.5">6.5</option>
+                <option value="7.0">7.0</option>
+                <option value="7.5">7.5</option>
+                <option value="8.0">8.0</option>
+                <option value="8.5">8.5</option>
+                <option value="9.0">9.0</option>
+                <option value="9.5">9.5</option>
+                <option value="10.0">10.0</option>
+                <option value="10.5">10.5</option>
+                <option value="11.0">11.0</option>
+                <option value="11.5">11.5</option>
+                <option value="12.0">12.0</option>
+                <option value="12.5">12.5</option>
+                <option value="13.0">13.0</option>
+            </select>
             <label for="Category">Category</label>
             <input type="text" name="category_name" required>
-
-            <!-- <select name="Size" type="number">
-                <option value="3">3</option>
-                <option value="3.5">3.5</option>
-                <option value="4">4</option>
-                <option value="4.5">4.5</option>
-                <option value="5">5</option>
-                <option value="5.5">5.5</option>
-                <option value="6">6</option>
-                <option value="6.5">6.5</option>
-                <option value="7">7</option>
-                <option value="7.5">7.5</option>
-                <option value="8">8</option>
-                <option value="8.5">8.5</option>
-                <option value="9">9</option>
-                <option value="9.5">9.5</option>
-                <option value="10">10</option>
-                <option value="10.5">10.5</option>
-                <option value="11">11</option>
-                <option value="11.5">11.5</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-            </select>
-            
-     -->
+            <label for="imagen">Imagen</label>
+            <input type="file" name="imagen">
             
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             
