@@ -15,6 +15,8 @@ if(empty($_SESSION['active'])){
     <title>Home</title>
 </head>
 <body>
+
+    
     <header class="header">
         <a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
@@ -32,11 +34,8 @@ if(empty($_SESSION['active'])){
             <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
         </div>
 
-        <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
+       
+</div>
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -70,6 +69,9 @@ if(empty($_SESSION['active'])){
     while ($column = mysqli_fetch_array($result)) {
     ?>
         <div class="sneaker-card">
+            <div class="sneaker-image">
+                <img src="<?php echo $column['imagen_url']; ?>" alt="Imagen del sneaker">
+            </div>
             <div class="sneaker-info">
                 <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
                 <p>Marca: <?php echo $column['Marca']; ?></p>
@@ -81,9 +83,11 @@ if(empty($_SESSION['active'])){
                 <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>">
+                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
                     <button class="eliminar">Eliminar</button>
                 </a>
+
+
             </div>
         </div>
     <?php
@@ -91,6 +95,10 @@ if(empty($_SESSION['active'])){
     ?>
     </div>
 
+
+    <a href="nuevoSneaker.html" class="add-sneaker-button">
+        <i class="fas fa-plus"></i>
+    </a>
     <script src="app.js"></script>
 </body>
 </html>
