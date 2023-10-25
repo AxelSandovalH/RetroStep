@@ -31,13 +31,13 @@ if(!empty($_POST)){
     }
 }
 
-if(empty($_REQUEST['id'])){
+if(empty($_REQUEST['sneaker_id'])){
     header("location: main.php");
 }
 
 else{
 
-    $sneaker_id = $_REQUEST['id'];
+    $sneaker_id = $_REQUEST['sneaker_id'];
     $query = mysqli_query($connection, 
     
     "SELECT * from sneaker
