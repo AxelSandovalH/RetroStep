@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+.add-sneaker-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.add-sneaker-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+td {
+    padding: 15px;
+}
+/* Estilos del encabezado */
+.header {
+    background-color: #252B48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header img {
+    cursor: pointer;
+    height: 33px;
+    margin-top: 11px;
+}
+
+/* Estilos del Titulo */
+.header div h1 {
+    display: inline-block;
+    color: beige;
+    padding: 0 20px;
+    transition: all 0.3s;
+    font-weight: 800;
+}
+
+.header div h1:hover {
+    color: #00ffd0;
+    cursor: pointer;
+    transform: scale(1.5) translateX(0);
+}
+
+/* Estilos del menú hamburguesa */
+.header .menu-icon i {
+    font-size: 30px
+}
+
+.header .menu-icon i:hover {
+    color: #00ffc3;
+    transform: scale(1.1);
+}
+
+.header .menu-icon button:hover {
+    background-color: #e2f1f8;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Estilos del menú lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #252B48;
+    padding: 20px;
+    transition: left 0.3s;
+    border: solid 1px;
+    z-index: 2;
+}
+
+.side-menu header {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin-bottom: 15px;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.side-menu #x {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    transition: transform 0.3s;
+}
+
+.side-menu #x:hover {
+    transform: scale(1.2);
+}
+
+hr {
+    border-color: black;
+    color: black;
+}
+
+/* Estilos para el contenedor de las sneaker cards */
+/* Agrega estos estilos CSS para las sneaker cards */
+.sneaker-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(33.33% - 20px); /* Ancho máximo para 3 tarjetas por fila */
+    margin: 0 10px 20px 0; /* Espaciado entre tarjetas */
+    text-align: center;
+    position: relative;
+}
+
+.TablaContainerSneakers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Alinear las tarjetas hacia la izquierda */
+}
+
+
+/* Estilos para sneaker-actions */
+.sneaker-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sneaker-actions a {
+    text-decoration: none;
+}
+
+/* Estilos para botones de editar y eliminar */
+.sneaker-actions button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.sneaker-actions .editar {
+    background-color: #2196F3;
+    color: white;
+}
+
+.sneaker-actions .eliminar {
+    background-color: #f44336;
+    color: white;
+}
+
+.sneaker-actions .editar:hover {
+    background-color: #0a6dc9;
+}
+
+.sneaker-actions .eliminar:hover {
+    background-color: #e53935;
+    color: white;
+}
+/* Estilos para sneaker-image */
+.sneaker-image {
+    text-align: center;
+}
+
+.sneaker-image img {
+    max-width: 100%;
+    max-height: 200px; /* Establece la altura máxima deseada */
+    width: auto;
+    height: auto;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+
+.TablaSneakers .editar {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 3px solid rgb(26, 33, 113);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: rgb(26, 33, 113);
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.TablaSneakers .editar:hover {
+    background: rgb(26, 33, 113);
+    box-shadow: 0 0 20px 5px rgb(26, 33, 113);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: white;
+}
+
+.TablaSneakers .editar:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+.TablaSneakers .editar::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.TablaSneakers .editar:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
+
+/* Eliminar btn */
+.TablaSneakers .eliminar {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 3px solid rgb(189, 36, 36);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: rgb(189, 36, 36);
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.TablaSneakers .eliminar:hover {
+    background: rgb(189, 36, 36);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: white;
+}
+
+.TablaSneakers .eliminar:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+.TablaSneakers .eliminar::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.TablaSneakers .eliminar:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
