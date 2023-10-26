@@ -9,12 +9,6 @@
     /* font-size: 40px; */
 }
 
-body {
-    /* Imagen de fondo */
-    background-image: url("../img/snkrsBackground.jpg") ; 
-    background-size: cover;
-}
-
 td {
     padding: 15px;
 }

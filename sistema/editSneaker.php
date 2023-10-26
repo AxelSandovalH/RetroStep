@@ -31,7 +31,7 @@ if(!empty($_POST)){
     $result = mysqli_fetch_array($query);
 
     if($result > 0){
-        echo '<p class ="msgError">Ese modelo ya existe</p>';
+        echo '<p class="msgError">Ese modelo ya existe</p>';
     }
 
     // Si pasa la validación, procede a capturar los datos.

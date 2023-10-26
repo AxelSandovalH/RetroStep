@@ -33,7 +33,7 @@ if(empty($_SESSION['active'])){
         </div>
 
         <div class="add-sneaker">
-            <a href="nuevoSneaker.html">
+            <a href="newSneaker.html">
                 <i class="fas fa-plus"></i>
             </a>
         </div>
