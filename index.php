@@ -3,7 +3,7 @@
     session_start();
 
     if(!empty($_SESSION['active'])){
-        header('location: sistema/main.php');
+        header('location: system/main.php');
 
     }
     else{
@@ -13,7 +13,7 @@
                 $alert = 'Ingrese su usuario y clave';
             }
             else{
-                require_once "conexion.php";
+                require_once "connection.php";
                 // Se añade la función de cifrado md5 para la contraseña
                 $user = mysqli_real_escape_string($connection, $_POST['usuario']);
                 $pass = md5(mysqli_real_escape_string($connection, $_POST['clave']));
@@ -30,7 +30,7 @@
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user'] = $data['username'];
 
-                    header('location: sistema/main.php');
+                    header('location: system/main.php');
                     
                 }
                 else{
