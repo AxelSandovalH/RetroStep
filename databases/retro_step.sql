@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.28-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19-11.1.2-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: retrostepdb
+-- Host: localhost    Database: retro_step
 -- ------------------------------------------------------
--- Server version	10.4.28-MariaDB
+-- Server version	11.1.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,11 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES ('Adidas','2023-10-15 02:02:42','2023-10-15 02:02:42'),('Nike','2023-10-14 22:53:16','2023-10-14 22:53:16');
+INSERT INTO `brand` VALUES
+('Adidas','2023-10-15 02:02:42','2023-10-15 02:02:42'),
+('New Balance','2023-10-25 13:32:49','2023-10-25 13:32:49'),
+('Nike','2023-10-14 22:53:16','2023-10-14 22:53:16'),
+('Puma','2023-10-25 13:26:27','2023-10-25 13:26:27');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +65,9 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES ('Lifestyle','2023-10-14 22:54:09','2023-10-14 22:54:09');
+INSERT INTO `category` VALUES
+('Basketball','2023-10-25 13:26:27','2023-10-25 13:26:27'),
+('Lifestyle','2023-10-14 22:54:09','2023-10-14 22:54:09');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +93,9 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Administrador','2023-09-09 23:44:41','2023-09-09 23:44:41'),(2,'Vendedor','2023-09-09 23:45:13','2023-09-09 23:45:13');
+INSERT INTO `roles` VALUES
+(1,'Administrador','2023-09-09 23:44:41','2023-09-09 23:44:41'),
+(2,'Vendedor','2023-09-09 23:45:13','2023-09-09 23:45:13');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +107,7 @@ DROP TABLE IF EXISTS `size`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `size` (
-  `size_number` float NOT NULL,
+  `size_number` decimal(10,2) NOT NULL DEFAULT 0.00,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`size_number`)
@@ -112,7 +120,14 @@ CREATE TABLE `size` (
 
 LOCK TABLES `size` WRITE;
 /*!40000 ALTER TABLE `size` DISABLE KEYS */;
-INSERT INTO `size` VALUES (11,'2023-10-14 22:54:09','2023-10-14 22:54:09'),(20,'2023-10-15 02:02:42','2023-10-15 02:02:42');
+INSERT INTO `size` VALUES
+(6.00,'2023-10-23 02:29:05','2023-10-23 02:29:05'),
+(9.00,'2023-10-25 13:26:27','2023-10-25 13:26:27'),
+(9.50,'2023-10-25 13:32:49','2023-10-25 13:32:49'),
+(10.00,'2023-10-23 02:16:04','2023-10-23 02:16:04'),
+(11.00,'2023-10-23 00:51:31','2023-10-23 00:51:31'),
+(11.50,'2023-10-25 23:17:37','2023-10-25 23:17:37'),
+(20.00,'2023-10-23 00:56:34','2023-10-23 00:56:34');
 /*!40000 ALTER TABLE `size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,20 +143,20 @@ CREATE TABLE `sneaker` (
   `sneaker_name` varchar(35) NOT NULL,
   `brand_name` varchar(15) NOT NULL,
   `category_name` varchar(20) DEFAULT NULL,
-  `size_number` float NOT NULL,
+  `size_number` decimal(10,2) NOT NULL,
   `price` decimal(10,2) DEFAULT NULL,
+  `imagen_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `imagen_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`sneaker_id`),
-  KEY `sneaker_brand_name_foreign` (`brand_name`),
-  KEY `sneaker_size_number_foreign` (`size_number`),
   KEY `sneaker_category_name_foreign` (`category_name`),
+  KEY `sneaker_size_number_foreign_idx` (`size_number`),
+  KEY `sneaker_brand_name_foreign` (`brand_name`),
   CONSTRAINT `sneaker_brand_name_foreign` FOREIGN KEY (`brand_name`) REFERENCES `brand` (`brand_name`),
   CONSTRAINT `sneaker_category_name_foreign` FOREIGN KEY (`category_name`) REFERENCES `category` (`category_name`),
   CONSTRAINT `sneaker_size_number_foreign` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=326 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,68 +165,11 @@ CREATE TABLE `sneaker` (
 
 LOCK TABLES `sneaker` WRITE;
 /*!40000 ALTER TABLE `sneaker` DISABLE KEYS */;
-INSERT INTO `sneaker` VALUES (1,'Jordan 6 TS BK','Nike','Lifestyle',11,4500.00,'2023-10-16 01:43:27','2023-10-16 01:43:27',NULL,NULL),(2,'Yeezy 350','Adidas',NULL,11,3500.00,'2023-10-16 05:35:01','2023-10-16 05:35:01',NULL,NULL);
+INSERT INTO `sneaker` VALUES
+(70,'Yeezy 350 ','Adidas','Lifestyle',11.00,3200.00,'../img/','2023-10-25 23:33:31','2023-10-25 23:33:31','2023-10-25 23:41:16'),
+(71,'Yeezy 350 1','Adidas','Lifestyle',6.00,3200.00,'../img/','2023-10-25 23:35:42','2023-10-25 23:35:42','2023-10-25 23:35:47'),
+(72,'Yeezy 350 2','Adidas','Lifestyle',6.00,3200.00,'../img/yeezy350v2.jpg','2023-10-25 23:40:58','2023-10-25 23:40:58',NULL);
 /*!40000 ALTER TABLE `sneaker` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sneaker_size`
---
-
-DROP TABLE IF EXISTS `sneaker_size`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sneaker_size` (
-  `id` int(6) NOT NULL,
-  `size_number` float NOT NULL,
-  `sneaker_id` int(10) NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `sneaker_size_size_number_foreign` (`size_number`),
-  KEY `sneaker_size_sneaker_id_foreign_idx` (`sneaker_id`),
-  CONSTRAINT `sneaker_size_size_number_foreign` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`),
-  CONSTRAINT `sneaker_size_sneaker_id_foreign` FOREIGN KEY (`sneaker_id`) REFERENCES `sneaker` (`sneaker_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sneaker_size`
---
-
-LOCK TABLES `sneaker_size` WRITE;
-/*!40000 ALTER TABLE `sneaker_size` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sneaker_size` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sneaker_stock`
---
-
-DROP TABLE IF EXISTS `sneaker_stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sneaker_stock` (
-  `id` int(10) unsigned NOT NULL DEFAULT 1,
-  `sneaker_id` int(10) NOT NULL,
-  `id_stock` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `sneaker_stock_id_stock_foreign` (`id_stock`),
-  KEY `sneaker_stock_sneaker_id_foreign` (`sneaker_id`),
-  CONSTRAINT `sneaker_stock_id_stock_foreign` FOREIGN KEY (`id_stock`) REFERENCES `stock` (`id_stock`),
-  CONSTRAINT `sneaker_stock_sneaker_id_foreign` FOREIGN KEY (`sneaker_id`) REFERENCES `sneaker` (`sneaker_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sneaker_stock`
---
-
-LOCK TABLES `sneaker_stock` WRITE;
-/*!40000 ALTER TABLE `sneaker_stock` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sneaker_stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -228,9 +186,8 @@ CREATE TABLE `sneakers` (
   `Precio` decimal(10,2) NOT NULL,
   `Stock` int(11) NOT NULL,
   `Size` decimal(4,1) NOT NULL,
-  `imagen_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +196,12 @@ CREATE TABLE `sneakers` (
 
 LOCK TABLES `sneakers` WRITE;
 /*!40000 ALTER TABLE `sneakers` DISABLE KEYS */;
-INSERT INTO `sneakers` VALUES (44,'Yeezy 350 v2','Adidas',5000.00,23,6.0,'../img/yeezy350v2.jpg'),(45,'Air Jordan 1','Nike',4000.00,23,6.0,'../img/AirJordanOne.png'),(46,'New Balance 550','New Balance',50000.00,5,6.0,'../img/NewBalance550.jpg');
+INSERT INTO `sneakers` VALUES
+(25,'Air Jordan 7','Mike',3230.00,21,6.0),
+(26,'Air Jordan 4','Nike',3512.00,43,6.0),
+(27,'Air Jordan 20','Nike',3210.00,20,12.0),
+(28,'Air Jordan 1','Nike',3200.00,19,10.0),
+(29,'Air Jordan 1','Nike',3200.00,20,11.0);
 /*!40000 ALTER TABLE `sneakers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,12 +213,18 @@ DROP TABLE IF EXISTS `stock`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `stock` (
-  `id_stock` int(11) NOT NULL,
+  `id_stock` int(11) NOT NULL AUTO_INCREMENT,
+  `sneaker_id` int(10) NOT NULL,
+  `size_number` decimal(10,2) NOT NULL,
   `stock_quantity` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id_stock`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id_stock`),
+  KEY `stock_sneaker_id_foreign_idx` (`sneaker_id`),
+  KEY `stock_size_number_foreign_idx` (`size_number`),
+  CONSTRAINT `stock_size_number_foreign` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`),
+  CONSTRAINT `stock_sneaker_id_foreign` FOREIGN KEY (`sneaker_id`) REFERENCES `sneaker` (`sneaker_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +233,10 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (1,20,'2023-10-14 23:15:56','2023-10-14 23:15:56'),(2,20,'2023-10-19 16:26:47','2023-10-19 16:26:47'),(3,20,'2023-10-19 16:46:00','2023-10-19 16:46:00'),(94,21,'2023-10-19 19:06:42','2023-10-19 19:06:42');
+INSERT INTO `stock` VALUES
+(35,70,11.00,67,'2023-10-25 23:33:31','2023-10-25 23:33:31'),
+(36,71,6.00,67,'2023-10-25 23:35:42','2023-10-25 23:35:42'),
+(37,72,6.00,67,'2023-10-25 23:40:58','2023-10-25 23:40:58');
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +267,11 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'pacoadmin',1,'044a23cadb567653eb51d4eb40acaa88','frodriguez25@ucol.mx','2023-09-10 00:07:25','2023-09-10 00:07:25'),(3,'vendedor2',2,'044a23cadb567653eb51d4eb40acaa88','vendedor1@gmail.com','2023-10-09 17:12:46','2023-10-09 17:12:46'),(4,'pacousuario',1,'2754','pacodiego@23m.com','2023-10-20 17:02:36','2023-10-20 17:02:36'),(5,'usuario',1,'usuario','h11','2023-10-20 17:41:38','2023-10-20 17:41:38');
+INSERT INTO `users` VALUES
+(1,'pacoadmin',1,'044a23cadb567653eb51d4eb40acaa88','frodriguez25@ucol.mx','2023-09-10 00:07:25','2023-09-10 00:07:25'),
+(3,'vendedor2',2,'044a23cadb567653eb51d4eb40acaa88','vendedor1@gmail.com','2023-10-09 17:12:46','2023-10-09 17:12:46'),
+(4,'pacousuario',1,'2754','pacodiego@23m.com','2023-10-20 17:02:36','2023-10-20 17:02:36'),
+(5,'usuario',1,'usuario','h11','2023-10-20 17:41:38','2023-10-20 17:41:38');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -309,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-24 13:00:29
+-- Dump completed on 2023-10-25 17:43:31

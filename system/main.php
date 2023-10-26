@@ -31,11 +31,14 @@ if(empty($_SESSION['active'])){
         </div>
         
         <div class="exitBtn">
-            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
         </div>
 
-       
-</div>
+        <div class="add-sneaker">
+            <a href="newSneaker.php">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -62,8 +65,11 @@ if(empty($_SESSION['active'])){
 
     <div class="TablaContainerSneakers">
     <?php
-    require_once "../conexion.php";
-    $sql = "SELECT * from sneakers";
+    require_once "../connection.php";
+    $sql = "SELECT * from sneaker
+            INNER JOIN stock
+            ON sneaker.sneaker_id = stock.sneaker_id
+            WHERE deleted_at IS NULL;";
     $result = mysqli_query($connection, $sql);
 
     while ($column = mysqli_fetch_array($result)) {
@@ -73,18 +79,19 @@ if(empty($_SESSION['active'])){
                 <img src="<?php echo $column['imagen_url']; ?>" alt="Imagen del sneaker">
             </div>
             <div class="sneaker-info">
-                <h2>Modelo: <?php echo $column['Modelo']; ?></h2>
-                <p>Marca: <?php echo $column['Marca']; ?></p>
-                <p>Talla: <?php echo $column['Size']; ?></p>
-                <p>Precio: <?php echo $column['Precio']; ?></p>
-                <p>Stock: <?php echo $column['Stock']; ?></p>
+                <h2>Modelo: <?php echo $column['sneaker_name']; ?></h2>
+                <p>Marca: <?php echo $column['brand_name']; ?></p>
+                <p>Talla: <?php echo $column['size_number']; ?></p>
+                <p>Precio: <?php echo $column['price']; ?></p>
+                <p>Stock: <?php echo $column['stock_quantity']; ?></p>
             </div>
             <div class="sneaker-actions">
-                <a class="link_editar" href="editSneaker.php?id=<?php echo $column['id']; ?>">
+
+                <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-                    <button class="eliminar">Eliminar</button>
+                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+                     <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
                 </a>
 
 
@@ -96,7 +103,7 @@ if(empty($_SESSION['active'])){
     </div>
 
 
-    <a href="nuevoSneaker.html" class="add-sneaker-button">
+    <a href="newSneaker.php" class="add-sneaker-button">
         <i class="fas fa-plus"></i>
     </a>
     <script src="app.js"></script>
