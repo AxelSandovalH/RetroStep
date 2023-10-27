@@ -102,6 +102,7 @@ if(empty($_SESSION['active'])){
     ?>
     </div>
 
+    
     <div class="container">
         <input type="checkbox" id="btn-mas">
         <div class="options">
