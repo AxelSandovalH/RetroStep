@@ -24,21 +24,27 @@ body {
     height: 85px;
     padding: 5px 10%;
     position: static;
-
 }
-
-/* Estilos del exitBtn */
-.header img{
+/* Estilos del logo */
+.header .logo {
     cursor: pointer;
-    height: 33px;
-    margin-top: 11px;
 }
 
+
+.header .logo img {
+    height: 70px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.header .logo img:hover {
+    transform: scale(1.2);
+}
 /* Estilos del Titulo */
 .header div h1 {
     display: inline-block;
     color: beige;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     transition: all 0.3s;
     font-weight: 800;
     /* font-family: 'Crimson Text', serif; */
@@ -56,7 +62,7 @@ body {
 
 
 /* Estilos del menú hamburguesa */
-/* .header .menu-icon i {
+.header .menu-icon i {
     font-size: 30px
     
 }
@@ -70,10 +76,10 @@ body {
     background-color: #e2f1f8;
     color: white;
     transform: scale(1.1);
-} */
+}
 
 /* Estilos del menú lateral */
-/* .side-menu {
+.side-menu {
     position: fixed;
     top: 0;
     left: -250px; 
@@ -83,7 +89,7 @@ body {
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2; 
+    z-index: 2; /* Set a higher z-index value */
 }
 
 
@@ -120,7 +126,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3; 
+    z-index: 3; /* Ensure the X button is above both menu and login */
     transition: transform 0.3s;
 }
 
@@ -131,10 +137,14 @@ body {
 hr{
     border-color: black;
     color: black;
-} */
+}
+
+.msgError{
+    color: black;
+}
 
 
-#addUser {
+#addSneaker {
     position: absolute;
     top: 55%;
     left: 50%;
@@ -149,43 +159,38 @@ hr{
     margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
 }
 
-#Rol {
-    height: 38px;
-    border-radius: 5px;
-    border: 1px solid;
-    
-}
 
-#addUser header {
+
+#addSneaker header {
     text-align: center;
     font-size: 50px;
     margin-bottom: 5px;
     font-weight: 200;
 }
 
-#addUser form {
+#addSneaker form {
     display: flex;
     flex-direction: column;
     font-weight: 500;
 }
 
-#addUser label {
+#addSneaker label {
     margin-bottom: 5px;
     color: #352F44;
     font-size: 25px;
 }
 
-#addUser input {
+#addSneaker input {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid ;
     border-radius: 4px;
 }
 
-#addUser #Succes {
+#addSneaker #Succes {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; 
+    padding: 3px 5px; /* Tamaño reducido de los botones */
     background-color: #59CE8F;
     color: white;
     border: none;
@@ -196,16 +201,16 @@ hr{
     align-self: center;
 }
 
-#addUser #Succes:hover {
+#addSneaker #Succes:hover {
     background-color: #00FFCA;
     transform: scale(1.1); /* Escala del botón al hacer hover */
 }
 
 
-#addUser #Cancelar {
+#addSneaker #Cancelar {
     height: 45px;
     width: 250px;
-    padding: 8px 5px; /* Tamaño reducido de los botones */
+    padding: 3px 5px; /* Tamaño reducido de los botones */
     background-color: #F9F9F9;
     color: red;
     border: none;
@@ -213,37 +218,18 @@ hr{
     cursor: pointer;
     transition: all 0.3s;
     align-self: center;
-    text-align: center;
+    margin-bottom: 15px;
+}
+
+#addSneaker #Cancelar a{
     text-decoration: none;
 }
 
-#addUser #Cancelar a{
-    text-decoration: none;
 
-}
-
-#addUser #Cancelar:hover {
-    border: solid 1px;
+#addSneaker #Cancelar:hover {
+    border: solid 3px;
     transform: scale(1.1); /* Escala del botón al hacer hover */
     background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
     color: darkred; /* Cambio de color de texto al hacer hover */
 }
 
-.alert{
-    width: 100%;
-    background: #66e07d66;
-    border-radius: 6px;
-    margin: 20px auto;
-}
-
-.msg_error{
-    color: #e65656;
-}
-
-.msg_save{
-    color: #126e00;
-}
-
-.alert p{
-    padding: 10px;
-}
