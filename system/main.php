@@ -102,10 +102,18 @@ if(empty($_SESSION['active'])){
     ?>
     </div>
 
-
-    <a href="newSneaker.php" class="add-sneaker-button">
-        <i class="fas fa-plus"></i>
-    </a>
+    <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="options">
+            <a href="newSneaker.php" class="edit"></a>
+            <a href="#" class="add brand"></a>
+            <a href="#" class="add size"></a>
+            <a href="#" class="add model"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
