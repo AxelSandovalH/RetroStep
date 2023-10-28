@@ -137,11 +137,11 @@ if(!empty($_POST)){
             <li><a href="#">caminata</a></li>
         </ul>
     </div>
-
     <div id="addSneaker">
-        <header>Agregar sneaker</header>
-        
-        <form action="" method="post" enctype="multipart/form-data">
+    <header>Agregar sneaker</header>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="column">
             <label for="Modelo">Modelo</label>
             <input name="sneaker_name" type="text" required>
             <label for="Marca">Marca</label>
@@ -150,6 +150,9 @@ if(!empty($_POST)){
             <input name="price" type="number" required>
             <label for="Stock">Stock</label>
             <input name="stock_quantity" type="number" required>
+        </div>
+
+        <div class="columnR">
             <label for="Size">Size</label>
             <select name="size_number" required>
                 <option value="6.0">6.0</option>
@@ -172,12 +175,14 @@ if(!empty($_POST)){
             <input type="text" name="category_name" required>
             <label for="imagen">Imagen</label>
             <input type="file" name="imagen">
-            
-            <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
-            
+        </div>
+    </form>
+    <div class="buttons">
+            <button type="reset" id="Cancelar" href="main.php">Cancelar</button>
             <button type="submit" id="Succes">Agregar</button>
-        </form>
     </div>
+</div>
+
     
     
     <script src="app.js"></script>
