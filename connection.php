@@ -1,9 +1,9 @@
 <?php
     $host = 'localhost';
-    $user = 'paco';
-    $password = '2754';
+    $user = 'root';
+    $password = '';
     $db = 'retro_step';
-    $port = '3307';
+    $port = '3306';
     $connection = @mysqli_connect($host, $user, $password, $db, $port);
     if(!$connection){
         echo "Error en la conexión";

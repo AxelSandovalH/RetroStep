@@ -31,14 +31,14 @@ if(empty($_SESSION['active'])){
         </div>
         
         <div class="exitBtn">
-            <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
+            <a href="exit.php"><img src="../img/power.png" alt="exit"></a>
         </div>
 
-        <div class="add-sneaker">
+        <!-- <div class="add-sneaker">
             <a href="newSneaker.php">
                 <i class="fas fa-plus"></i>
             </a>
-        </div>
+        </div> -->
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -103,9 +103,18 @@ if(empty($_SESSION['active'])){
     </div>
 
 
-    <a href="newSneaker.php" class="add-sneaker-button">
-        <i class="fas fa-plus"></i>
-    </a>
+    <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="options">
+            <a href="newSneaker.php" class="edit"></a>
+            <a href="#" class="add brand"></a>
+            <a href="#" class="add size"></a>
+            <a href="#" class="add model"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
