@@ -43,7 +43,7 @@ if (!empty($_POST)) {
                 WHERE sneaker_id = $sneaker_id";
 
                 $sql_update_stock = "UPDATE stock 
-                SET size_number = $size_number 
+                SET stock_quantity = $stock_quantity 
                 WHERE sneaker_id = $sneaker_id";
 
                 // Iniciar una transacción para garantizar que ambas actualizaciones se realicen o ninguna
