@@ -1,14 +1,6 @@
 <?php 
 // Protección de rutas
-session_start();
-
-if(empty($_SESSION['active'])){
-    header('location: ../');
-
-}
-?>
-
-<?php 
+include ("../scripts/routeProtection.php");
 
 require_once "../connection.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
                                 // Establecer conexión a la base de datos

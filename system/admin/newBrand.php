@@ -1,5 +1,5 @@
 <?php 
-include ("../../scripts/routeProtection.php")
+include ("../../scripts/routeProtection.php");
 ?>
 
 <?php

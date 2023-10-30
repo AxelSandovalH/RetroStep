@@ -1,17 +1,5 @@
 <?php
-require_once "../connection.php"; // Establecer conexión a la base de datos
-//Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
-
-// Protección de rutas
-session_start();
-
-if (empty($_SESSION['active'])) {
-    header('location: ../');
-}
-
-?>
-
-<?php
+include ("../scripts/routeProtection.php");
 
 if (!empty($_POST)) {
     $alert = '';
