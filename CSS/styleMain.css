@@ -210,10 +210,10 @@ hr {
 .sneaker-actions {
     position: absolute;
     bottom: 20px;
-    left: 0;
-    right: 0;
+    left: 5%;
+    right: 5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .sneaker-actions a {
@@ -229,27 +229,45 @@ hr {
 }
 
 .sneaker-actions .editar {
-    background-color: #2196F3;
+    height: 40px;
+    width: 100px;
+    padding: 3px 5px;
+    background-color: #007bff;
     color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all 0.3s;
+}
+
+.sneaker-actions .edita:hover {
+    background-color: #234f7e;
+    transform: scale(1.1);
 }
 
 .sneaker-actions .eliminar {
-    background-color: #f44336;
+    height: 40px;
+    width: 100px;
+    padding: 3px 5px;
+    background-color: #909090;
     color: white;
-}
-
-.sneaker-actions .editar:hover {
-    background-color: #0a6dc9;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all 0.3s;
 }
 
 .sneaker-actions .eliminar:hover {
-    background-color: #e53935;
-    color: white;
+    background-color: #a12020;
+    transform: scale(1.1);
 }
 
 /* Estilos para sneaker-image */
 .sneaker-image {
     text-align: center;
+    border-radius: 16%;
 }
 
 .sneaker-image img {
