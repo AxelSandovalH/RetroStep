@@ -137,6 +137,7 @@ if(!empty($_POST)){
             <li><a href="#">caminata</a></li>
         </ul>
     </div>
+    
     <div id="addSneaker">
     <header>Agregar sneaker</header>
 
