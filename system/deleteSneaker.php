@@ -1,5 +1,7 @@
 <?php
 
+include ("../scripts/routeProtection.php");
+
 // Lógica reutilizable para el hard delete
 // session_start();
 
