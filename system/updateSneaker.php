@@ -192,7 +192,7 @@ if ($result_sql == 0) {
             </div>          
         </form>
         <div class="buttons">
-                <button type="reset" id="Cancelar" href="main.php">Cancelar</button>
+                <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
                 <button type="submit" id="Succes">Actualizar</button>
             </div>  
     </div>

@@ -102,12 +102,11 @@ if(!empty($_POST))
                 <option value="1">Administrador</option>
                 <option value="2">Vendedor</option>
             </select>
-            
-            
-            
-            <button type="reset" id="Cancelar"><a href="users.php">Cancelar</a></button>
-            
-            <button type="submit"  id="Succes">Agregar</button>
+
+            <div class="buttons">
+                <button type="reset" id="Cancelar"><a href="users.php">Cancelar</a></button>
+                <button type="submit" id="Succes">Agregar</button>
+            </div>
         </form>
     </div>
     

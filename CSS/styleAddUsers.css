@@ -182,51 +182,53 @@ hr{
     border-radius: 4px;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 7%;
+}
+
 #addUser #Succes {
     height: 45px;
-    width: 250px;
-    padding: 3px 5px; 
-    background-color: #59CE8F;
+    width: 200px;
+    padding: 3px 5px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 16px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 20px;
-    transition: all 0.3s; /* Animación de transición */
-    align-self: center;
+    transition: all 0.3s;
 }
 
 #addUser #Succes:hover {
-    background-color: #00FFCA;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
+    background-color: #234f7e;
+    transform: scale(1.1);
 }
 
 
 #addUser #Cancelar {
     height: 45px;
-    width: 250px;
-    padding: 8px 5px; /* Tamaño reducido de los botones */
-    background-color: #F9F9F9;
-    color: red;
+    width: 200px;
+    padding: 3px 5px;
+    background-color: #909090;
+    color: white;
     border: none;
     border-radius: 16px;
     cursor: pointer;
+    font-size: 20px;
     transition: all 0.3s;
-    align-self: center;
-    text-align: center;
-    text-decoration: none;
 }
 
 #addUser #Cancelar a{
     text-decoration: none;
+    color: white;
 
 }
 
 #addUser #Cancelar:hover {
-    border: solid 1px;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
-    background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
-    color: darkred; /* Cambio de color de texto al hacer hover */
+    background-color: #a12020;
+    transform: scale(1.1);
 }
 
 .alert{
