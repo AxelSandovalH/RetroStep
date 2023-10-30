@@ -11,7 +11,7 @@
 
 body {
     /* Imagen de fondo */
-    background-image: url("../img/snkrsBackground.jpg") ; 
+    background-image: url("/img/snkrsBackground.jpg") ; 
     background-size: cover;
 }
 /* Estilos del encabezado */

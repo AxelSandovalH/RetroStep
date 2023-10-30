@@ -131,11 +131,11 @@ hr {
 /* Estilos para la ventana de "Nuevo Sneaker" */
 #addSneaker {
     position: relative;
-    top: 50px;
+    top: 50px; /* La mitad de la altura del encabezado (85px) */
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    max-width: 800px;
+    max-width: 500px;
     padding: 20px;
     background-color: #F9F9F9;
     box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
@@ -152,75 +152,40 @@ hr {
 }
 
 #addSneaker form {
+    display: flex;
+    flex-direction: column;
     font-weight: 500;
-    display: flex;
 }
 
-.column, .columnR {
-    padding: 0 5%; /* Espaciado opcional para las columnas */
-}
-
-.column {
-    flex-direction: column;
-    margin-bottom: 20px;
-    max-width: 50%;
-}
-
-.column label {
+#addSneaker label {
     margin-bottom: 5px;
     color: #352F44;
     font-size: 25px;
 }
 
-.column input, .column select {
+#addSneaker input {
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid;
     border-radius: 4px;
-    width: 100%;
-}
-
-.columnR {
-    margin-top: 6%;
-    flex-direction: column;
-    margin-bottom: 20px;
-    max-width: 50%;
-}
-
-.columnR label {
-    margin-bottom: 5px;
-    color: #352F44;
-    font-size: 25px;
-}
-
-.columnR input, .columnR select {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 #addSneaker #Succes {
     height: 45px;
     width: 250px;
     padding: 3px 5px;
-    background-color: #007bff;
+    background-color: #59CE8F;
     color: white;
     border: none;
     border-radius: 16px;
     cursor: pointer;
     font-size: 20px;
     transition: all 0.3s;
+    align-self: center;
 }
 
 #addSneaker #Succes:hover {
-    background-color: #234f7e;
+    background-color: #00FFCA;
     transform: scale(1.1);
 }
 
@@ -228,13 +193,16 @@ hr {
     height: 45px;
     width: 250px;
     padding: 3px 5px;
-    background-color: #909090;
-    color: white;
+    padding: 8px 5px; /* Tamaño reducido de los botones */
+    background-color: #F9F9F9;
+    color: red;
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    font-size: 20px;
     transition: all 0.3s;
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 #addSneaker #Cancelar a {
@@ -242,10 +210,11 @@ hr {
 }
 
 #addSneaker #Cancelar:hover {
-    background-color: #a12020;
+    border: solid 3px;
     transform: scale(1.1);
+    background-color: #FFD0D0;
+    color: darkred;
 }
-
 
 /* Estilos adicionales para hacer #addSneaker responsivo */
 @media (max-width: 768px) {

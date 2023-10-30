@@ -1,17 +1,5 @@
 <?php
-require_once "../connection.php"; // Establecer conexión a la base de datos
-//Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
-
-// Protección de rutas
-session_start();
-
-if (empty($_SESSION['active'])) {
-    header('location: ../');
-}
-
-?>
-
-<?php
+include ("../scripts/routeProtection.php");
 
 if (!empty($_POST)) {
     $alert = '';
@@ -43,7 +31,7 @@ if (!empty($_POST)) {
                 WHERE sneaker_id = $sneaker_id";
 
                 $sql_update_stock = "UPDATE stock 
-                SET size_number = $size_number 
+                SET stock_quantity = $stock_quantity 
                 WHERE sneaker_id = $sneaker_id";
 
                 // Iniciar una transacción para garantizar que ambas actualizaciones se realicen o ninguna

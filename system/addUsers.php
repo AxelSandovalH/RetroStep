@@ -1,6 +1,5 @@
 <?php
-require_once "../connection.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
-// Establecer conexión a la base de datos
+include ("../scripts/routeProtection.php");
 
 if(!empty($_POST))
 {
