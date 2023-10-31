@@ -197,11 +197,12 @@ if(!empty($_POST)){
             <label for="imagen">Imagen</label>
             <input type="file" name="imagen">
         </div>
-    </form>
-    <div class="buttons">
+        
+        <div class="buttons">
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             <button type="submit" id="Succes">Agregar</button>
-    </div>
+        </div>
+    </form>
 </div>
 
     

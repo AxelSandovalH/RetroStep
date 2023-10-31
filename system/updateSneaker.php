@@ -27,11 +27,11 @@ if (!empty($_POST)) {
             if (mysqli_num_rows($result_size) > 0) {
                 // La talla existe, entonces podemos continuar con la actualización
                 $sql_update_sneaker = "UPDATE sneaker 
-                SET sneaker_name = '$sneaker_name', brand_name = '$brand_name', price = $price 
+                SET sneaker_name = '$sneaker_name', brand_name = '$brand_name', price = $price, size_number = $size_number
                 WHERE sneaker_id = $sneaker_id";
 
                 $sql_update_stock = "UPDATE stock 
-                SET stock_quantity = $stock_quantity 
+                SET stock_quantity = $stock_quantity, size_number = $size_number 
                 WHERE sneaker_id = $sneaker_id";
 
                 // Iniciar una transacción para garantizar que ambas actualizaciones se realicen o ninguna
