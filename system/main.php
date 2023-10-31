@@ -27,14 +27,10 @@ include("../scripts/routeProtection.php")
         </div>
         
         <div class="exitBtn">
-            <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
+            <a href="../exit.php"><img src="../img/power.jpg" alt="exit"></a>
         </div>
 
-        <!-- <div class="add-sneaker">
-            <a href="newSneaker.php">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div> -->
+       
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -58,6 +54,23 @@ include("../scripts/routeProtection.php")
             <li><a href="users.php">Usuarios</a></li>
         </ul>
     </div>
+
+    <div class="filter-container">
+    <label for="brand-filter">Marca:</label>
+    <select id="brand-filter">
+        <option value="">Todas las marcas</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT brand_name FROM sneaker";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $brandName = $row['brand_name'];
+            echo "<option value='$brandName'>$brandName</option>";
+        }
+        ?>
+    </select>
+</div>
 
     <div class="TablaContainerSneakers">
     <?php
