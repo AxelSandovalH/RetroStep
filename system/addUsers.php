@@ -23,7 +23,7 @@ if(!empty($_POST))
             $alert = '<p class="msg_error">Ya existe un usuario con el mismo username o correo</p>';
         }else{
             //Insertar los datos 
-            $query_insert = mysqli_query($connection,"INSERT INTO users(username, password, email, rol) VALUES ('$username', '$password', '$email', '$rol')");
+            $query_insert = mysqli_query($connection,"INSERT INTO users(username, password, email, rol) VALUES ('$username', md5('$password'), '$email', '$rol')");
             
             if($query_insert){
                 $alert = '<p class="msg_save">Usuario creado con éxito</p>';
@@ -65,7 +65,7 @@ if(!empty($_POST))
         </div>
        
         <div class="exitBtn">
-            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="salir"></a>
         </div>
         
     </header>
@@ -101,11 +101,12 @@ if(!empty($_POST))
                 <option value="1">Administrador</option>
                 <option value="2">Vendedor</option>
             </select>
-
-            <div class="buttons">
-                <button type="reset" id="Cancelar"><a href="users.php">Cancelar</a></button>
-                <button type="submit" id="Succes">Agregar</button>
-            </div>
+            
+            
+            
+            <button type="reset" id="Cancelar"><a href="users.php">Cancelar</a></button>
+            
+            <button type="submit"  id="Succes">Agregar</button>
         </form>
     </div>
     
