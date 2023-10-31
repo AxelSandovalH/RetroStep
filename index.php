@@ -86,10 +86,11 @@
             <label for="Password">Password</label>
             <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
             <input type="password" name="clave" >
-            <button type="reset" id="Cancelar">Cancelar</button>
             
-            <button id = "Succes" type="submit" >Verificar</button>
-
+            <div class="buttons">
+                <button type="reset" id="Cancelar">Cancelar</button>
+                <button id = "Succes" type="submit" >Verificar</button>
+            </div>
         </form>
     </div>
     

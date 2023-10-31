@@ -127,6 +127,7 @@ if(!empty($_POST)){
             <li><a href="#">caminata</a></li>
         </ul>
     </div>
+    
     <div id="addSneaker">
     <header>Agregar sneaker</header>
 
@@ -198,7 +199,7 @@ if(!empty($_POST)){
         </div>
     </form>
     <div class="buttons">
-            <button type="reset" id="Cancelar" href="main.php">Cancelar</button>
+            <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             <button type="submit" id="Succes">Agregar</button>
     </div>
 </div>
