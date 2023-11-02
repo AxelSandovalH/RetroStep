@@ -6,7 +6,6 @@ include("../scripts/routeProtection.php")
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styleMain.css">
-    <script src="https://kit.fontawesome.com/c30a6641b2.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -37,7 +36,10 @@ include("../scripts/routeProtection.php")
     </header>
     <div class="side-menu" id="side-menu">
        
-        <header>Administrador</header>
+        <header>
+            <button id="x">x</button>    
+            Administrador
+        </header>
         <hr>
         <ul>
             <li><a href="users.php">Usuarios</a></li>
@@ -138,7 +140,7 @@ include("../scripts/routeProtection.php")
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>" onclick="confirm('¿Seguro que quieres borrar?')">
                      <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
                 </a>
 
@@ -154,8 +156,8 @@ include("../scripts/routeProtection.php")
     <div class="container">
         <input type="checkbox" id="btn-mas">
         <div class="options">
-            <a href="newSneaker.php" ></i></i></a>
-            <a href="#" class="add brand"></i></a>
+            <a href="newSneaker.php" ><i class="bi bi-r-circle"></i></a>
+            <a href="#" class="add brand"></a>
 
             <a href="#" class="add size"></a>
             <a href="#" class="add model"></a>
