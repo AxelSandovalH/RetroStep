@@ -57,53 +57,5 @@ else{
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/styleDeleteSneaker.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Sneaker</title>
-</head>
-<body>
-    <header class="header">
-        
-        <a href="#" id="menu" class="menu-icon">
-            <i class="fas fa-bars"></i>
-        </a>
-        
-        <div>
-            <a href="../index.php">
-                <h1 class="Titulo">
-                    RetroStep
-                </h1>
-            </a>
-           
-        </div>
-        
-        <div class="exitBtn">
-            <a href="../exit.php"><img src="../img/power.png" alt="salir"></a>
-        </div>
-       
-        
-    </header>
-
-    <section id="container">
-        <div class="borrarDato">
-            <h2>¿Estás seguro que quieres borrar el siguiente sneaker?</h2>
-            <p><span>Modelo: <?php echo $sneaker_name; ?></span></p>
-            <p><span>Marca: <?php echo $brand_name; ?></span></p>
-            <p><span>Precio: <?php echo $price; ?></span></p>
-            <p><span>Stock: <?php echo $stock_quantity; ?></span></p>
-
-            <form method="post" action="">
-                <input type="hidden" name ="sneaker_id" value = "<?php echo $sneaker_id?>">
-                <a href="main.php" class = "btnCancelar">Cancelar</a>
-                <input type="submit" value="Aceptar" class="btnAceptar">
-            </form>
-        </div>
-    </section>
 
 

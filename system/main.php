@@ -134,7 +134,7 @@ include("../scripts/routeProtection.php")
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                      <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
                 </a>
 
