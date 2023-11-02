@@ -1,10 +1,12 @@
 <?php 
-include ("../../scripts/routeProtection.php");
-?>
+require_once("../../connection.php");
 
-<?php
-// require_once "../../connection.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
+session_start();
 
+if(empty($_SESSION['active'])){
+    header('location: ' . BASE_URL .'index.php');
+
+}
 
 // Espera a que haya una acción tipo POST para realizar la verificación
 if (!empty($_POST)) {
