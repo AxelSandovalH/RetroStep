@@ -31,12 +31,6 @@ include ("../scripts/routeProtection.php");
             <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
         </div>
 
-        <div class="add-sneaker">
-            <a href="newSneaker.php">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
-
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
