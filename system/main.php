@@ -62,7 +62,7 @@ include("../scripts/routeProtection.php")
         <option value="">Todas las marcas</option>
         <?php
         require_once "../connection.php";
-        $sql = "SELECT DISTINCT brand_name FROM sneaker";
+        $sql = "SELECT DISTINCT brand_name FROM sneaker WHERE deleted_at IS NULL";
         $result = mysqli_query($connection, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -71,9 +71,10 @@ include("../scripts/routeProtection.php")
         }
         ?>
     </select>
+    
     <label for="size-filter">Talla:</label>
-    <select  id="size-filter">
-    <option value="">Todas las tallas</option>
+    <select id="size-filter">
+        <option value="">Todas las tallas</option>
         <?php
         require_once "../connection.php";
         $sql = "SELECT DISTINCT size_number FROM size";
@@ -91,7 +92,7 @@ include("../scripts/routeProtection.php")
         <option value="">Todos los modelos</option>
         <?php
         require_once "../connection.php";
-        $sql = "SELECT DISTINCT sneaker_name FROM sneaker";
+        $sql = "SELECT DISTINCT sneaker_name FROM sneaker WHERE deleted_at IS NULL";
         $result = mysqli_query($connection, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -100,12 +101,27 @@ include("../scripts/routeProtection.php")
         }
         ?>
     </select>
+
+    <label for="category-filter">Categoría:</label>
+    <select id="category-filter">
+        <option value="">Todas las categorías</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT category_name FROM sneaker WHERE deleted_at IS NULL";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $categoryName = $row['category_name'];
+            echo "<option value='$categoryName'>$categoryName</option>";
+        }
+        ?>
+    </select>
+
     <label for="search-input">Búsqueda:</label>
     <input type="text" id="search-input" placeholder="Buscar...">
     <button id="search-button">Buscar</button>
-
-   
 </div>
+
 
     <div class="TablaContainerSneakers">
     <?php
