@@ -16,7 +16,7 @@ include("../scripts/routeProtection.php")
     
     <header class="header">
         <a href="#" id="menu" class="menu-icon">
-            <i class="fas fa-bars"></i>
+        <i class="fa-regular fa-user fa-shake" style="color: #ffffff;"></i>
         </a>
         
         <div>
