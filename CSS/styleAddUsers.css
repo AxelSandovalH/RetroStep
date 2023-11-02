@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
-
 /* Estilos generales */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Manrope', sans-serif;
+    /* font-size: 40px; */
 }
 
 body {
-    background-image: url("/img/snkrsBackground.jpg");
+    /* Imagen de fondo */
+    background-image: url("/img/snkrsBackground.jpg") ; 
     background-size: cover;
 }
 
@@ -18,26 +19,19 @@ body {
 .header {
     background-color: #252B48;
     display: flex;
-    justify-content: space between;
+    justify-content: space-between;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
     position: static;
+
 }
 
-/* Estilos del logo */
-.header .logo {
+/* Estilos del exitBtn */
+.header img{
     cursor: pointer;
-}
-
-.header .logo img {
-    height: 70px;
-    width: auto;
-    transition: all 0.3s;
-}
-
-.header .logo img:hover {
-    transform: scale(1.2);
+    height: 33px;
+    margin-top: 11px;
 }
 
 /* Estilos del Titulo */
@@ -47,17 +41,24 @@ body {
     padding: 0 20px;
     transition: all 0.3s;
     font-weight: 800;
+    /* font-family: 'Crimson Text', serif; */
+    
+    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
 }
 
 .header div h1:hover {
     color: #00ffd0;
     cursor: pointer;
-    transform: scale(1.5) translateX(0);
+    
+    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
 }
 
+
+
 /* Estilos del menú hamburguesa */
-.header .menu-icon i {
-    font-size: 30px;
+/* .header .menu-icon i {
+    font-size: 30px
+    
 }
 
 .header .menu-icon i:hover {
@@ -69,38 +70,42 @@ body {
     background-color: #e2f1f8;
     color: white;
     transform: scale(1.1);
-}
+} */
 
 /* Estilos del menú lateral */
-.side-menu {
+/* .side-menu {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -250px; 
     width: 250px;
     height: 100%;
     background-color: #252B48;
     padding: 20px;
     transition: left 0.3s;
     border: solid 1px;
-    z-index: 2;
+    z-index: 2; 
 }
 
-side-menu header {
+
+
+
+.side-menu header {
     text-align: center;
     color: white;
     font-size: 30px;
 }
 
-side-menu ul {
+.side-menu ul {
+    
     list-style: none;
     padding: 0;
 }
 
-side-menu ul li {
+.side-menu ul li {
     margin-bottom: 15px;
 }
 
-side-menu ul li a {
+.side-menu ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -115,7 +120,7 @@ side-menu ul li a {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 3;
+    z-index: 3; 
     transition: transform 0.3s;
 }
 
@@ -123,92 +128,69 @@ side-menu ul li a {
     transform: scale(1.2);
 }
 
-hr {
+hr{
     border-color: black;
     color: black;
-}
+} */
 
-/* Estilos para la ventana de "Nuevo Sneaker" */
-#addSneaker {
-    position: relative;
-    top: 50px;
+
+#addUser {
+    position: absolute;
+    top: 55%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     width: 80%;
-    max-width: 800px;
+    max-width: 500px;
     padding: 20px;
     background-color: #F9F9F9;
     box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 1;
-    margin-bottom: 100px;
+    margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
 }
 
-#addSneaker header {
+#Rol {
+    height: 38px;
+    border-radius: 5px;
+    border: 1px solid;
+    
+}
+
+#addUser header {
     text-align: center;
     font-size: 50px;
     margin-bottom: 5px;
     font-weight: 200;
 }
 
-#addSneaker form {
-    font-weight: 500;
+#addUser form {
     display: flex;
-}
-
-.column, .columnR {
-    padding: 0 5%; /* Espaciado opcional para las columnas */
-}
-
-.column {
     flex-direction: column;
-    margin-bottom: 20px;
-    max-width: 50%;
+    font-weight: 500;
 }
 
-.column label {
+#addUser label {
     margin-bottom: 5px;
     color: #352F44;
     font-size: 25px;
 }
 
-.column input, .column select {
+#addUser input {
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid;
+    border: 1px solid ;
     border-radius: 4px;
-    width: 100%;
-}
-
-.columnR {
-    margin-top: 6%;
-    flex-direction: column;
-    margin-bottom: 20px;
-    max-width: 50%;
-}
-
-.columnR label {
-    margin-bottom: 5px;
-    color: #352F44;
-    font-size: 25px;
-}
-
-.columnR input, .columnR select {
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid;
-    border-radius: 4px;
-    width: 100%;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding-top: 7%;
 }
 
-#addSneaker #Succes {
+#addUser #Succes {
     height: 45px;
-    width: 250px;
+    width: 200px;
     padding: 3px 5px;
     background-color: #007bff;
     color: white;
@@ -219,14 +201,15 @@ hr {
     transition: all 0.3s;
 }
 
-#addSneaker #Succes:hover {
+#addUser #Succes:hover {
     background-color: #234f7e;
     transform: scale(1.1);
 }
 
-#addSneaker #Cancelar {
+
+#addUser #Cancelar {
     height: 45px;
-    width: 250px;
+    width: 200px;
     padding: 3px 5px;
     background-color: #909090;
     color: white;
@@ -237,22 +220,32 @@ hr {
     transition: all 0.3s;
 }
 
-#addSneaker #Cancelar a {
+#addUser #Cancelar a{
     text-decoration: none;
     color: white;
+
 }
 
-#addSneaker #Cancelar:hover {
+#addUser #Cancelar:hover {
     background-color: #a12020;
     transform: scale(1.1);
 }
 
+.alert{
+    width: 100%;
+    background: #66e07d66;
+    border-radius: 6px;
+    margin: 20px auto;
+}
 
-/* Estilos adicionales para hacer #addSneaker responsivo */
-@media (max-width: 768px) {
-    #addSneaker {
-        top: 5%; /* Ajusta la posición vertical para pantallas más pequeñas */
-        right: 5%; /* Ajusta la posición horizontal para pantallas más pequeñas */
-        width: 90%; /* Ajusta el ancho para pantallas más pequeñas */
-    }
+.msg_error{
+    color: #e65656;
+}
+
+.msg_save{
+    color: #126e00;
+}
+
+.alert p{
+    padding: 10px;
 }

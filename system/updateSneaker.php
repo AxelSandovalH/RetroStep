@@ -27,11 +27,11 @@ if (!empty($_POST)) {
             if (mysqli_num_rows($result_size) > 0) {
                 // La talla existe, entonces podemos continuar con la actualización
                 $sql_update_sneaker = "UPDATE sneaker 
-                SET sneaker_name = '$sneaker_name', brand_name = '$brand_name', price = $price 
+                SET sneaker_name = '$sneaker_name', brand_name = '$brand_name', price = $price, size_number = $size_number
                 WHERE sneaker_id = $sneaker_id";
 
                 $sql_update_stock = "UPDATE stock 
-                SET stock_quantity = $stock_quantity 
+                SET stock_quantity = $stock_quantity, size_number = $size_number 
                 WHERE sneaker_id = $sneaker_id";
 
                 // Iniciar una transacción para garantizar que ambas actualizaciones se realicen o ninguna
@@ -131,53 +131,59 @@ if ($result_sql == 0) {
         <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
 
         <form action="" method="post">
-            <input type="hidden" name="sneaker_id" value="<?php echo $sneaker_id; ?>">
-            <label for="Modelo">Modelo</label>
-            <input name="sneaker_name" type="text" value="<?php echo $sneaker_name; ?>" readonly>
-            <label for="Marca">Marca</label>
-            <select name="brand_name" required>
-                <?php
-                $sql_brands = "SELECT brand_name FROM brand";
-                $result_brands = mysqli_query($connection, $sql_brands);
-                
-                if (mysqli_num_rows($result_brands) > 0) {
-                    while ($row = mysqli_fetch_assoc($result_brands)) {
-                        $brand_option = $row['brand_name'];
-                        $selected = ($brand_option == $brand_name) ? "selected" : "";
-                        echo "<option value='$brand_option' $selected>$brand_option</option>";
-                    }
-                } else {
-                    echo "<option value=''>No hay marcas disponibles</option>";
-                }
-                ?>
-            </select>
-            <label for="Precio">Precio</label>
-            <input name="price" type="number" value="<?php echo $price; ?>" required>
-            <label for="Stock">Stock</label>
-            <input name="stock_quantity" type="number" value="<?php echo $stock_quantity; ?>" required>
-            <label for="Size">Size</label>
-            <label for="size_number">Talla</label>
-            <select name="size_number" required>
-                <?php
-                $sql_sizes = "SELECT size_number FROM size";
-                $result_sizes = mysqli_query($connection, $sql_sizes);
-                
-                if (mysqli_num_rows($result_sizes) > 0) {
-                    while ($row = mysqli_fetch_assoc($result_sizes)) {
-                        $size_option = $row['size_number'];
-                        $selected = ($size_option == $size_number) ? "selected" : "";
-                        echo "<option value='$size_option' $selected>$size_option</option>";
-                    }
-                } else {
-                    echo "<option value=''>No hay tallas disponibles</option>";
-                }
-                ?>
-            </select>
+            <div class="column">
+                <input type="hidden" name="sneaker_id" value="<?php echo $sneaker_id; ?>">
+                <label for="Modelo">Modelo</label>
+                <input name="sneaker_name" type="text" value="<?php echo $sneaker_name; ?>" readonly>
+                <label for="Marca">Marca</label>
+                <select name="brand_name" required>
+                    <?php
+                        $sql_brands = "SELECT brand_name FROM brand";
+                        $result_brands = mysqli_query($connection, $sql_brands);
+                    
+                        if (mysqli_num_rows($result_brands) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_brands)) {
+                                $brand_option = $row['brand_name'];
+                                $selected = ($brand_option == $brand_name) ? "selected" : "";
+                                echo "<option value='$brand_option' $selected>$brand_option</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No hay marcas disponibles</option>";
+                        }
+                    ?>
+                </select>
+                <label for="Precio">Precio</label>
+                <input name="price" type="number" value="<?php echo $price; ?>" required>
+            </div>
             
-            <a href="./main.php" id="Cancelar">Cancelar</a>
-            
-            <button type="submit" id="Succes">Actualizar</button>
+            <div class="columnR">
+                <label for="Stock">Stock</label>
+                <input name="stock_quantity" type="number" value="<?php echo $stock_quantity; ?>" required>
+                <label for="Size">Size</label>
+                <select name="size_number" required>
+                    <?php
+                        $sql_sizes = "SELECT size_number FROM size";
+                        $result_sizes = mysqli_query($connection, $sql_sizes);
+                    
+                            if (mysqli_num_rows($result_sizes) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_sizes)) {
+                                $size_option = $row['size_number'];
+                                $selected = ($size_option == $size_number) ? "selected" : "";
+                                echo "<option value='$size_option' $selected>$size_option</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No hay tallas disponibles</option>";
+                        }
+                    ?>
+                </select>
+            </div> 
+                   
+            <div class="buttons">
+                <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
+                <button type="submit" id="Succes">Actualizar</button>
+            </div>    
         </form>
+        
     </div>
     
     

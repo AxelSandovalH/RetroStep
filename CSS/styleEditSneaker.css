@@ -145,21 +145,19 @@ hr{
 
 
 #addSneaker {
-    position: absolute;
-    top: 55%;
+    position: relative;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 80%;
-    max-width: 500px;
+    max-width: 800px;
     padding: 20px;
     background-color: #F9F9F9;
     box-shadow: -20px 40px 40px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 1;
-    margin-bottom: 100px; /* Ajusta este valor para el espacio debajo del formulario */
+    margin-bottom: 100px;
 }
-
-
 
 #addSneaker header {
     text-align: center;
@@ -169,67 +167,98 @@ hr{
 }
 
 #addSneaker form {
-    display: flex;
-    flex-direction: column;
     font-weight: 500;
+    display: flex;
 }
 
-#addSneaker label {
+.column, .columnR {
+    padding: 0 5%; /* Espaciado opcional para las columnas */
+}
+
+.column {
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 50%;
+}
+
+.column label {
     margin-bottom: 5px;
     color: #352F44;
     font-size: 25px;
 }
 
-#addSneaker input {
+.column input, .column select {
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid ;
+    border: 1px solid;
     border-radius: 4px;
+    width: 100%;
+}
+
+.columnR {
+    margin-top: 6%;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 50%;
+}
+
+.columnR label {
+    margin-bottom: 5px;
+    color: #352F44;
+    font-size: 25px;
+}
+
+.columnR input, .columnR select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #addSneaker #Succes {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; /* Tamaño reducido de los botones */
-    background-color: #59CE8F;
+    padding: 3px 5px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 16px;
-    cursor: pointer; 
+    cursor: pointer;
     font-size: 20px;
-    transition: all 0.3s; /* Animación de transición */
-    align-self: center;
+    transition: all 0.3s;
 }
 
 #addSneaker #Succes:hover {
-    background-color: #00FFCA;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
+    background-color: #234f7e;
+    transform: scale(1.1);
 }
-
 
 #addSneaker #Cancelar {
     height: 45px;
     width: 250px;
-    padding: 3px 5px; /* Tamaño reducido de los botones */
-    background-color: #F9F9F9;
-    color: red;
+    padding: 3px 5px;
+    background-color: #909090;
+    color: white;
     border: none;
     border-radius: 16px;
     cursor: pointer;
+    font-size: 20px;
     transition: all 0.3s;
-    align-self: center;
-    margin-bottom: 15px;
 }
 
-#addSneaker #Cancelar a{
+#addSneaker #Cancelar a {
     text-decoration: none;
+    color: white;
 }
-
 
 #addSneaker #Cancelar:hover {
-    border: solid 3px;
-    transform: scale(1.1); /* Escala del botón al hacer hover */
-    background-color: #FFD0D0; /* Cambio de color de fondo al hacer hover */
-    color: darkred; /* Cambio de color de texto al hacer hover */
+    background-color: #a12020;
+    transform: scale(1.1);
 }
 

@@ -23,7 +23,7 @@ if(!empty($_POST))
             $alert = '<p class="msg_error">Ya existe un usuario con el mismo username o correo</p>';
         }else{
             //Insertar los datos 
-            $query_insert = mysqli_query($connection,"INSERT INTO users(username, password, email, rol) VALUES ('$username', '$password', '$email', '$rol')");
+            $query_insert = mysqli_query($connection,"INSERT INTO users(username, password, email, rol) VALUES ('$username', md5('$password'), '$email', '$rol')");
             
             if($query_insert){
                 $alert = '<p class="msg_save">Usuario creado con éxito</p>';
@@ -65,7 +65,7 @@ if(!empty($_POST))
         </div>
        
         <div class="exitBtn">
-            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="salir"></a>
         </div>
         
     </header>
