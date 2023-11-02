@@ -30,7 +30,11 @@
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user'] = $data['username'];
 
-                    header('location: system/main.php');
+                    if($data['rol'] == 1){
+                        header('location: system/main.php');
+                    }else{
+                        header('location: system/rol2_view.php');
+                    }
                     
                 }
                 else{
