@@ -1,6 +1,7 @@
 <?php 
-include("../scripts/routeProtection.php")
+include ("../scripts/routeProtection.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

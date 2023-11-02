@@ -1,5 +1,5 @@
 <?php 
-include("../scripts/routeProtection.php");
+include ("../scripts/routeProtection.php");
 
 
 // Espera a que haya una acción tipo POST para realizar la verificación 
@@ -11,22 +11,18 @@ if(!empty($_POST)){
     $stock_quantity = $_POST["stock_quantity"];
     $size_number = $_POST["size_number"];
     $category_name = $_POST["category_name"];
-    $nombre_imagen = $_FILES['imagen']['name'];
-    $temporal = $_FILES['imagen']['tmp_name'];
-    $carpeta = "../img";
-    $ruta = $carpeta . '/' . $nombre_imagen;
-    move_uploaded_file($temporal, $carpeta . '/' . $nombre_imagen);
 
     $querySelect = mysqli_query($connection, 
     "SELECT * FROM sneaker 
     WHERE (sneaker_name = '$sneaker_name')");
 
     $result = mysqli_fetch_array($querySelect);
-
+    
     if($result > 0){
         echo '<p class ="msgError">Ese modelo ya existe</p>';
     }
     else{
+        $id_stock = rand(1, 100);
 
         $queryInsert = mysqli_multi_query($connection, 
         "INSERT INTO brand (brand_name) VALUES ('$brand_name')
@@ -38,25 +34,20 @@ if(!empty($_POST)){
         INSERT INTO category (category_name) VALUES ('$category_name')
         ON DUPLICATE KEY UPDATE category_name = '$category_name';
         
-        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
-        -- Obtener el 'sneaker_id' recién generado
-        SET @sneaker_id = LAST_INSERT_ID();
-
-        -- Insertar en la tabla 'stock' con 'sneaker_id' y 'stock_quantity'
-        INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
+        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name');
+        INSERT INTO stock (stock_quantity, id_stock) VALUES ($stock_quantity, $id_stock);
+        INSERT INTO sneaker_stock (sneaker_id, id_stock) VALUE (?, $id_stock)");
        
 
-            
+
             if($queryInsert){
                 header("location: main.php");
             }
             else{
-                echo "Error: " . mysqli_error($connection);
-                echo "Filas afectadas: " . mysqli_affected_rows($connection);
-
+                echo '<p class = "msgError"> Error al insertar </p>';
             }
     }
-}
+    }
 // $query = mysqli_query($connection, 
 
 // "SELECT * from sneaker

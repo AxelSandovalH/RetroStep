@@ -2,7 +2,10 @@
 // Protección de rutas
 include("../scripts/routeProtection.php");
 
-require_once "../connection.php"; // Establecer conexión a la base de datos
+include ("../scripts/routeProtection.php");
+
+// Lógica reutilizable para el hard delete
+// session_start();
 
 if (isset($_GET['sneaker_id'])) {
     $sneaker_id = $_GET['sneaker_id'];
