@@ -8,7 +8,6 @@ include("../scripts/routeProtection.php")
     <link rel="stylesheet" href="../CSS/styleMain.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Home</title>
     
 </head>
@@ -35,11 +34,22 @@ include("../scripts/routeProtection.php")
        
     </header>
     <div class="side-menu" id="side-menu">
-       
-        <header>
-            <button id="x">x</button>    
-            Administrador
+        <header>Categorias
+            <button id="x">
+                x
+            </button>
         </header>
+        <hr>
+        <ul>
+            <li><a href="#">Lujo</a></li>
+            <li><a href="#">LifeStyle</a></li>
+            <li><a href="#">Futbol</a></li>
+            <li><a href="#">Basquetball</a></li>
+            <li><a href="#">Running</a></li>
+            <li><a href="#">Tenis</a></li>
+        </ul>
+
+        <header>Administrador</header>
         <hr>
         <ul>
             <li><a href="users.php">Usuarios</a></li>
@@ -67,7 +77,7 @@ include("../scripts/routeProtection.php")
         <option value="">Todas las tallas</option>
         <?php
         require_once "../connection.php";
-        $sql = "SELECT DISTINCT size_number FROM size ";
+        $sql = "SELECT DISTINCT size_number FROM size";
         $result = mysqli_query($connection, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -140,8 +150,8 @@ include("../scripts/routeProtection.php")
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>" onclick="confirm('¿Seguro que quieres borrar?')">
-                     <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
+                    <button class="eliminar">Eliminar</button>
                 </a>
 
 
@@ -156,9 +166,8 @@ include("../scripts/routeProtection.php")
     <div class="container">
         <input type="checkbox" id="btn-mas">
         <div class="options">
-            <a href="newSneaker.php" ><i class="bi bi-r-circle"></i></a>
+            <a href="newSneaker.php" class="edit"></a>
             <a href="#" class="add brand"></a>
-
             <a href="#" class="add size"></a>
             <a href="#" class="add model"></a>
         </div>
@@ -167,6 +176,5 @@ include("../scripts/routeProtection.php")
         </div>
     </div>
     <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
