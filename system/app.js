@@ -39,4 +39,46 @@ userTable.addEventListener("click", function(event) {
 });
 
 
+// Obtener referencias a los elementos de filtro
+const brandFilter = document.getElementById("brand-filter");
+const sizeFilter = document.getElementById("size-filter");
+const modelFilter = document.getElementById("model-filter");
+const categoryFilter = document.getElementById("category-filter");
+const searchInput = document.getElementById("search-input");
+
+// Obtener todas las tarjetas de zapatillas
+const sneakerCards = document.querySelectorAll(".sneaker-card");
+
+// Función de filtro
+function filterSneakers() {
+    const brandValue = brandFilter.value;
+    const sizeValue = sizeFilter.value;
+    const modelValue = modelFilter.value;
+    const categoryValue = categoryFilter.value;
+    const searchValue = searchInput.value.toLowerCase();
+
+    sneakerCards.forEach((card) => {
+        const sneakerInfo = card.querySelector(".sneaker-info").textContent.toLowerCase();
+
+        const shouldShow = (
+            (brandValue === "" || sneakerInfo.includes(brandValue)) &&
+            (sizeValue === "" || sneakerInfo.includes(sizeValue)) &&
+            (modelValue === "" || sneakerInfo includes(modelValue)) &&
+            (categoryValue === "" || sneakerInfo.includes(categoryValue)) &&
+            (searchValue === "" || sneakerInfo.includes(searchValue))
+        );
+
+        card.style.display = shouldShow ? "block" : "none";
+    });
+}
+
+// Agregar event listeners para los cambios en los filtros
+brandFilter.addEventListener("change", filterSneakers);
+sizeFilter.addEventListener("change", filterSneakers);
+modelFilter.addEventListener("change", filterSneakers);
+categoryFilter.addEventListener("change", filterSneakers);
+searchInput.addEventListener("input", filterSneakers);
+
+// Llama a la función de filtro inicialmente para mostrar todas las zapatillas
+filterSneakers();
 

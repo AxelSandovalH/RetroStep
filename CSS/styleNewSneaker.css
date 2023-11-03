@@ -18,7 +18,7 @@ body {
 .header {
     background-color: #252B48;
     display: flex;
-    justify-content: space between;
+    justify-content: space-between;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
@@ -203,38 +203,29 @@ hr {
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Agregar margen inferior para separar los botones */
 }
 
-#addSneaker #Succes {
+#addSneaker #Succes, #addSneaker #Cancelar {
     height: 45px;
-    width: 250px;
-    padding: 3px 5px;
+    width: 48%;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px;
     transition: all 0.3s;
+    text-align: center;
+    margin-right: 10px; /* Agregar margen derecho para separar los botones */
 }
 
 #addSneaker #Succes:hover {
     background-color: #234f7e;
     transform: scale(1.1);
-}
-
-#addSneaker #Cancelar {
-    height: 45px;
-    width: 250px;
-    padding: 3px 5px;
-    background-color: #909090;
-    color: white;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s;
 }
 
 #addSneaker #Cancelar a {
@@ -246,7 +237,6 @@ hr {
     background-color: #a12020;
     transform: scale(1.1);
 }
-
 
 /* Estilos adicionales para hacer #addSneaker responsivo */
 @media (max-width: 768px) {
