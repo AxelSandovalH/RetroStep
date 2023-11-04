@@ -87,10 +87,10 @@ include ("../scripts/routeProtection.php");
             </td>
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
-                <a class="link_borrar" href="deleteUsers.php?idUser=<?php echo $column['id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
+                <a class="link_borrar" href="deleteUsers.php?idUser=<?php echo $column['id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar al usuario con ID: <?php echo $column['id']; ?>, Nombre de usuario: <?php echo $column['username']; ?>, Email: <?php echo $column['email']; ?>?')">
+    <button class="eliminar">Eliminar</button>
+</a>
 
-                    <button class="eliminar">Eliminar</button>
-                </a>
             </td>
         </tr>
 
