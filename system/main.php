@@ -1,9 +1,5 @@
 <?php 
-session_start();
-
-if(empty($_SESSION['active'])){
-    header('location: ../');
-}
+include("../scripts/routeProtection.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +9,7 @@ if(empty($_SESSION['active'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    
 </head>
 <body>
 
@@ -31,14 +28,10 @@ if(empty($_SESSION['active'])){
         </div>
         
         <div class="exitBtn">
-            <a href="exit.php"><img src="../img/power.png" alt="exit"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="exit"></a>
         </div>
 
-        <!-- <div class="add-sneaker">
-            <a href="newSneaker.php">
-                <i class="fas fa-plus"></i>
-            </a>
-        </div> -->
+       
     </header>
     <div class="side-menu" id="side-menu">
         <header>Categorias
@@ -62,6 +55,73 @@ if(empty($_SESSION['active'])){
             <li><a href="users.php">Usuarios</a></li>
         </ul>
     </div>
+
+    <div class="filter-container">
+    <label for="brand-filter">Marca:</label>
+    <select id="brand-filter">
+        <option value="">Todas las marcas</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT brand_name FROM sneaker WHERE deleted_at IS NULL";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $brandName = $row['brand_name'];
+            echo "<option value='$brandName'>$brandName</option>";
+        }
+        ?>
+    </select>
+    
+    <label for="size-filter">Talla:</label>
+    <select id="size-filter">
+        <option value="">Todas las tallas</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT size_number FROM size";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $sizeNumber = $row['size_number'];
+            echo "<option value='$sizeNumber'>$sizeNumber</option>";
+        }
+        ?>
+    </select>
+
+    <label for="model-filter">Modelo:</label>
+    <select id="model-filter">
+        <option value="">Todos los modelos</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT sneaker_name FROM sneaker WHERE deleted_at IS NULL";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $sneakerName = $row['sneaker_name'];
+            echo "<option value='$sneakerName'>$sneakerName</option>";
+        }
+        ?>
+    </select>
+
+    <label for="category-filter">Categoría:</label>
+    <select id="category-filter">
+        <option value="">Todas las categorías</option>
+        <?php
+        require_once "../connection.php";
+        $sql = "SELECT DISTINCT category_name FROM sneaker WHERE deleted_at IS NULL";
+        $result = mysqli_query($connection, $sql);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $categoryName = $row['category_name'];
+            echo "<option value='$categoryName'>$categoryName</option>";
+        }
+        ?>
+    </select>
+
+    <label for="search-input">Búsqueda:</label>
+    <input type="text" id="search-input" placeholder="Buscar...">
+    <button id="search-button">Buscar</button>
+</div>
+
 
     <div class="TablaContainerSneakers">
     <?php
@@ -90,8 +150,8 @@ if(empty($_SESSION['active'])){
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?id=<?php echo $column['sneaker_id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">
-                     <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
+                    <button class="eliminar">Eliminar</button>
                 </a>
 
 

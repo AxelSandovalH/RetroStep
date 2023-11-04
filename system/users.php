@@ -1,10 +1,5 @@
 <?php 
-session_start();
-
-if(empty($_SESSION['active'])){
-    header('location: ../');
-
-}
+include ("../scripts/routeProtection.php");
 ?>
 
 
@@ -39,7 +34,7 @@ if(empty($_SESSION['active'])){
         </div>
        
         <div class="exitBtn">
-            <a href="../salir.php"><img src="../img/power.png" alt="salir"></a>
+            <a href="../exit.php"><img src="../img/power.png" alt="salir"></a>
         </div>
         
     </header>
