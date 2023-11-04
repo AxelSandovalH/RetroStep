@@ -1,20 +1,7 @@
-<?php 
-// Protección de rutas
-session_start();
-
-if(empty($_SESSION['active'])){
-    header('location: ../');
-
-}
-?>
-
 <?php
-require_once "../connection.php"; //Se elimina la necesidad de escribir las variables de conexión poniendo un "require"
+include("../scripts/routeProtection.php");
 
-
-// Espera a que haya una acción tipo POST para realizar la verificación 
-if(!empty($_POST)){
-    // $sneaker_id = $_POST['sneaker_id'];
+if (!empty($_POST)) {
     $sneaker_name = $_POST["sneaker_name"];
     $brand_name = $_POST["brand_name"];
     $price = $_POST["price"];
@@ -28,43 +15,35 @@ if(!empty($_POST)){
     move_uploaded_file($temporal, $carpeta . '/' . $nombre_imagen);
 
     $querySelect = mysqli_query($connection, 
-    "SELECT * FROM sneaker 
-    WHERE (sneaker_name = '$sneaker_name')");
+        "SELECT * FROM sneaker 
+        WHERE sneaker_name = '$sneaker_name' AND deleted_at IS NULL");
 
     $result = mysqli_fetch_array($querySelect);
 
-    if($result > 0){
-        echo '<p class ="msgError">Ese modelo ya existe</p>';
-    }
-    else{
-
+    if ($result) {
+        echo '<p class="msgError">Ese modelo ya existe</p>';
+    } else {
         $queryInsert = mysqli_multi_query($connection, 
-        "INSERT INTO brand (brand_name) VALUES ('$brand_name')
-        ON DUPLICATE KEY UPDATE brand_name = '$brand_name';
-        
-        INSERT INTO size (size_number) VALUES ($size_number)
-        ON DUPLICATE KEY UPDATE size_number = $size_number;
-
-        INSERT INTO category (category_name) VALUES ('$category_name')
-        ON DUPLICATE KEY UPDATE category_name = '$category_name';
-        
-        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
-        -- Obtener el 'sneaker_id' recién generado
-        SET @sneaker_id = LAST_INSERT_ID();
-
-        -- Insertar en la tabla 'stock' con 'sneaker_id' y 'stock_quantity'
-        INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
-       
-
+            "INSERT INTO brand (brand_name) VALUES ('$brand_name')
+            ON DUPLICATE KEY UPDATE brand_name = '$brand_name';
             
-            if($queryInsert){
-                header("location: main.php");
-            }
-            else{
-                echo "Error: " . mysqli_error($connection);
-                echo "Filas afectadas: " . mysqli_affected_rows($connection);
+            INSERT INTO size (size_number) VALUES ($size_number)
+            ON DUPLICATE KEY UPDATE size_number = $size_number;
 
-            }
+            INSERT INTO category (category_name) VALUES ('$category_name')
+            ON DUPLICATE KEY UPDATE category_name = '$category_name';
+            
+            INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
+            SET @sneaker_id = LAST_INSERT_ID();
+
+            INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
+
+        if ($queryInsert) {
+            header("location: main.php");
+        } else {
+            echo "Error: " . mysqli_error($connection);
+            echo "Filas afectadas: " . mysqli_affected_rows($connection);
+        }
     }
 }
 // $query = mysqli_query($connection, 
@@ -145,8 +124,23 @@ if(!empty($_POST)){
         <div class="column">
             <label for="Modelo">Modelo</label>
             <input name="sneaker_name" type="text" required>
-            <label for="Marca">Marca</label>
-            <input name="brand_name" type="text" required>
+            <label for="brand_name">Marca</label>
+                <select name="brand_name" required>
+                    <?php
+                        $sql_categories = "SELECT brand_name FROM brand";
+                        $result_categories = mysqli_query($connection, $sql_categories);
+                        
+                        if (mysqli_num_rows($result_categories) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_categories)) {
+                                $brand_option = $row['brand_name'];
+                                $selected = ($brand_option == $brand_name) ? "selected" : "";
+                                echo "<option value='$brand_option' $selected>$brand_option</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No hay marcas disponibles</option>";
+                        }
+                    ?>
+                </select>
             <label for="Precio">Precio</label>
             <input name="price" type="number" required>
             <label for="Stock">Stock</label>
@@ -154,34 +148,50 @@ if(!empty($_POST)){
         </div>
 
         <div class="columnR">
-            <label for="Size">Size</label>
-            <select name="size_number" required>
-                <option value="6.0">6.0</option>
-                <option value="6.5">6.5</option>
-                <option value="7.0">7.0</option>
-                <option value="7.5">7.5</option>
-                <option value="8.0">8.0</option>
-                <option value="8.5">8.5</option>
-                <option value="9.0">9.0</option>
-                <option value="9.5">9.5</option>
-                <option value="10.0">10.0</option>
-                <option value="10.5">10.5</option>
-                <option value="11.0">11.0</option>
-                <option value="11.5">11.5</option>
-                <option value="12.0">12.0</option>
-                <option value="12.5">12.5</option>
-                <option value="13.0">13.0</option>
-            </select>
+          <label for="Size">Size</label>
+                <select name="size_number" required>
+                    <?php
+                        $sql_sizes = "SELECT size_number FROM size";
+                        $result_sizes = mysqli_query($connection, $sql_sizes);
+                        
+                        if (mysqli_num_rows($result_sizes) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_sizes)) {
+                                $size_option = $row['size_number'];
+                                $selected = ($size_option == $size_number) ? "selected" : "";
+                                echo "<option value='$size_option' $selected>$size_option</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No hay tallas disponibles</option>";
+                        }
+                    ?>
+                </select>
             <label for="Category">Category</label>
-            <input type="text" name="category_name" required>
+                <select name="category_name" required>
+                    <?php
+                        $sql_categories = "SELECT category_name FROM category";
+                        $result_categories = mysqli_query($connection, $sql_categories);
+                        
+                        if (mysqli_num_rows($result_categories) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_categories)) {
+                                $cat_option = $row['category_name'];
+                                $selected = ($cat_option == $cat_name) ? "selected" : "";
+                                echo "<option value='$cat_option' $selected>$cat_option</option>";
+                            }
+                        } else {
+                            echo "<option value=''>No hay categorías disponibles</option>";
+                        }
+                    ?>
+                </select>
+
             <label for="imagen">Imagen</label>
             <input type="file" name="imagen">
         </div>
-    </form>
-    <div class="buttons">
+        
+        <div class="buttons">
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             <button type="submit" id="Succes">Agregar</button>
-    </div>
+        </div>
+    </form>
 </div>
 
     
