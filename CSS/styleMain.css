@@ -281,46 +281,74 @@ hr {
 
 /*////////Apartado de Filtro//////*/
 
-.filter-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f4f4f4;
-    padding: 10px;
-}
-
-.filter-container label {
-    margin-right: 10px;
-}
-
-.filter-container select {
-    padding: 5px;
+.tab {
     border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    appearance: none; /* Oculta la flecha de selección en algunos navegadores */
-    cursor: pointer;
-}
-
-.filter-container input[type="text"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.filter-container button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.filter-container button:hover {
-    background-color: #234f7e;
-    transform: scale(1.1);
-}
-
-
+    border-radius: 7px;
+    margin: 10px;
+    position: relative;
+ }
+ 
+ .tab-label {
+     background-color: #f4f4f4;
+     padding: 1px;
+     display: flex;
+     justify-content: center; 
+     align-items: center; 
+     border-radius: 4px 4px 0 0;
+ }
+ 
+ 
+ .tab-label:hover {
+     background-color: #e0e0e0;
+ }
+ 
+ .tab-checkbox {
+     display: none;
+ }
+ 
+ .filter-container {
+     display: none;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-top: none;
+ 
+     align-items: center;
+     justify-content: space-evenly;
+     background-color: #f4f4f4;
+ }
+ 
+ .tab-checkbox:checked + .filter-container {
+     display: flex;
+ }
+ 
+ .filter-container label {
+     margin-right: 10px;
+ }
+ 
+ .filter-container select {
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     background-color: #fff;
+     appearance: none;
+     cursor: pointer;
+ }
+ 
+ .filter-container input[type="text"] {
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+ 
+ .filter-container button {
+     background-color: #007BFF;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     padding: 5px 10px;
+     cursor: pointer;
+ }
+ 
+ .filter-container button:hover {
+     background-color: #0056b3;
+ }
