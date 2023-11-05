@@ -4,6 +4,7 @@ include("../scripts/routeProtection.php")
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/c7fad14ccd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/styleMain.css">
     <meta charset="UTF-8">
@@ -49,15 +50,10 @@ include("../scripts/routeProtection.php")
             <li><a href="#">Tenis</a></li>
         </ul>
 
-        <header>Administrador</header>
-        <hr>
-        <ul>
-            <li><a href="users.php">Usuarios</a></li>
-        </ul>
     </div>
 
     <div class="tab">
-        <label class="tab-label" for="filterTab">^</label>
+        <label class="tab-label" for="filterTab"><i class="fa-solid fa-chevron-down"></i></label>
         <input type="checkbox" id="filterTab" class="tab-checkbox">
         <div class="filter-container">
             <label for="brand-filter">Marca:</label>
@@ -151,10 +147,10 @@ include("../scripts/routeProtection.php")
             
             <div class="sneaker-actions">
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
-                    <button class="editar">Editar</button>
+                    <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
                 </a>
                 <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                    <button class="eliminar">Eliminar</button>
+                    <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Eliminar</button>
                 </a>
 
 
@@ -169,8 +165,8 @@ include("../scripts/routeProtection.php")
     <div class="container">
         <input type="checkbox" id="btn-mas">
         <div class="options">
-            <a href="newSneaker.php" class="edit"></a>
-            <a href="#" class="add brand"></a>
+            <a href="newSneaker.php" class="edit"><i class="fa-solid fa-file-circle-plus"></i></a>
+            <a href="users.php" class="users"><i class="fa-solid fa-users"></i></a>
             <a href="#" class="add size"></a>
             <a href="#" class="add model"></a>
         </div>

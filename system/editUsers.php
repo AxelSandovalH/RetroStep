@@ -130,7 +130,7 @@ if($result_sql == 0){
                 <option value="2">Vendedor</option>
             </select>
            
-            <button type="" id="Cancelar"><a href="users.php">Cancelar</a></button>
+            <button type="" id="Cancelar"><a href="users.php"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a></button>
             
             <button type="submit" id="Succes">Actualizar usuario</button>
         </form>

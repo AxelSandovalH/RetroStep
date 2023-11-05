@@ -88,8 +88,8 @@
             <input type="password" name="clave" >
             
             <div class="buttons">
-                <button type="reset" id="Cancelar">Cancelar</button>
-                <button id = "Succes" type="submit" >Verificar</button>
+                <button type="reset" id="Cancelar" href="www.google.com"><i class="fa-regular fa-circle-xmark"></i> Cancelar</button>
+                <button id = "Succes" type="submit">Verificar</button>
             </div>
         </form>
     </div>

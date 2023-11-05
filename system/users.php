@@ -102,7 +102,7 @@ include ("../scripts/routeProtection.php");
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
                 <a class="link_borrar" href = "deleteUsers.php?id=<?php echo $column['id']; ?>">
-                    <button class="eliminar">Eliminar</button>
+                    <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Eliminar</button>
                 </a>
             </td>
         </tr>
@@ -113,6 +113,16 @@ include ("../scripts/routeProtection.php");
         ?>
     </table>
     
+    <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="options">
+            <a href="main.php" class="exit"><i class="fa-solid fa-reply"></i></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>

@@ -103,7 +103,7 @@ if(!empty($_POST))
             </select>
 
             <div class="buttons">
-                <button type="reset" id="Cancelar"><a href="users.php">Cancelar</a></button>
+                <button type="reset" id="Cancelar"><a href="users.php"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a></button>
                 <button type="submit"  id="Succes">Agregar</button>
             </div>
             

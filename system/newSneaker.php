@@ -198,7 +198,7 @@ if(!empty($_POST)){
             <input type="file" name="imagen">
         
             <div class="buttons">
-                <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
+                <button type="reset" id="Cancelar"><a href="main.php"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a></button>
                 <button type="submit" id="Succes">Agregar</button>
             </div>
         </div>

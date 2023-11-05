@@ -83,7 +83,7 @@
 
             <form method="post" action="">
                 <input type="hidden" name ="idUser" value = "<?php echo $id?>">
-                <a href="users.php" class = "btnCancelar">Cancelar</a>
+                <a href="users.php" class = "btnCancelar"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a>
                 <input type="submit" value="Aceptar" class="btnAceptar">
             </form>
         </div>
