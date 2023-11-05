@@ -89,7 +89,7 @@
             
             <div class="buttons">
                 <button type="reset" id="Cancelar" href="www.google.com"><i class="fa-regular fa-circle-xmark"></i> Cancelar</button>
-                <button id = "Succes" type="submit">Verificar</button>
+                <button id = "Succes" type="submit"><i class="fa-regular fa-circle-check"></i> Verificar</button>
             </div>
         </form>
     </div>
