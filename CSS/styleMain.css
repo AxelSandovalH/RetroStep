@@ -242,7 +242,7 @@ hr {
     transition: all 0.3s;
 }
 
-.sneaker-actions .edita:hover {
+.sneaker-actions .editar:hover {
     background-color: #234f7e;
     transform: scale(1.1);
 }
@@ -277,6 +277,50 @@ hr {
     width: auto;
     height: auto;
     margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/*////////Apartado de Filtro//////*/
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 10px;
+}
+
+.filter-container label {
+    margin-right: 10px;
+}
+
+.filter-container select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    appearance: none; /* Oculta la flecha de selección en algunos navegadores */
+    cursor: pointer;
+}
+
+.filter-container input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-container button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-container button:hover {
+    background-color: #234f7e;
+    transform: scale(1.1);
 }
 
 

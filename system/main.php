@@ -145,8 +145,8 @@ include("../scripts/routeProtection.php")
                 <p>Precio: <?php echo $column['price']; ?></p>
                 <p>Stock: <?php echo $column['stock_quantity']; ?></p>
             </div>
+            
             <div class="sneaker-actions">
-
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
