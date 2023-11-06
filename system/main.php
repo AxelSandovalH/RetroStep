@@ -23,7 +23,7 @@ include("../scripts/routeProtection.php")
         <div>
             <a href="../index.php">
                 <h1 class="Titulo">
-                    RetroStep
+                <i class="fa-solid fa-hand-middle-finger fa-bounce"></i> RetroStep <i class="fa-solid fa-hand-middle-finger fa-bounce"></i>
                 </h1>
             </a>
         </div>
@@ -53,7 +53,7 @@ include("../scripts/routeProtection.php")
     </div>
 
     <div class="tab">
-        <label class="tab-label" for="filterTab"><i class="fa-solid fa-chevron-down"></i></label>
+        <label class="tab-label" for="filterTab"><i class="fa-solid fa-circle-chevron-down"></i></label>
         <input type="checkbox" id="filterTab" class="tab-checkbox">
         <div class="filter-container">
             <label for="brand-filter">Marca:</label>
@@ -117,7 +117,7 @@ include("../scripts/routeProtection.php")
 
             <label for="search-input">Búsqueda:</label>
             <input type="text" id="search-input" placeholder="Buscar...">
-            <button id="search-button">Buscar</button>
+            <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i> Buscar</button>
         </div>
     </div>
 

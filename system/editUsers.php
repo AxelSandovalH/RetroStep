@@ -77,7 +77,7 @@ if($result_sql == 0){
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../CSS/styleEditSneaker.css">
+    <link rel="stylesheet" href="../CSS/styleAddUsers.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuario</title>
@@ -85,9 +85,9 @@ if($result_sql == 0){
 <body>
     <header class="header">
         
-        <a href="#" id="menu" class="menu-icon">
+        <!--<a href="#" id="menu" class="menu-icon">
             <i class="fas fa-bars"></i>
-        </a>
+        </a> -->
         
         <div>
             <a href="../">
@@ -113,7 +113,7 @@ if($result_sql == 0){
         </ul>
     </div> -->
 
-    <div id="addSneaker">
+    <div id="addUser">
         <header>Editar Usuario</header>
         
         <form action="" method="post">
@@ -130,9 +130,11 @@ if($result_sql == 0){
                 <option value="2">Vendedor</option>
             </select>
            
-            <button type="" id="Cancelar"><a href="users.php"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a></button>
+            <div class="buttons">
+                <button type="" id="Cancelar"><a href="users.php"><i class="fa-regular fa-circle-xmark"></i> Cancelar</a></button>
+                <button type="submit" id="Succes"><i class="fa-solid fa-repeat"></i> Actualizar</button>
+            </div>
             
-            <button type="submit" id="Succes">Actualizar usuario</button>
         </form>
     </div>
     

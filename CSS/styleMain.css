@@ -116,7 +116,7 @@ td {
 }
 
 .header div h1:hover {
-    color: #00ffd0;
+    color: #e5922c;
     cursor: pointer;
     transform: scale(1.5) translateX(0);
 }
@@ -276,7 +276,6 @@ hr {
 /* Estilos para sneaker-image */
 .sneaker-image {
     text-align: center;
-    border-radius: 16%;
 }
 
 .sneaker-image img {
