@@ -3,7 +3,7 @@
     session_start();
 
     if(!empty($_SESSION['active'])){
-        header('location: system/main.php');
+        header('location: main.php');
 
     }
     else{
@@ -31,7 +31,7 @@
                     $_SESSION['user'] = $data['username'];
 
                     if($data['rol'] == 1){
-                        header('location: system/main.php');
+                        header('location: main.php');
                     }else{
                         header('location: system/rol2_view.php');
                     }
@@ -56,7 +56,7 @@
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="CSS/styleIndex.css">
+    <link rel="stylesheet" href="css/styleIndex.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
