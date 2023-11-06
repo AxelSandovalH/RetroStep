@@ -124,23 +124,8 @@ if (!empty($_POST)) {
         <div class="column">
             <label for="Modelo">Modelo</label>
             <input name="sneaker_name" type="text" required>
-            <label for="brand_name">Marca</label>
-                <select name="brand_name" required>
-                    <?php
-                        $sql_categories = "SELECT brand_name FROM brand";
-                        $result_categories = mysqli_query($connection, $sql_categories);
-                        
-                        if (mysqli_num_rows($result_categories) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_categories)) {
-                                $brand_option = $row['brand_name'];
-                                $selected = ($brand_option == $brand_name) ? "selected" : "";
-                                echo "<option value='$brand_option' $selected>$brand_option</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay marcas disponibles</option>";
-                        }
-                    ?>
-                </select>
+            <label for="Marca">Marca</label>
+            <input name="brand_name" type="text" required>
             <label for="Precio">Precio</label>
             <input name="price" type="number" required>
             <label for="Stock">Stock</label>
@@ -148,50 +133,34 @@ if (!empty($_POST)) {
         </div>
 
         <div class="columnR">
-          <label for="Size">Size</label>
-                <select name="size_number" required>
-                    <?php
-                        $sql_sizes = "SELECT size_number FROM size";
-                        $result_sizes = mysqli_query($connection, $sql_sizes);
-                        
-                        if (mysqli_num_rows($result_sizes) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_sizes)) {
-                                $size_option = $row['size_number'];
-                                $selected = ($size_option == $size_number) ? "selected" : "";
-                                echo "<option value='$size_option' $selected>$size_option</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay tallas disponibles</option>";
-                        }
-                    ?>
-                </select>
+            <label for="Size">Size</label>
+            <select name="size_number" required>
+                <option value="6.0">6.0</option>
+                <option value="6.5">6.5</option>
+                <option value="7.0">7.0</option>
+                <option value="7.5">7.5</option>
+                <option value="8.0">8.0</option>
+                <option value="8.5">8.5</option>
+                <option value="9.0">9.0</option>
+                <option value="9.5">9.5</option>
+                <option value="10.0">10.0</option>
+                <option value="10.5">10.5</option>
+                <option value="11.0">11.0</option>
+                <option value="11.5">11.5</option>
+                <option value="12.0">12.0</option>
+                <option value="12.5">12.5</option>
+                <option value="13.0">13.0</option>
+            </select>
             <label for="Category">Category</label>
-                <select name="category_name" required>
-                    <?php
-                        $sql_categories = "SELECT category_name FROM category";
-                        $result_categories = mysqli_query($connection, $sql_categories);
-                        
-                        if (mysqli_num_rows($result_categories) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_categories)) {
-                                $cat_option = $row['category_name'];
-                                $selected = ($cat_option == $cat_name) ? "selected" : "";
-                                echo "<option value='$cat_option' $selected>$cat_option</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay categorías disponibles</option>";
-                        }
-                    ?>
-                </select>
-
+            <input type="text" name="category_name" required>
             <label for="imagen">Imagen</label>
             <input type="file" name="imagen">
         </div>
-        
-        <div class="buttons">
+    </form>
+    <div class="buttons">
             <button type="reset" id="Cancelar"><a href="main.php">Cancelar</a></button>
             <button type="submit" id="Succes">Agregar</button>
-        </div>
-    </form>
+    </div>
 </div>
 
     

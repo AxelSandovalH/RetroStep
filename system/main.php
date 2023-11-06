@@ -17,7 +17,7 @@ include ("../scripts/routeProtection.php");
     
     <header class="header">
         <a href="#" id="menu" class="menu-icon">
-        <i class="fa-regular fa-user fa-shake" style="color: #ffffff;"></i>
+            <i class="fas fa-bars"></i>
         </a>
         
         <div>
@@ -151,9 +151,15 @@ include ("../scripts/routeProtection.php");
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
+<<<<<<< HEAD
                 <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar la zapatilla con Modelo: <?php echo $column['sneaker_name']; ?>, Marca: <?php echo $column['brand_name']; ?>, Talla: <?php echo $column['size_number']; ?>?')">
     <button class="eliminar">Eliminar</button>
 </a>
+=======
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>" onclick="confirm('¿Seguro que quieres borrar?')">
+                     <button class="eliminar">Eliminar</button>  <!-- Corregir posible error con lógica de confirm -->
+                </a>
+>>>>>>> 8daa17e4bfe79374cb4ac19cf94d7539e0246c17
 
 
             </div>
