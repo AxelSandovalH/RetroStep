@@ -38,21 +38,7 @@ include ("../scripts/routeProtection.php");
         </div>
         
     </header>
-    <!-- <div class="side-menu" id="side-menu">
-        <header >Sneakers
-            <button id="x">
-                x
-            </button>
-        </header>
-        <hr>
-        <ul>
-            <li><a href="./adminusers.html">AdminUsers</a></li>
-            <li><a href="#">Sport</a></li>
-            <li><a href="#">caminata</a></li>
-        </ul>
-    </div> -->
 
-    <!----------------------------------------------------------->
 
     <div class="TablaContainerUsers">
     <table class="TablaUsers" id="usersTable">
@@ -101,9 +87,10 @@ include ("../scripts/routeProtection.php");
             </td>
             <td>
                 <!-- Se crea un href con el link del archivo php y el dato que se mandará (id) -->
-                <a class="link_borrar" href = "deleteUsers.php?id=<?php echo $column['id']; ?>">
-                    <button class="eliminar">Eliminar</button>
-                </a>
+                <a class="link_borrar" href="deleteUsers.php?idUser=<?php echo $column['id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar al usuario con ID: <?php echo $column['id']; ?>, Nombre de usuario: <?php echo $column['username']; ?>, Email: <?php echo $column['email']; ?>?')">
+    <button class="eliminar">Eliminar</button>
+</a>
+
             </td>
         </tr>
 

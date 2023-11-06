@@ -10,8 +10,7 @@
 }
 
 body {
-    background-image: url("/img/snkrsBackground.jpg");
-    background-size: cover;
+    background-color: rgba(233, 233, 233, 0.922);
 }
 
 /* Estilos del encabezado */
@@ -58,10 +57,11 @@ body {
 /* Estilos del menú hamburguesa */
 .header .menu-icon i {
     font-size: 30px;
+    color: white; 
 }
 
 .header .menu-icon i:hover {
-    color: #00ffc3;
+    color: #e5922c;
     transform: scale(1.1);
 }
 

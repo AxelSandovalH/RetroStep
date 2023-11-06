@@ -151,9 +151,9 @@ include ("../scripts/routeProtection.php");
                 <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
                     <button class="editar">Editar</button>
                 </a>
-                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                    <button class="eliminar">Eliminar</button>
-                </a>
+                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar la zapatilla con Modelo: <?php echo $column['sneaker_name']; ?>, Marca: <?php echo $column['brand_name']; ?>, Talla: <?php echo $column['size_number']; ?>?')">
+    <button class="eliminar">Eliminar</button>
+</a>
 
 
             </div>
