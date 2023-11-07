@@ -138,6 +138,8 @@
 
 <?php include_once("modalNewCategory.php"); ?>
 
+<?php include_once("modalNewSneaker.php"); ?>
+
 
 
 			 
