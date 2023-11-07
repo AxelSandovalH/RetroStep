@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Manrope', sans-serif; */
+}
+
+body {
+    background-color: rgba(233, 233, 233, 0.922);
+
+}
+
+.add-sneaker-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#btn-mas{
+    display: none;
+}
+
+.container{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.options a, .btn-mas label{
+    display: block;
+    text-decoration: none;
+    background: #007bff;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+    transition: all 500ms ease;
+}
+
+.options a:hover{
+    background: #234f7e;
+    color: #fff;
+}
+
+.options a{
+    margin-bottom: -15px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-mas:checked~ .options a{
+    margin-bottom: 10px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-mas label{
+    cursor: pointer;
+    background: #007bff;
+    font-size: 23px;
+}
+
+#btn-mas:checked ~ .btn-mas label{
+    transform: rotate(135deg);
+    font-size: 25px;
+}
+
+td {
+    padding: 15px;
+}
+
+/* Estilos del encabezado */
+.header {
+    background-color: #252B48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+}
+
+.header img {
+    cursor: pointer;
+    height: 33px;
+    margin-top: 11px;
+}
+
+/* Estilos del Titulo */
+.header div h1 {
+    display: inline-block;
+    color: beige;
+    padding: 0 20px;
+    transition: all 0.3s;
+    font-weight: 800;
+}
+
+.header div h1:hover {
+    color: #e5922c;
+    cursor: pointer;
+    transform: scale(1.5) translateX(0);
+}
+
+/* Estilos del menú hamburguesa */
+.header .menu-icon i {
+    font-size: 30px;
+    color: white; 
+}
+
+.header .menu-icon i:hover {
+    color: #e5922c;
+    transform: scale(1.1);
+}
+
+.header .menu-icon button:hover {
+    background-color: #e2f1f8;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Estilos del menú lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #252B48;
+    padding: 20px;
+    transition: left 0.3s;
+    border: solid 1px;
+    z-index: 2;
+}
+
+.side-menu header {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin-bottom: 15px;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.side-menu #x {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    transition: transform 0.3s;
+}
+
+.side-menu #x:hover {
+    transform: scale(1.2);
+}
+
+hr {
+    border-color: black;
+    color: black;
+}
+
+/* Estilos para el contenedor de las sneaker cards */
+/* Agrega estos estilos CSS para las sneaker cards */
+.sneaker-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(33.33% - 20px); /* Ancho máximo para 3 tarjetas por fila */
+    margin: 10px; /* Espaciado alrededor de las tarjetas */
+    text-align: center;
+    position: relative;
+}
+
+.TablaContainerSneakers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Espaciado entre las tarjetas y el borde izquierdo de la pantalla */
+}
+
+/* Estilos para sneaker-actions */
+.sneaker-actions {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between
+}
+
+.sneaker-actions a {
+    text-decoration: none;
+}
+
+/* Estilos para botones de editar y eliminar */
+.sneaker-actions button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.sneaker-actions .editar {
+    height: 40px;
+    width: 100px;
+    padding: 3px 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all 0.3s;
+}
+
+.sneaker-actions .editar:hover {
+    background-color: #234f7e;
+    transform: scale(1.1);
+}
+
+.sneaker-actions .eliminar {
+    height: 40px;
+    width: 100px;
+    padding: 3px 5px;
+    background-color: #909090;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: all 0.3s;
+}
+
+.sneaker-actions .eliminar:hover {
+    background-color: #a12020;
+    transform: scale(1.1);
+}
+
+/* Estilos para sneaker-image */
+.sneaker-image {
+    text-align: center;
+}
+
+.sneaker-image img {
+    max-width: 100%;
+    max-height: 200px; /* Establece la altura máxima deseada */
+    width: auto;
+    height: auto;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+/*////////Apartado de Filtro//////*/
+
+.tab {
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin: 10px;
+    position: relative;
+ }
+ 
+ .tab-label {
+     background-color: #f4f4f4;
+     padding: 7px;
+     display: flex;
+     justify-content: center; 
+     align-items: center; 
+     border-radius: 4px 4px 0 0;
+ }
+ 
+ 
+ .tab-label:hover {
+     background-color: #e0e0e0;
+ }
+ 
+ .tab-checkbox {
+     display: none;
+ }
+ 
+ .filter-container {
+     display: none;
+     padding: 10px;
+     border: 1px solid #ccc;
+     border-top: none;
+ 
+     align-items: center;
+     justify-content: space-evenly;
+     background-color: #f4f4f4;
+ }
+ 
+ .tab-checkbox:checked + .filter-container {
+     display: flex;
+ }
+ 
+ .filter-container label {
+     margin-right: 10px;
+ }
+ 
+ .filter-container select {
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     background-color: #fff;
+     appearance: none;
+     cursor: pointer;
+ }
+ 
+ .filter-container input[type="text"] {
+     padding: 5px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+ 
+ .filter-container button {
+     background-color: #007BFF;
+     color: #fff;
+     border: none;
+     border-radius: 4px;
+     padding: 5px 10px;
+     cursor: pointer;
+ }
+ 
+ .filter-container button:hover {
+     background-color: #0056b3;
+ }
