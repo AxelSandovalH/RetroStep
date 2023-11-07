@@ -33,19 +33,19 @@
                     <img src="<?php echo $column['imagen_url']; ?>" alt="Imagen del sneaker">
                 </div>
                 <div class="sneaker-info">
-                    <h2>Modelo: <?php echo $column['sneaker_name']; ?></h2>
-                    <p>Marca: <?php echo $column['brand_name']; ?></p>
-                    <p>Talla: <?php echo $column['size_number']; ?></p>
-                    <p>Precio: <?php echo $column['price']; ?></p>
+                    <h2>Name: <?php echo $column['sneaker_name']; ?></h2>
+                    <p>Brand: <?php echo $column['brand_name']; ?></p>
+                    <p>Size: <?php echo $column['size_number']; ?></p>
+                    <p>Size: <?php echo $column['price']; ?></p>
                     <p>Stock: <?php echo $column['stock_quantity']; ?></p>
                 </div>
                 
                 <div class="sneaker-actions">
                     <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
-                        <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
+                        <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                     </a>
                     <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                        <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Eliminar</button>
+                        <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
                     </a>
                 </div>
             </div>
