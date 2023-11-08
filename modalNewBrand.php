@@ -5,13 +5,13 @@
     <div class="modal-content">
     <div id="message" class="alert" style="display: none;"></div>
     <div class="modal-header">
-        <h5 class="modal-title" id="addBrandModalLabel">Añadir Marca</h5>
+        <h5 class="modal-title" id="addBrandModalLabel">Add brand</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div id="message" class="alert alert-success" style="display: none;">
-        Marca guardada con éxito.
+        Brand saved successfully.
     </div>
     <div class="modal-body">
         <!-- Aquí coloca tu formulario para agregar una marca -->
