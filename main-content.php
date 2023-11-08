@@ -21,7 +21,7 @@
                         <span class="material-icons">inventory</span>
                     </div>
                 </div>
-                <div class "card-content">
+                <div class="card-content">
                     <p class="category"><strong>Total stock</strong></p>
                     <h3 class="card-title">102</h3>
                 </div>
@@ -67,7 +67,6 @@
 // Incluye tu archivo de conexión a la base de datos
 require_once "connection.php";
 
-
 // Verifica la conexión
 if ($connection->connect_error) {
     die("Error de conexión a la base de datos: " . $connection->connect_error);
@@ -79,12 +78,18 @@ $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
+    if ($row["fecha_ultimo_sneaker"] !== null) {
+        $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
+    } else {
+        $fecha_ultimo_sneaker = "No hay registros";
+    }
 } else {
     $fecha_ultimo_sneaker = "No hay registros";
 }
-
 ?>
+
+
+
 
                     <p class="category">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
                 </div>

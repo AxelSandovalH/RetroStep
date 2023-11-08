@@ -10,7 +10,10 @@
 }
 
 body {
-    background-color: rgba(233, 233, 233, 0.922);}
+    /* Imagen de fondo */
+    background-image: url("/img/snkrsBackground.jpg") ; 
+    background-size: cover;
+}
 /* Estilos del encabezado */
 .header {
     background-color: #252B48;
@@ -49,7 +52,7 @@ body {
 }
 
 .header div h1:hover {
-    color: #ecac5e;
+    color: #00ffd0;
     cursor: pointer;
     
     transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
