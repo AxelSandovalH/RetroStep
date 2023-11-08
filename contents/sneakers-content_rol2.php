@@ -39,14 +39,9 @@
                     <p>Precio: <?php echo $column['price']; ?></p>
                     <p>Stock: <?php echo $column['stock_quantity']; ?></p>
                 </div>
-                
                 <div class="sneaker-actions">
-                        <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
-                            <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
-                        </a>
-                        <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                            <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Eliminar</button>
-                        </a>
+
+                
                 </div>
             </div>
         <?php
