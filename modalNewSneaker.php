@@ -1,5 +1,10 @@
 <?php 
-require_once("connection.php")
+require_once("connection.php");
+
+$brand_name = ''; // Asigna un valor por defecto
+if (isset($_POST['brand_name'])) {
+    $brand_name = $_POST['brand_name']; // Asigna el valor si está disponible en POST
+}
 ?>
 
 <!-- Modal para Add Category -->
@@ -41,55 +46,8 @@ require_once("connection.php")
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="sizeNumber">Size</label>
-            <select class="form-control" id="size_number" name="size_number" placeholder="Type the sneaker's size">
-                    <?php
-                        $sql_sizes = "SELECT size_number FROM size";
-                        $result_sizes = mysqli_query($connection, $sql_sizes);
-                        
-                        if (mysqli_num_rows($result_sizes) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_sizes)) {
-                                $size_option = $row['size_number'];
-                                $selected = ($size_option == $size_number) ? "selected" : "";
-                                echo "<option value='$size_option' $selected>$size_option</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay tallas disponibles</option>";
-                        }
-                    ?>
-                </select>
-        </div>
+        <!-- Resto del formulario... -->
 
-        <div class="form-group">
-            <label for="categoryName">Category</label>
-                <select name="category_name" class="form-control" id="category_name" required>
-                    <?php
-                        $sql_categories = "SELECT category_name FROM category";
-                        $result_categories = mysqli_query($connection, $sql_categories);
-                        
-                        if (mysqli_num_rows($result_categories) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_categories)) {
-                                $cat_option = $row['category_name'];
-                                $selected = ($cat_option == $cat_name) ? "selected" : "";
-                                echo "<option value='$cat_option' $selected>$cat_option</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay categorías disponibles</option>";
-                        }
-                    ?>
-                </select>
-        </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" class="form-control" id="price" name="price" placeholder="Type the sneaker's price">
-        </div>
-
-        <div class="form-group">
-            <label for="stock">Stock</label>
-            <input type="text" class="form-control" id="stock_quantity" name="stock_quantity" placeholder="Type the sneaker's stock">
-        </div>
-        
         <div class="form-group">
             <label for="imagen">Image</label>
             <input type="file" name="image" id="image" class="form-control">
