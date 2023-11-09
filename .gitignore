@@ -1,8 +1,0 @@
-# Excluir el archivo connection.php
-connection.php
-
-# Excluir archivos de imágenes (ejemplo: PNG, JPEG, JPG, GIF)
-*.png
-*.jpeg
-*.jpg
-*.gif
