@@ -12,7 +12,7 @@ if(!empty($_POST)){
     $category_name = $_POST["category_name"];
     $nombre_imagen = $_FILES['imagen']['name'];
     $temporal = $_FILES['imagen']['tmp_name'];
-    $carpeta = "img";
+    $carpeta = __DIR__ . "/img";
     $ruta = $carpeta . '/' . $nombre_imagen;
     move_uploaded_file($temporal, $carpeta . '/' . $nombre_imagen);
 

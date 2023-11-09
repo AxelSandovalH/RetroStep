@@ -1,5 +1,10 @@
 <?php 
-require_once("connection.php")
+require_once("connection.php");
+
+$brand_name = ''; // Asigna un valor por defecto
+if (isset($_POST['brand_name'])) {
+    $brand_name = $_POST['brand_name']; // Asigna el valor si está disponible en POST
+}
 ?>
 
 <!-- Modal para Add Category -->
