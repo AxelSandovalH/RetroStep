@@ -2,8 +2,10 @@
 require_once("connection.php");
 
 $brand_name = ''; // Asigna un valor por defecto
+$size_number = ''; // Añade esta línea para evitar problemas
 if (isset($_POST['brand_name'])) {
     $brand_name = $_POST['brand_name']; // Asigna el valor si está disponible en POST
+    $size_number = $_POST['size_number']; // Asegúrate de asignar también el valor de size_number
 }
 ?>
 
@@ -96,7 +98,7 @@ if (isset($_POST['brand_name'])) {
         </div>
         
         <div class="form-group">
-            <label for="imagen">Image</label>
+            <label for="image">Image</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
         <!-- Agrega más campos según tus necesidades -->
@@ -130,7 +132,7 @@ document.getElementById('btnSaveSneaker').addEventListener('click', function() {
     formData.append('category_name', categoryName);
     formData.append('price', price);
     formData.append('stock_quantity', stockQuantity);
-    formData.append('imagen', image);
+    formData.append('image', image); // Corrige el nombre del campo de imagen
 
     for (const entry of formData.entries()) {
     console.log(entry);
@@ -145,7 +147,7 @@ document.getElementById('btnSaveSneaker').addEventListener('click', function() {
                 let messageSneakerElement = document.getElementById('messageSneaker');
                 messageSneakerElement.textContent = response;
 
-                if (response.indexOf('saved successfully') !== -1) {
+                if (response.includes('saved successfully')) { // Simplifica la condición
                     messageSneakerElement.className = 'alert alert-success';
                     document.getElementById('sneaker_name').value = ''; // Limpia el campo de entrada
                 } else {
