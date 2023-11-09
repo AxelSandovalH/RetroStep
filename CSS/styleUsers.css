@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    /* font-size: 40px; */
+}
+
+td {
+    padding: 15px;
+}
+
+/* Estilos del encabezado */
+.header {
+    background-color: #252B48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+    position: static;
+}
+
+/* Estilos del exitBtn */
+.header img{
+    cursor: pointer;
+    height: 33px;
+    margin-top: 11px;
+}
+
+/* Estilos del Titulo */
+.header div h1 {
+    display: inline-block;
+    color: beige;
+    padding: 0 20px;
+    transition: all 0.3s;
+    font-weight: 800;
+    /* font-family: 'Crimson Text', serif; */
+    
+    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
+}
+
+.header div h1:hover {
+    color: #00ffd0;
+    cursor: pointer;
+    
+    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
+}
+
+/* Estilos del menú hamburguesa */
+/* .header .menu-icon i {
+    font-size: 30px
+    
+}
+
+.header .menu-icon i:hover {
+    color: #00ffc3;
+    transform: scale(1.1);
+}
+
+.header .menu-icon:hover {
+    background-color: #e2f1f8;
+    color: white;
+    transform: scale(1.1);
+} */
+
+/* Estilos del menú lateral */
+/* .side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100%;
+    background-color: #252B48;
+    padding: 20px;
+    transition: left 0.3s;
+    border: solid 1px;
+    z-index: 2; 
+}
+
+.side-menu header {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.side-menu ul {
+    
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin-bottom: 15px;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.side-menu #x {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3; 
+    transition: transform 0.3s;
+}
+
+.side-menu #x:hover {
+    transform: scale(1.2);
+} */
+
+hr{
+    border-color: black;
+    color: black;
+}
+
+.TablaUsers {
+    margin: 30px auto; /* Auto en lugar de solo margin: 30px; */
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    table-layout: auto;
+    text-align: center;
+}
+
+
+.TablaContainerUsers{
+    position: relative;
+    text-align: center;
+}
+
+.TablaUsers th {
+    position: relative; 
+    background-color: #252B48;
+    color: white;
+    padding: 12px;
+}
+
+.TablaUsers th .add {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.TablaUsers th .add:hover {
+    background-color: #00FFCA;
+}
+
+.TablaUsers th {
+    background-color: #252B48;
+    color: white;
+    padding: 12px;
+}
+
+.TablaUsers tr {
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+}
+
+.TablaUsers .editar {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 3px solid rgb(26, 33, 113); 
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: rgb(26, 33, 113);
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.TablaUsers .editar:hover {
+    background: rgb(26, 33, 113);
+    box-shadow: 0 0 20px 5px rgb(26, 33, 113);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: white;
+}
+
+.TablaUsers .editar:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+.TablaUsers .editar::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.TablaUsers .editar:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
+
+/* Eliminar btn */
+.TablaUsers .eliminar {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 3px solid rgb(189, 36, 36); 
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: rgb(189, 36, 36);
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.TablaUsers .eliminar:hover {
+    background: rgb(189, 36, 36);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: white;
+}
+
+.TablaUsers .eliminar:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+}
+
+.TablaUsers .eliminar::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.TablaUsers .eliminar:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+}
