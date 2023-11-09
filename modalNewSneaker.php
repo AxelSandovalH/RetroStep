@@ -23,7 +23,7 @@ require_once("connection.php")
         </div>
         <div class="form-group">
             <label for="categoryName">Sneaker brand</label>
-            <select class="form-control" id="brand_name" name="brand_name" placeholder="Select brand" required>
+            <select class="form-control" id="brand_name" name="brand_name" placeholder="Select brand">
                     <?php
                         $sql_categories = "SELECT brand_name FROM brand";
                         $result_categories = mysqli_query($connection, $sql_categories);
@@ -63,7 +63,7 @@ require_once("connection.php")
 
         <div class="form-group">
             <label for="categoryName">Category</label>
-                <select name="category_name" class="form-control" id="category_name" required>
+                <select type="text" name="category_name" class="form-control" id="category_name">
                     <?php
                         $sql_categories = "SELECT category_name FROM category";
                         $result_categories = mysqli_query($connection, $sql_categories);
@@ -110,9 +110,10 @@ require_once("connection.php")
 <script>
 document.getElementById('btnSaveSneaker').addEventListener('click', function() {
     let sneakerName = document.getElementById('sneaker_name').value;
-    let brandName = document.getElementById('brand_name').value;
+    let brandName = document.getElementById('brand_name').options[document.getElementById('brand_name').selectedIndex].value;
+    console.log(brandName)
     let sizeNumber = document.getElementById('size_number').value;
-    let categoryName = document.getElementById('category_name').value;
+    let categoryName = document.getElementById('category_name').options[document.getElementById('category_name').selectedIndex].value;
     let price = document.getElementById('price').value;
     let stockQuantity = document.getElementById('stock_quantity').value;
     let image = document.getElementById('image').files[0];
@@ -126,6 +127,9 @@ document.getElementById('btnSaveSneaker').addEventListener('click', function() {
     formData.append('stock_quantity', stockQuantity);
     formData.append('imagen', image);
 
+    for (const entry of formData.entries()) {
+    console.log(entry);
+    }
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'scripts/newSneaker.php', true);
     xhr.onreadystatechange = function() {

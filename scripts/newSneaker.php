@@ -28,16 +28,7 @@ if(!empty($_POST)){
     else{
 
         $queryInsert = mysqli_multi_query($connection, 
-        "INSERT INTO brand (brand_name) VALUES ('$brand_name')
-        ON DUPLICATE KEY UPDATE brand_name = '$brand_name';
-        
-        INSERT INTO size (size_number) VALUES ($size_number)
-        ON DUPLICATE KEY UPDATE size_number = $size_number;
-
-        INSERT INTO category (category_name) VALUES ('$category_name')
-        ON DUPLICATE KEY UPDATE category_name = '$category_name';
-        
-        INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
+        "INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
         -- Obtener el 'sneaker_id' recién generado
         SET @sneaker_id = LAST_INSERT_ID();
 
@@ -45,7 +36,6 @@ if(!empty($_POST)){
         INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
        
 
-            
             if($queryInsert){
                 echo 'Sneaker saved succesfully';
             }
