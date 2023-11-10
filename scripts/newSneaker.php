@@ -22,7 +22,7 @@ if (!empty($_POST)) {
     move_uploaded_file($_FILES['image']['tmp_name'], $ruta_completa);
 
     // Verifica si la sneaker ya existe
-    $querySelect = mysqli_query($connection, "SELECT * FROM sneaker WHERE sneaker_name = '$sneaker_name'");
+    $querySelect = mysqli_query($connection, "SELECT * FROM sneaker WHERE sneaker_name = '$sneaker_name' and deleted_at is NULL");
 
     if (mysqli_num_rows($querySelect) > 0) {
         echo 'That model already exists.';
