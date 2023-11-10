@@ -3,7 +3,7 @@
     session_start();
 
     if(!empty($_SESSION['active'])){
-        header('location: system/main.php');
+        header('location: main.php');
 
     }
     else{
@@ -30,7 +30,11 @@
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user'] = $data['username'];
 
-                    header('location: system/main.php');
+                    if($data['rol'] == 1){
+                        header('location: main.php');
+                    }else{
+                        header('location: system/rol2_view.php');
+                    }
                     
                 }
                 else{
@@ -52,7 +56,7 @@
 <head>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="CSS/styleIndex.css">
+    <link rel="stylesheet" href="css/styleIndex.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido</title>
@@ -86,10 +90,11 @@
             <label for="Password">Password</label>
             <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
             <input type="password" name="clave" >
-            <button type="reset" id="Cancelar">Cancelar</button>
             
-            <button id = "Succes" type="submit" >Verificar</button>
-
+            <div class="buttons">
+                <button type="reset" id="Cancelar">Cancelar</button>
+                <button id = "Succes" type="submit" >Verificar</button>
+            </div>
         </form>
     </div>
     
