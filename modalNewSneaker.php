@@ -110,10 +110,31 @@ require_once("connection.php");
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- JavaScript para el modal de categoría -->
+<script src="scripts/ajaxMain.js"></script>
 <script>
+
     try {
-        
+
     $(document).ready(function(){
+
+    function updateInventoryTable() {
+        // AJAX para obtener la tabla sin refrescar
+        $.ajax({
+            type: "GET",
+            url: "scripts/getInventory.php",
+            success: function (response) {
+                // Actualiza la tabla con la nueva información
+                $('#sneakerTable tbody').html(response);
+            },
+            error:function(error){
+                console.error(error);
+            }
+        });
+    }
+
+    updateInventoryTable()
+
+
         // Captura el click en el botón Save del formulario
         $('#btnSaveSneaker').click(function(){
             // Obtén los datos del formulario
@@ -131,7 +152,9 @@ require_once("connection.php");
                     console.log(response)
                     $('#messageSneaker').html(response).fadeIn().delay(2000).fadeOut();
                     // Cierra el modal
+                    updateInventoryTable()
                     $('#addSneakerModal').modal('hide');
+
                 },
                 error: function(error){
                     console.error(error);
