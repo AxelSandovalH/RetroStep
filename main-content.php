@@ -94,7 +94,7 @@ if ($result->num_rows > 0) {
                     <p class="category">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
                 </div>
                 <div class="card-content table-responsive">
-                    <table class="table table-hover">
+                    <table id="sneakerTable" class="table table-hover">
                         <thead class="text-primary">
                             <tr>
                                 <th>Name</th>
@@ -105,25 +105,7 @@ if ($result->num_rows > 0) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            require_once "connection.php";
-                            $sql = "SELECT * from sneaker
-                                    INNER JOIN stock
-                                    ON sneaker.sneaker_id = stock.sneaker_id
-                                    WHERE deleted_at IS NULL
-                                    ORDER BY sneaker.updated_at DESC;";
-                            $result = mysqli_query($connection, $sql);
-
-                            while ($column = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr>
-                                <td><?php echo $column['sneaker_name']; ?></td>
-                                <td><?php echo $column['brand_name']; ?></td>
-                                <td><?php echo $column['size_number']; ?></td>
-                                <td><?php echo $column['price']; ?></td>
-                                <td><?php echo $column['stock_quantity']; ?></td>
-                            </tr>
-                            <?php } ?>
+                            <!-- getInventory.php -->
                         </tbody>
                     </table>
                 </div>
@@ -153,6 +135,9 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script src="scripts/ajaxMain.js"></script>
 
 <?php include_once("modalNewBrand.php"); ?>
 
