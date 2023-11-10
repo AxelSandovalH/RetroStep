@@ -3,6 +3,7 @@ require_once("../connection.php");
 
 // Espera a que haya una acción tipo POST para realizar la verificación
 if (!empty($_POST)) {
+    // Recoge los datos del formulario
     $sneaker_name = $_POST["sneaker_name"];
     $brand_name = $_POST["brand_name"];
     $price = $_POST["price"];
@@ -12,34 +13,31 @@ if (!empty($_POST)) {
 
     // Rutas y carpetas
     $nombre_imagen = $_FILES['image']['name'];
-    $temporal = $_FILES['image']['tmp_name'];
-
-    // Ajusta la ruta para que apunte a la carpeta 'img' en la raíz de 'RetroStep'
-    $ruta = 'img/' . $nombre_imagen;
     $ruta_completa = __DIR__ . "/../img/" . $nombre_imagen;
 
-    move_uploaded_file($temporal, $ruta_completa);
+    // Ajusta la ruta relativa para mostrarla en la página
+    $ruta = 'img/' . $nombre_imagen;
 
-    $querySelect = mysqli_query($connection,
-        "SELECT * FROM sneaker WHERE sneaker_name = '$sneaker_name'");
+    // Mueve la imagen al directorio de destino
+    move_uploaded_file($_FILES['image']['tmp_name'], $ruta_completa);
+
+    // Verifica si la sneaker ya existe
+    $querySelect = mysqli_query($connection, "SELECT * FROM sneaker WHERE sneaker_name = '$sneaker_name'");
 
     if (mysqli_num_rows($querySelect) > 0) {
         echo 'That model already exists.';
     } else {
+        // Inserta la nueva sneaker en la base de datos
         $queryInsert = mysqli_multi_query($connection,
-            "INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url) VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
-            -- Obtener el 'sneaker_id' recién generado
+            "INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url)
+             VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
             SET @sneaker_id = LAST_INSERT_ID();
-
-            -- Insertar en la tabla 'stock' con 'sneaker_id' y 'stock_quantity'
             INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
 
+        // Muestra el resultado
         if ($queryInsert) {
             echo 'Sneaker saved successfully';
-
-            // Construye la URL de la imagen usando la variable $ruta
-            $imageURL = 'http://localhost/ProyectoIntegrador/RetroStep/' . $ruta;
-            echo '<img src="' . $imageURL . '" alt="Sneaker Image">';
+           
         } else {
             echo "Error: " . mysqli_error($connection);
             echo "Filas afectadas: " . mysqli_affected_rows($connection);
