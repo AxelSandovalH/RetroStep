@@ -9,7 +9,7 @@
 <div class="main-content">
 
     <div class="row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-md-12">
             <div class="card" style="min-height: 485px;">
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Deleted sneakers</h4>
@@ -18,6 +18,7 @@
                     <table id="aSneakerTable" class="table table-hover">
                         <thead class="text-primary">
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Brand</th>
                                 <th>Size</th>
@@ -34,7 +35,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6 col-md-12">
+        <div class="col-md-12">
             <div class="card" style="min-height: 485px;">
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Deleted Users</h4>
@@ -43,6 +44,7 @@
                     <table id="aUsersTable" class="table table-hover">
                         <thead class="text-primary">
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Role</th>
                                 <th>Email</th>
