@@ -1,3 +1,11 @@
+<style>
+    /* Desactivar mayúsculas automáticas */
+    .no-uppercase {
+      text-transform: none !important;
+    }
+
+</style>
+
 <div class="main-content">
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -64,34 +72,31 @@
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Inventory</h4>
                     <?php
-// Incluye tu archivo de conexión a la base de datos
-require_once "connection.php";
+                        // Incluye tu archivo de conexión a la base de datos
+                        require_once "connection.php";
 
-// Verifica la conexión
-if ($connection->connect_error) {
-    die("Error de conexión a la base de datos: " . $connection->connect_error);
-}
+                        // Verifica la conexión
+                        if ($connection->connect_error) {
+                            die("Error de conexión a la base de datos: " . $connection->connect_error);
+                        }
 
-// Consulta para obtener la fecha del último sneaker
-$sql = "SELECT MAX(created_at) AS fecha_ultimo_sneaker FROM sneaker";
-$result = $connection->query($sql);
+                        // Consulta para obtener la fecha del último sneaker
+                        $sql = "SELECT MAX(created_at) AS fecha_ultimo_sneaker FROM sneaker";
+                        $result = $connection->query($sql);
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    if ($row["fecha_ultimo_sneaker"] !== null) {
-        $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
-    } else {
-        $fecha_ultimo_sneaker = "No hay registros";
-    }
-} else {
-    $fecha_ultimo_sneaker = "No hay registros";
-}
-?>
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            if ($row["fecha_ultimo_sneaker"] !== null) {
+                                $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
+                            } else {
+                                $fecha_ultimo_sneaker = "No hay registros";
+                            }
+                        } else {
+                            $fecha_ultimo_sneaker = "No hay registros";
+                        }
+                        ?>
 
-
-
-
-                    <p class="category">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
+                    <p class="no-uppercase">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
                 </div>
                 <div class="card-content table-responsive">
                     <table id="sneakerTable" class="table table-hover">
