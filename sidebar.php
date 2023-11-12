@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="img/logoRS.png" class="img-fluid"/><span>RetroStep</span></h3>
+                <a href="main.php"><h3><img src="img/logoRS.png" class="img-fluid"/><span>RetroStep</span></h3></a>
             </div>
             <ul class="list-unstyled components">
 
@@ -27,17 +27,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </ul> -->
             </li>
 
-            <li class="dropdown">
-                <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <li <?php if ($current_page == 'archived.php') echo 'class="active"'; ?>>
+                <a href="archived.php">
                 <i class="material-icons">archive</i><span>Archived</span></a>
-                <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                    <li <?php if ($current_page == 'archivedSneakers.php') echo 'class="active"'; ?>>
-                        <a href="archivedSneakers.php">Sneakers</a>
-                    </li>
-                    <li <?php if ($current_page == 'archivedUsers.php') echo 'class="active"'; ?>>
-                        <a href="archivedUsers.php">Users</a>
-                    </li>
-                </ul>
             </li>
 
            
