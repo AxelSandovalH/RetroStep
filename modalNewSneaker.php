@@ -1,12 +1,6 @@
 <?php 
 require_once("connection.php");
 
-$brand_name = ''; // Asigna un valor por defecto
-$size_number = ''; // Añade esta línea para evitar problemas
-if (isset($_POST['brand_name'])) {
-    $brand_name = $_POST['brand_name']; // Asigna el valor si está disponible en POST
-    $size_number = $_POST['size_number']; // Asegúrate de asignar también el valor de size_number
-}
 ?>
 
 <!-- Modal para Add Category -->
@@ -23,7 +17,7 @@ if (isset($_POST['brand_name'])) {
     </div>
     <div class="modal-body">
         <!-- Aquí coloca tu formulario para agregar una marca -->
-        <form>
+        <form id="sneakerForm">
         <div class="form-group">
             <label for="sneakerName">Sneaker Name</label>
             <input type="text" class="form-control" id="sneaker_name" name="sneaker_name" placeholder="Type the sneaker's name">
@@ -32,18 +26,20 @@ if (isset($_POST['brand_name'])) {
             <label for="categoryName">Sneaker brand</label>
             <select class="form-control" id="brand_name" name="brand_name" placeholder="Select brand">
                     <?php
-                        $sql_categories = "SELECT brand_name FROM brand";
-                        $result_categories = mysqli_query($connection, $sql_categories);
+                        $sql_brands = "SELECT brand_name FROM brand";
+                        $result_brands = mysqli_query($connection, $sql_brands);
                         
-                        if (mysqli_num_rows($result_categories) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_categories)) {
+                        if (mysqli_num_rows($result_brands) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_brands)) {
                                 $brand_option = $row['brand_name'];
-                                $selected = ($brand_option == $brand_name) ? "selected" : "";
+                                $selected = ($brand_option == $brand_name) ? "" : "selected";
                                 echo "<option value='$brand_option' $selected>$brand_option</option>";
                             }
                         } else {
                             echo "<option value=''>No brands available</option>";
                         }
+
+                        // echo"<h1>'$brand_name dfdf'</h1>"
                     ?>
             </select>
         </div>
@@ -70,7 +66,7 @@ if (isset($_POST['brand_name'])) {
 
         <div class="form-group">
             <label for="categoryName">Category</label>
-                <select type="text" name="category_name" class="form-control" id="category_name">
+                <select type="text" id="category_name" name="category_name" class="form-control">
                     <?php
                         $sql_categories = "SELECT category_name FROM category";
                         $result_categories = mysqli_query($connection, $sql_categories);
@@ -78,7 +74,7 @@ if (isset($_POST['brand_name'])) {
                         if (mysqli_num_rows($result_categories) > 0) {
                             while ($row = mysqli_fetch_assoc($result_categories)) {
                                 $cat_option = $row['category_name'];
-                                $selected = ($cat_option == $cat_name) ? "selected" : "";
+                                $selected = ($cat_option == $category_name) ? "selected" : "";
                                 echo "<option value='$cat_option' $selected>$cat_option</option>";
                             }
                         } else {
@@ -115,58 +111,39 @@ if (isset($_POST['brand_name'])) {
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- JavaScript para el modal de categoría -->
 <script>
-document.getElementById('btnSaveSneaker').addEventListener('click', function() {
-    let sneakerName = document.getElementById('sneaker_name').value;
-    let brandName = document.getElementById('brand_name').options[document.getElementById('brand_name').selectedIndex].value;
-    console.log(brandName)
-    let sizeNumber = document.getElementById('size_number').value;
-    let categoryName = document.getElementById('category_name').options[document.getElementById('category_name').selectedIndex].value;
-    let price = document.getElementById('price').value;
-    let stockQuantity = document.getElementById('stock_quantity').value;
-    let image = document.getElementById('image').files[0];
+    try {
+        
+    $(document).ready(function(){
+        // Captura el click en el botón Save del formulario
+        $('#btnSaveSneaker').click(function(){
+            // Obtén los datos del formulario
+            var formData = new FormData($('#sneakerForm')[0]);
 
-    let formData = new FormData();
-    formData.append('sneaker_name', sneakerName);
-    formData.append('brand_name', brandName);
-    formData.append('size_number', sizeNumber);
-    formData.append('category_name', categoryName);
-    formData.append('price', price);
-    formData.append('stock_quantity', stockQuantity);
-    formData.append('image', image); // Corrige el nombre del campo de imagen
-
-    for (const entry of formData.entries()) {
-    console.log(entry);
-    }
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'scripts/newSneaker.php', true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                // Procesar la respuesta del servidor
-                let response = xhr.responseText;
-                let messageSneakerElement = document.getElementById('messageSneaker');
-                messageSneakerElement.textContent = response;
-
-                if (response.includes('saved successfully')) { // Simplifica la condición
-                    messageSneakerElement.className = 'alert alert-success';
-                    document.getElementById('sneaker_name').value = ''; // Limpia el campo de entrada
-                } else {
-                    messageSneakerElement.className = 'alert alert-danger';
+            // Envía los datos al servidor usando AJAX
+            $.ajax({
+                type: 'POST',
+                url: 'scripts/newSneaker.php', 
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    // Manejar la respuesta del servidor (puede ser un mensaje de éxito/error)
+                    console.log(response)
+                    $('#messageSneaker').html(response).fadeIn().delay(2000).fadeOut();
+                    // Cierra el modal
+                    $('#addSneakerModal').modal('hide');
+                },
+                error: function(error){
+                    console.error(error);
                 }
+            });
+        });
+    });
 
-                messageSneakerElement.style.display = 'block';
-                // Cierra el modal después de mostrar el mensaje
-                $('#addSneakerModal').modal('hide');
-                // Limpia y oculta el mensaje después de un tiempo
-                setTimeout(function() {
-                    messageSneakerElement.style.display = 'none';
-                }, 5000); // El mensaje se ocultará después de 5 segundos (5000 ms)
-            } else {
-                // Maneja errores si es necesario
-            }
-        }
-    };
-    xhr.send(formData);
-});
+
+
+    } catch (error) {
+        console.error(error)
+    }
 
 </script>

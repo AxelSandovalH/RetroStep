@@ -36,16 +36,16 @@
 <!-- JavaScript para el modal de categoría -->
 <script>
     document.getElementById('btnSaveCategory').addEventListener('click', function() {
-        var categoryName = document.getElementById('category_name').value;
+        let categoryName = document.getElementById('category_name').value;
 
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', 'scripts/newCategory.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    var response = xhr.responseText;
-                    var messageCategoryElement = document.getElementById('messageCategory');
+                    let response = xhr.responseText;
+                    let messageCategoryElement = document.getElementById('messageCategory');
                     messageCategoryElement.textContent = response;
 
                     if (response.indexOf('saved successfully') !== -1) {
