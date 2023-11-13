@@ -18,7 +18,7 @@
                 $user = mysqli_real_escape_string($connection, $_POST['usuario']);
                 $pass = md5(mysqli_real_escape_string($connection, $_POST['clave']));
 
-                $query = mysqli_query($connection, "SELECT * FROM users WHERE username = '$user' AND password = '$pass' ");
+                $query = mysqli_query($connection, "SELECT * FROM users WHERE username = '$user' AND password = '$pass' AND deleted_at IS NULL;");
                 $result = mysqli_num_rows($query);
 
                 if($result > 0){

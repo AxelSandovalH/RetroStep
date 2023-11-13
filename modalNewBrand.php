@@ -41,16 +41,16 @@
 
 <script>
     document.getElementById('btnSave').addEventListener('click', function() {
-        var brandName = document.getElementById('brand_name').value;
+        let brandName = document.getElementById('brand_name').value;
 
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', 'scripts/newBrand.php', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    var response = xhr.responseText;
-                    var messageElement = document.getElementById('message');
+                    let response = xhr.responseText;
+                    let messageElement = document.getElementById('message');
                     messageElement.textContent = response;
                     
                     if (response.indexOf('saved successfully.') !== -1) {
