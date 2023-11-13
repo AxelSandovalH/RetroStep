@@ -1,8 +1,7 @@
 <?php
-
-require_once "connection.php";
+// include("scripts/routeProtection.php");
+include("connection.php");
  
-
 if (isset($_GET['sneaker_id'])) {
     $sneaker_id = $_GET['sneaker_id'];
 

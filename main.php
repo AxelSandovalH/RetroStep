@@ -1,4 +1,8 @@
-<?php include_once('contents/header.php');?>
+<?php 
+// include("scripts/routeProtection.php");
+include("connection.php");
+
+include_once('contents/header.php');?>
 		
 		<!-------------------------sidebar------------>
 <?php include_once('contents/sidebar.php');?>

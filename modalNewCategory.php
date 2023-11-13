@@ -1,5 +1,6 @@
 <?php 
-
+    // include("scripts/routeProtection.php");
+    include("connection.php");
 ?>
 
 <!-- Modal para Add Category -->
