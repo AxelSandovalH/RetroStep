@@ -37,7 +37,7 @@
     }
 
      $(document).ready(function () {
-        $("#aSneakerTable").on('click', '#restoreSneakerBtn', function () {
+        $("#aSneakerTable").off('click', '#restoreSneakerBtn').on('click', '#restoreSneakerBtn', function () {
             let id = $(this).closest("tr").data("sneaker-id"); // O data("user-id") para usuarios
             $.ajax({
                 type: "POST",
@@ -53,7 +53,7 @@
 
         
 
-        $("#aSneakerTable").on('click', '#deleteSneakerBtn', function () {
+        $("#aSneakerTable").off('click', '#deleteSneakerBtn').on('click', '#deleteSneakerBtn', function () {
             let id = $(this).closest("tr").data("sneaker-id"); // O data("user-id") para usuarios
             let confirmation = confirm('Are you sure you want to delete this sneaker from the database?')
             if (!confirmation) {

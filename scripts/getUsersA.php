@@ -37,7 +37,7 @@
     }
 
      $(document).ready(function () {
-        $("#aUsersTable").on('click', '#restoreUserBtn', function () {
+        $("#aUsersTable").off('click', '#restoreUserBtn').on('click', '#restoreUserBtn', function () {
             let id = $(this).closest("tr").data("user-id"); // O data("user-id") para usuarios
             $.ajax({
                 type: "POST",
@@ -53,7 +53,7 @@
 
         
 
-        $("#aUserTable").on('click', '#deleteUserBtn', function () {
+        $("#aUsersTable").off('click', '#deleteUserBtn').on('click', '#deleteUserBtn', function () {
             let id = $(this).closest("tr").data("user-id"); // O data("user-id") para usuarios
             let confirmation = confirm('Are you sure you want to delete this user from the database?')
             if (!confirmation) {
