@@ -76,7 +76,7 @@
             </select>
 
             <label for="search-input">Búsqueda:</label>
-            <input type="text" id="search-input" placeholder="Buscar...">
+            <input type="search" id="search-input" placeholder="Search sneaker">
             <button id="search-button">Buscar</button>
         </div>
     </div>
@@ -136,4 +136,7 @@
     </div> -->
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/search.js"></script>
 </html>
