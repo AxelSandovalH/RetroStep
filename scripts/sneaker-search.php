@@ -7,7 +7,9 @@
         $query = "SELECT * from sneaker
         INNER JOIN stock
         ON sneaker.sneaker_id = stock.sneaker_id
-        WHERE sneaker_name LIKE '$search%' AND deleted_at IS NULL";
+        WHERE sneaker_name LIKE '$search%' 
+        OR brand_name LIKE '$search%'
+        AND deleted_at IS NULL";
         $result = mysqli_query($connection, $query);
 
         if(!$result){
@@ -17,6 +19,7 @@
         $json = array();
         while($row = mysqli_fetch_array($result)){
             $json[] = array(
+                'imagen_url' => $row['imagen_url'],
                 'sneaker_name' => $row['sneaker_name'],
                 'brand_name' => $row['brand_name'],
                 'size_number' => $row['size_number'],

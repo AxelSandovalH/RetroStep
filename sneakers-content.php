@@ -82,45 +82,12 @@
     </div>
 
 
-    <div class="TablaContainerSneakers">
-    <?php
-    require_once "connection.php";
-    $sql = "SELECT * from sneaker
-            INNER JOIN stock
-            ON sneaker.sneaker_id = stock.sneaker_id
-            WHERE sneaker.deleted_at IS NULL;";
-    $result = mysqli_query($connection, $sql);
-
-    while ($column = mysqli_fetch_array($result)) {
-    ?>
-        <div class="sneaker-card">
-            <div class="sneaker-image">
-                <img src="<?php echo $column['imagen_url']; ?>" alt="Imagen del sneaker">
-            </div>
-            <div class="sneaker-info">
-                <h2>Name: <?php echo $column['sneaker_name']; ?></h2>
-                <p>Brand: <?php echo $column['brand_name']; ?></p>
-                <p>Size: <?php echo $column['size_number']; ?></p>
-                <p>Price: <?php echo $column['price']; ?></p>
-                <p>Stock: <?php echo $column['stock_quantity']; ?></p>
-            </div>
-
-            <div class="sneaker-actions">
-                <a class="link_editar" href="updateSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>">
-                    <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
-                </a>
-                <a class="link_borrar" href="deleteSneaker.php?sneaker_id=<?php echo $column['sneaker_id']; ?>&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                    <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
-                </a>
-
-
-            </div>
-        </div>
-    <?php
-    }
-    ?>
+    <div id="sneaker-container" class="TablaContainerSneakers">
     </div>
 
+
+    <div id="fetched-sneaker-container" class="fetched-sneaker-container">
+    </div>
 
     <!-- <div class="container">
         <input type="checkbox" id="btn-mas">
@@ -138,5 +105,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="scripts/showSneakers.js"></script>
 <script src="scripts/search.js"></script>
 </html>

@@ -1,11 +1,11 @@
 <?php
     $host = 'localhost';
-    $user = 'root';
-    $password = 'psyduck56';
+    $user = 'paco';
+    $password = '2754';
     $db = 'retro_step';
-    $port = '3306';
-
-    // Conexión a la base de datos
-    $connection = mysqli_connect($host, $user, $password, $db, $port);
-
+    $port = '3307';
+    $connection = @mysqli_connect($host, $user, $password, $db, $port);
+    if(!$connection){
+        echo "Error en la conexión";
+    }
 ?>
