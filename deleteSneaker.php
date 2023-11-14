@@ -11,10 +11,7 @@ if (isset($_GET['sneaker_id'])) {
         // Actualizar la columna deleted_at en la tabla sneaker
         $queryDeleteSneaker = mysqli_query($connection, "UPDATE sneaker SET deleted_at = '$current_timestamp' WHERE sneaker_id = $sneaker_id");
 
-        // Actualizar la columna deleted_at en la tabla stock
-        $queryDeleteStock = mysqli_query($connection, "UPDATE stock SET deleted_at = '$current_timestamp' WHERE sneaker_id = $sneaker_id");
-
-        if ($queryDeleteSneaker && $queryDeleteStock) {
+        if ($queryDeleteSneaker) {
             header("location: sneakers.php");
         } else {
             echo "Error al eliminar";
