@@ -3,7 +3,7 @@
     $sql = "SELECT * from sneaker
             INNER JOIN stock
             ON sneaker.sneaker_id = stock.sneaker_id
-            WHERE deleted_at IS NOT NULL
+            WHERE sneaker.deleted_at IS NOT NULL
             ORDER BY sneaker.deleted_at DESC;";
     $result = mysqli_query($connection, $sql);
 

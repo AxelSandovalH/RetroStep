@@ -1,9 +1,9 @@
 <?php
     require_once "../connection.php";
-    $sql = "SELECT * from sneaker
+    $sql = "SELECT * FROM sneaker
             INNER JOIN stock
             ON sneaker.sneaker_id = stock.sneaker_id
-            WHERE deleted_at IS NULL
+            WHERE sneaker.deleted_at IS NULL
             ORDER BY sneaker.updated_at DESC;";
     $result = mysqli_query($connection, $sql);
 
