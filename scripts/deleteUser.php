@@ -7,7 +7,9 @@
     $result = mysqli_query($connection, $sql_select);
 
     if (mysqli_num_rows($result) > 0) {
-        $sql_delete = "DELETE FROM users WHERE id = $user_id";
+        $sql_delete = "UPDATE users 
+                        SET deleted_at = CURRENT_TIMESTAMP()
+                        WHERE id = $user_id";
         $result_delete = mysqli_query($connection, $sql_delete);
         echo "User deleted successfully";
 

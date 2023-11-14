@@ -16,7 +16,7 @@
         <td><?php echo $column['email']; ?></td>
         <td><?php echo $column['deleted_at']; ?></td>
         <td><button id="restoreUserBtn" class="btn btn-outline-secondary">Restore</button></td>
-        <td><button id="deleteUserBtn" class="btn btn-outline-danger deleteUserBtn">Delete from database</button></td>
+        <td><button id="deleteUserBtn" class="btn btn-outline-danger">Delete from database</button></td>
     </tr>
 <?php } ?>
 
@@ -53,7 +53,7 @@
 
         
 
-        $("#aUserTable").on('click', '#deleteUserBtn', function () {
+        $("#aUsersTable").on('click', '#deleteUserBtn', function () {
             let id = $(this).closest("tr").data("user-id"); // O data("user-id") para usuarios
             let confirmation = confirm('Are you sure you want to delete this user from the database?')
             if (!confirmation) {
