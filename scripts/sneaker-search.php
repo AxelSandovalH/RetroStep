@@ -7,8 +7,8 @@
         $query = "SELECT * from sneaker
         INNER JOIN stock
         ON sneaker.sneaker_id = stock.sneaker_id
-        WHERE sneaker_name LIKE '$search%' 
-        OR brand_name LIKE '$search%'
+        WHERE (sneaker_name LIKE '$search%' 
+        OR brand_name LIKE '$search%')
         AND deleted_at IS NULL";
         $result = mysqli_query($connection, $query);
 

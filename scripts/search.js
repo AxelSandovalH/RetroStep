@@ -5,9 +5,7 @@ $(document).ready(function(){
 
         $('#search-input').keyup(function() {
         
-
-            if($('#search-input').val()){
-                $("#fetched-sneaker-table").show();
+                $("#fetched-sneaker-table").hide();
                 $('.TablaContainerSneakers').hide();
                 // Se guarda el valor (val) del input en una variable para mostrarla en la consola 
                 let search = $('#search-input').val()
@@ -20,8 +18,7 @@ $(document).ready(function(){
                         success: function(response) {
                             let sneakers = JSON.parse(response);
                             if (sneakers.length > 0) {
-                                template = '';
-
+                                let template = '';
                                 // console.log(sneakers);
                                 sneakers.forEach(sneaker => {
                                 template += `
@@ -62,11 +59,11 @@ $(document).ready(function(){
                         }
 
                     })
+                } else {
+                    $('#fetched-sneaker-container').hide();
+                    $(".TablaContainerSneakers").show();
                 }
-            } else {
-                $("#fetched-sneaker-table").hide();
-                $('.TablaContainerSneakers').show();
-            }
+            
         })
     }
 
