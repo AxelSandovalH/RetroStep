@@ -23,8 +23,8 @@ require_once("connection.php");
             <input type="text" class="form-control" id="sneaker_name" name="sneaker_name" placeholder="Type the sneaker's name">
         </div>
         <div class="form-group">
-            <label for="categoryName">Sneaker brand</label>
-            <select class="form-control" id="brand_name" name="brand_name" placeholder="Select brand">
+            <label for="brandName">Brand Name</label>
+            <select class="form-control" id="brand_name" name="brand_name" placeholder="Type the sneaker's brand">
                     <?php
                         $sql_brands = "SELECT brand_name FROM brand";
                         $result_brands = mysqli_query($connection, $sql_brands);
@@ -68,11 +68,11 @@ require_once("connection.php");
             <label for="categoryName">Category</label>
                 <select type="text" id="category_name" name="category_name" class="form-control">
                     <?php
-                        $sql_categories = "SELECT category_name FROM category";
-                        $result_categories = mysqli_query($connection, $sql_categories);
+                        $sql_brands = "SELECT category_name FROM category";
+                        $result_brands = mysqli_query($connection, $sql_brands);
                         
-                        if (mysqli_num_rows($result_categories) > 0) {
-                            while ($row = mysqli_fetch_assoc($result_categories)) {
+                        if (mysqli_num_rows($result_brands) > 0) {
+                            while ($row = mysqli_fetch_assoc($result_brands)) {
                                 $cat_option = $row['category_name'];
                                 $selected = ($cat_option == $category_name) ? "selected" : "";
                                 echo "<option value='$cat_option' $selected>$cat_option</option>";
@@ -112,6 +112,15 @@ require_once("connection.php");
 <!-- JavaScript para el modal de categoría -->
 <script src="scripts/ajaxMain.js"></script>
 <script>
+// document.getElementById('btnSaveSneaker').addEventListener('click', function() {
+//     let sneakerName = document.getElementById('sneaker_name').value;
+//     let brandName = document.getElementById('brand_name').value;
+//     console.log(brandName)
+//     let sizeNumber = document.getElementById('size_number').value;
+//     let categoryName = document.getElementById('category_name').value;
+//     let price = document.getElementById('price').value;
+//     let stockQuantity = document.getElementById('stock_quantity').value;
+//     let image = document.getElementById('image').files[0];
 
     try {
 
