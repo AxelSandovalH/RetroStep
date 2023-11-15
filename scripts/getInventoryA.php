@@ -3,7 +3,7 @@
     $sql = "SELECT * from sneaker
             INNER JOIN stock
             ON sneaker.sneaker_id = stock.sneaker_id
-            WHERE deleted_at IS NOT NULL
+            WHERE sneaker.deleted_at IS NOT NULL
             ORDER BY sneaker.deleted_at DESC;";
     $result = mysqli_query($connection, $sql);
 
@@ -37,7 +37,7 @@
     }
 
      $(document).ready(function () {
-        $("#aSneakerTable").on('click', '#restoreSneakerBtn', function () {
+        $("#aSneakerTable").off('click', '#restoreSneakerBtn').on('click', '#restoreSneakerBtn', function () {
             let id = $(this).closest("tr").data("sneaker-id"); // O data("user-id") para usuarios
             $.ajax({
                 type: "POST",
@@ -53,7 +53,7 @@
 
         
 
-        $("#aSneakerTable").on('click', '#deleteSneakerBtn', function () {
+        $("#aSneakerTable").off('click', '#deleteSneakerBtn').on('click', '#deleteSneakerBtn', function () {
             let id = $(this).closest("tr").data("sneaker-id"); // O data("user-id") para usuarios
             let confirmation = confirm('Are you sure you want to delete this sneaker from the database?')
             if (!confirmation) {

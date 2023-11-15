@@ -1,15 +1,17 @@
 <?php
-
 require_once "connection.php";
- 
 
 if (isset($_GET['sneaker_id'])) {
     $sneaker_id = $_GET['sneaker_id'];
 
     if (isset($_GET['confirmed']) && $_GET['confirmed'] === 'yes') {
-        $queryDelete = mysqli_query($connection, "UPDATE sneaker SET deleted_at = CURRENT_TIMESTAMP() WHERE sneaker_id = $sneaker_id");
+        // Obtener la fecha y hora actual
+        $current_timestamp = date("Y-m-d H:i:s");
 
-        if ($queryDelete) {
+        // Actualizar la columna deleted_at en la tabla sneaker
+        $queryDeleteSneaker = mysqli_query($connection, "UPDATE sneaker SET deleted_at = '$current_timestamp' WHERE sneaker_id = $sneaker_id");
+
+        if ($queryDeleteSneaker) {
             header("location: sneakers.php");
         } else {
             echo "Error al eliminar";

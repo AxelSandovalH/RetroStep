@@ -13,7 +13,7 @@
 <?php include_once('contents/top-header.php');?>		   
 		   
 		   <!--------main-content------------->
-<?php include_once('contents/archived-content.php');?>		   
+<?php include_once('contents/users-content.php');?>		   
 		   
 			 
 			 <!---footer---->

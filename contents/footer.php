@@ -11,7 +11,6 @@
 					   </div>
 				   </div>
 				</div>
-			 
 			 </footer>
 		</div>
 </div>
@@ -36,7 +35,7 @@
    <script src="js/jquery-3.3.1.min.js"></script>
   
   
-  <script type="text/javascript">
+    <script type="text/javascript">
         
 		$(document).ready(function(){
 		  $("#sidebar-collapse").on('click',function(){
@@ -50,7 +49,7 @@
 		  
 		});
 		
-</script>
+	</script>
   
   
 
