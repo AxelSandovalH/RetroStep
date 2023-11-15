@@ -16,7 +16,7 @@
         <td><?php echo $column['email']; ?></td>
         <td><?php echo $column['deleted_at']; ?></td>
         <td><button id="restoreUserBtn" class="btn btn-outline-secondary">Restore</button></td>
-        <td><button id="deleteUserBtn" class="btn btn-outline-danger deleteUserBtn">Delete from database</button></td>
+        <td><button id="deleteUserBtn" class="btn btn-outline-danger">Delete from database</button></td>
     </tr>
 <?php } ?>
 
