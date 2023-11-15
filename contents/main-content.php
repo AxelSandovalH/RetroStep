@@ -6,6 +6,56 @@
 
 </style>
 
+<?php
+// Incluye el archivo de conexión
+require_once "connection.php";
+
+// Consulta SQL para obtener la cantidad de marcas no archivadas
+$registeredBrandsQuery = "SELECT COUNT(*) AS registered_brands FROM brand";
+
+// Consulta SQL para obtener la cantidad total de stock no archivado
+$totalStockQuery = "SELECT SUM(stock.stock_quantity) AS total_stock FROM stock INNER JOIN sneaker
+                    ON stock.sneaker_id = sneaker.sneaker_id
+                    WHERE sneaker.deleted_at IS NULL";
+
+// Consulta SQL para obtener el valor total del stock no archivado
+$stockValueQuery = "SELECT SUM(s.price * st.stock_quantity) AS stock_value 
+                    FROM sneaker s 
+                    JOIN stock st ON s.sneaker_id = st.sneaker_id 
+                    WHERE s.deleted_at IS NULL";
+
+// Consulta SQL para obtener la cantidad de usuarios no archivados
+$registeredUsersQuery = "SELECT COUNT(*) AS registered_users FROM users WHERE deleted_at IS NULL";
+
+
+
+
+// Función para ejecutar la consulta preparada y obtener el resultado
+function executeQuery($connection, $query) {
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    return $result;
+}
+
+// Ejecutar las consultas y obtener los resultados
+$registeredBrandsResult = executeQuery($connection, $registeredBrandsQuery);
+$totalStockResult = executeQuery($connection, $totalStockQuery);
+$stockValueResult = executeQuery($connection, $stockValueQuery);
+$registeredUsersResult = executeQuery($connection, $registeredUsersQuery);
+
+// Obtener los resultados
+$registeredBrands = $registeredBrandsResult->fetch_assoc()['registered_brands'];
+$totalStock = $totalStockResult->fetch_assoc()['total_stock'];
+$stockValue = $stockValueResult->fetch_assoc()['stock_value'];
+$registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
+
+// Cerrar la conexión
+
+?>
+
+
 <div class="main-content">
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -17,7 +67,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Registered brands</strong></p>
-                    <h3 class="card-title">70,340</h3>
+                    <h3 class="card-title"><?php echo $registeredBrands; ?></h3>
                 </div>
             </div>
         </div>
@@ -29,9 +79,9 @@
                         <span class="material-icons">inventory</span>
                     </div>
                 </div>
-                <div class "card-content">
+                <div class="card-content">
                     <p class="category"><strong>Total stock</strong></p>
-                    <h3 class="card-title">102</h3>
+                    <h3 class="card-title"><?php echo $totalStock; ?></h3>
                 </div>
             </div>
         </div>
@@ -45,7 +95,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Stock value</strong></p>
-                    <h3 class="card-title">$23,344</h3>
+                    <h3 class="card-title">$<?php echo number_format($stockValue, 2); ?></h3>
                 </div>
             </div>
         </div>
@@ -59,7 +109,7 @@
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Registered users</strong></p>
-                    <h3 class="card-title">5</h3>
+                    <h3 class="card-title"><?php echo $registeredUsers; ?></h3>
                 </div>
             </div>
         </div>
@@ -148,6 +198,7 @@
 
 <?php include_once("modalNewCategory.php"); ?>
 
+<?php include_once("modalNewSneaker.php"); ?>
 
 
 			 

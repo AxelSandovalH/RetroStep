@@ -1,11 +1,11 @@
 <?php
 // include("scripts/routeProtection.php");
-include("../connection.php");
+require_once("../connection.php");
 
 if (!empty($_POST)) {
     //Verificar que todos los campos estén llenos
     if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
-        $alert = '<p class="msg_error">All fields must be filled out</p>';
+        echo'<p class="msg_error">All fields must be filled out</p>';
     } else {
         //Recibir datos
         $username = $_POST["username"];
@@ -25,8 +25,9 @@ if (!empty($_POST)) {
 
             if ($query_insert) {
                 // Redirigir a usuarios.php después de agregar el usuario
-                header('Location: users.php');
-                exit(); // Asegúrate de usar exit() después de la redirección para detener la ejecución del script actual
+                echo"User saved successfully";
+
+                // exit(); // Asegúrate de usar exit() después de la redirección para detener la ejecución del script actual
             } else {
                 echo "Error: " . mysqli_error($connection);
                 echo "Affected rows: " . mysqli_affected_rows($connection);

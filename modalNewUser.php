@@ -17,7 +17,7 @@
     </div>
     <div class="modal-body">
         <!-- Aquí coloca tu formulario para agregar un usuario -->
-        <form>
+        <form id="userForm">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username">
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="text" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="form-group">
             <label for="rol">Rol</label>
@@ -48,47 +48,62 @@
 </div>
 </div>
 
-<script src="js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <!-- JavaScript para el modal de usuario -->
 <script>
-    document.getElementById('btnSaveUser').addEventListener('click', function() {
-        let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
-        let email = document.getElementById('email').value;
-        let rol = document.getElementById('rol').value;
+    //    try {
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'scripts/newUser.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    let response = xhr.responseText;
-                    let messageUserElement = document.getElementById('messageUser');
-                    messageUserElement.textContent = response;
+        $(document).ready(function(){
 
-                    if (response.indexOf('saved successfully') !== -1) {
-                        messageUserElement.className = 'alert alert-success';
-                        document.getElementById('username').value = ''; // Limpia el campo de entrada
-                        document.getElementById('password').value = '';
-                        document.getElementById('email').value = '';
-                        document.getElementById('rol').value = '';
-                    } else {
-                        messageUserElement.className = 'alert alert-danger';
-                    }
-
-                    messageUserElement.style.display = 'block';
-                    // Cierra el modal después de mostrar el mensaje
-                    $('#addUserModal').modal('hide');
-                    // Limpia y oculta el mensaje después de un tiempo
-                    setTimeout(function() {
-                        messageUserElement.style.display = 'none';
-                    }, 5000); // El mensaje se ocultará después de 5 segundos (5000 ms)
-                } else {
-                    // Maneja errores si es necesario
+        function updateUsersTable() {
+            // AJAX para obtener la tabla sin refrescar
+            $.ajax({
+                type: "GET",
+                url: "scripts/getUsers.php",
+                success: function (response) {
+                    // Actualiza la tabla con la nueva información
+                    $('#UsersTable tbody').html(response);
+                },
+                error:function(error){
+                    console.error(error);
                 }
-            }
-        };
-        xhr.send('username=' + username + '&password=' + password + '&email=' + email + '&rol=' + rol);
-    });
+            });
+        }
+
+        updateUsersTable()
+
+
+            // Captura el click en el botón Save del formulario
+            $('#btnSaveUser').click(function(){
+                // Obtén los datos del formulario
+                let formData = new FormData($('#userForm')[0]);
+
+                // Envía los datos al servidor usando AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'scripts/newUser.php', 
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        // Manejar la respuesta del servidor (puede ser un mensaje de éxito/error)
+                        console.log(response)
+                        $('#messageUser').html(response).fadeIn().delay(2000).fadeOut();
+                        // Cierra el modal
+                        updateUsersTable()
+                        $('#addUserModal').modal('hide');
+
+                    },
+                    error: function(error){
+                        console.error(error);
+                    }
+                });
+            });
+        });
+
+
+
+        // } catch (error) {
+        //     console.error(error)
+        // }
 </script>
