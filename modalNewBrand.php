@@ -1,3 +1,7 @@
+<?php
+    // include("scripts/routeProtection.php");
+    include("connection.php");
+?>
 
 <!-- Modal para Add Brand -->
 <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModalLabel" aria-hidden="true">

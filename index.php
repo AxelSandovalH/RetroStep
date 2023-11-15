@@ -32,8 +32,8 @@
 
                     if($data['rol'] == 1){
                         header('location: main.php');
-                    }else{
-                        header('location: system/rol2_view.php');
+                    }else if($data['rol'] == 2){
+                        header('location: main_rol2.php');
                     }
                     
                 }

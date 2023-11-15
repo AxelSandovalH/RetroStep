@@ -1,5 +1,6 @@
 <?php
-require_once("../connection.php");
+// include("scripts/routeProtection.php");
+include("../connection.php");
 
 if (!empty($_POST)) {
     $brand_name = $_POST["brand_name"];
