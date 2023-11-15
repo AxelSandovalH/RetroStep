@@ -19,6 +19,7 @@
         $json = array();
         while($row = mysqli_fetch_array($result)){
             $json[] = array(
+                'sneaker_id' => $row['sneaker_id'],
                 'imagen_url' => $row['imagen_url'],
                 'sneaker_name' => $row['sneaker_name'],
                 'brand_name' => $row['brand_name'],
