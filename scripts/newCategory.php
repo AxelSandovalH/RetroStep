@@ -1,6 +1,6 @@
 <?php
 // include("scripts/routeProtection.php");
-include("../connection.php");
+require_once("../connection.php");
 
 if (!empty($_POST)) {
     $category_name = $_POST["category_name"];

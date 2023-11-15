@@ -79,7 +79,7 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                         <span class="material-icons">inventory</span>
                     </div>
                 </div>
-                <div class "card-content">
+                <div class="card-content">
                     <p class="category"><strong>Total stock</strong></p>
                     <h3 class="card-title"><?php echo $totalStock; ?></h3>
                 </div>
@@ -198,6 +198,7 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
 
 <?php include_once("modalNewCategory.php"); ?>
 
+<?php include_once("modalNewSneaker.php"); ?>
 
 
 			 
