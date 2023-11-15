@@ -2,6 +2,7 @@ $(document).ready(function(){
     // EJEMPLO EN EL QUE SE REFLEJA TODO LO QUE ESCRIBE EL USUARIO Y SE ACTUALIZA EN INPUT DE LA NAVBAR
     // A través del input con id = "search", en cada tecleo ("keyup") hará una función
     function loadFetchedSneakers(){
+        $("#not-found-msg").hide();
 
         $('#search-input').keyup(function() {
         
@@ -16,6 +17,8 @@ $(document).ready(function(){
                         type: 'POST',
                         data: { search },
                         success: function(response) {
+                            console.log(response)
+
                             let sneakers = JSON.parse(response);
                             if (sneakers.length > 0) {
                                 let template = '';
@@ -51,7 +54,9 @@ $(document).ready(function(){
                                 $('#fetched-sneaker-container').html(template);
 
                             } else {
-                                $('#fetched-sneaker-container').html('<h2> No se encontraron resultados </h2>');
+                                // $('#fetched-sneaker-container').html('<h2> No se encontraron resultados </h2>');
+                                $('#fetched-sneaker-container').hide();
+                                $('#not-found-msg').show();
                             }
                         },
                         error: function(error) {
@@ -60,6 +65,7 @@ $(document).ready(function(){
 
                     })
                 } else {
+                    $("#not-found-msg").hide();
                     $('#fetched-sneaker-container').hide();
                     $(".TablaContainerSneakers").show();
                 }
