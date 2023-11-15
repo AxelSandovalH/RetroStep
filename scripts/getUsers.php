@@ -14,7 +14,7 @@
         <td><?php echo $column['rol_name']; ?></td>
         <td><?php echo $column['email']; ?></td>
         <td><?php echo $column['created_at']; ?></td>
-        <td><button id="editUserBtn" class="btn btn-outline-secondary" href="#?sneaker_id=<?php echo $column['sneaker_id']; ?>">Edit</button></td>
+        <td><button id="editUserBtn" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editUserModal">Edit</button></td>
         <td><button id="deleteUserBtn" class="btn btn-outline-danger deleteUserBtn">Delete</button></td>
     </tr>
 <?php } ?>
@@ -60,3 +60,5 @@
 
     }); 
 </script>
+
+<?php include_once("modalEditUser.php"); ?>

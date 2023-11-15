@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="rol">Rol</label>
-            <select id="rol"name="rol" value="<?php echo $rol; ?>" required>
+            <select id="rol" name="rol" value="<?php echo $rol; ?>" required>
                 <option value="1">Administrador</option>
                 <option value="2">Vendedor</option>
             </select>
@@ -70,6 +70,9 @@
                     if (response.indexOf('saved successfully') !== -1) {
                         messageUserElement.className = 'alert alert-success';
                         document.getElementById('username').value = ''; // Limpia el campo de entrada
+                        document.getElementById('password').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('rol').value = '';
                     } else {
                         messageUserElement.className = 'alert alert-danger';
                     }
