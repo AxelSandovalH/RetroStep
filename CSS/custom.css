@@ -513,6 +513,26 @@ overflow:auto;
 	position:relative;
 }
 
+.card-content .activity-buttons{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary{
+	margin-bottom: 5%;
+}
+
+.btn-success{
+	margin-bottom: 5%;
+}
+
+.btn-info{
+	margin-bottom: 5%;
+}
 
 .steamline .sl-primary{
 	border-left-color:#188ae2;
