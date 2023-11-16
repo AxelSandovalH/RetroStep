@@ -8,7 +8,7 @@
 				   <span class="material-icons">arrow_back_ios</span>
 				 </button>
 				 
-				 <a class="navbar-brand" href="main.php">Dashboard</a>
+				 <a class="navbar-brand" href="main.php"><i class="fa-solid fa-house fa-sm" style="color: #ffffff;"></i></a>
 				 <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
 				   data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle">
 				    <span class="material-icons">more_vert</span>
@@ -18,13 +18,13 @@
 					<ul class="nav navbar-nav ml-auto">
 					
 					<li class="nav-item">
-					  <a class="nav-link" href="#"><span class="material-icons">apps</span></a>
+					  <a class="nav-link" href="sneakers.php"><span class="material-icons">apps</span></a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link" href="#"><span class="material-icons">person</span></a>
+					  <a class="nav-link" href="users.php"><span class="material-icons">person</span></a>
 					</li>
 					<li class="nav-item">
-					  <a class="nav-link" href="#"><span class="material-icons">settings</span></a>
+					  <a class="nav-link" href="exit.php"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #ffffff;"></i></a>
 					</li>
 				    
 					</ul>

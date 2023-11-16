@@ -12,7 +12,7 @@
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
 		
-		
+        <script src="https://kit.fontawesome.com/c7fad14ccd.js" crossorigin="anonymous"></script>
 		<!--google fonts -->
 	
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +24,7 @@
 	
 	<!--google material icon-->
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
+
 
   </head>
   <body>

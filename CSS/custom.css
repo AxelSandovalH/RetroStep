@@ -212,7 +212,7 @@ overflow:auto;
 	line-height: 30px;
 	border-radius:5px;
     font-size: 15px;
-	position:relative;'
+	position:relative;
     font-weight: 400;
     display: block;
 }
@@ -357,7 +357,7 @@ overflow:auto;
 .navbar-nav li a{
 	position:relative;
 	display:block;
-	padding:10px 15px!important;
+	padding:10px 170px!important;
 }
 
 

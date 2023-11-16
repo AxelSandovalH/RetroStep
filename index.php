@@ -54,7 +54,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+<script src="https://kit.fontawesome.com/c7fad14ccd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styleIndex.css">
     <meta charset="UTF-8">
