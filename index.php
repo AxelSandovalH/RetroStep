@@ -95,10 +95,14 @@
                 <button type="reset" id="Cancelar">Cancelar</button>
                 <button id = "Succes" type="submit" >Verificar</button>
             </div>
+
+            <div class="terminos">
+                Al ingresar, estás aceptando los <a href="Term.html" target="_blank">términos y condiciones</a>.
+            </div>
+
         </form>
     </div>
-    
-    
+
     <script src="app.js"></script>
 </body>
 </html>

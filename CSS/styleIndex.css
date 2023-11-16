@@ -141,3 +141,19 @@ body {
     background-color: #a12020;
     transform: scale(1.1);
 }
+
+.terminos {
+    margin-top: 5%;
+    color: rgb(0, 0, 0); 
+    font-size: 12px;
+    text-align: center;
+}
+
+.terminos a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.terminos a:hover {
+    text-decoration: underline; 
+}

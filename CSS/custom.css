@@ -493,7 +493,6 @@ overflow:auto;
 .card .card-header-text h4{
 	margin-top:0;
 	margin-bottom:3px;
-	font-size:19px;
 	font-weight:400;
 	color:#222222;
 	text-decoration:none;
@@ -522,16 +521,28 @@ overflow:auto;
     margin-bottom: 10px;
 }
 
+.btn-primary1{
+	margin-bottom: 0%;
+	color: #fff;
+	background-color:#2196f3;
+}
+
 .btn-primary{
 	margin-bottom: 5%;
+	width: 50%;
+	padding: 3%;
 }
 
 .btn-success{
 	margin-bottom: 5%;
+	width: 50%;
+	padding: 3%;
 }
 
 .btn-info{
 	margin-bottom: 5%;
+	width: 50%;
+	padding: 3%;
 }
 
 .steamline .sl-primary{
