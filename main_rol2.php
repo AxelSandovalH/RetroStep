@@ -187,8 +187,6 @@ if ($result->num_rows > 0) {
 
 <?php include_once("modalNewCategory.php"); ?>
 
-
-
 			 
 			 
 			 <!---footer---->
