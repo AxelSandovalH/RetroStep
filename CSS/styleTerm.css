@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;1,6..12,400&family=Roboto+Mono:wght@200&family=Sedgwick+Ave+Display&display=swap');
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    /* font-size: 40px; */
+}
+
+body {
+    background-size: cover;
+}
+
+/* Estilos del encabezado */
+.header {
+    background-color: #252B48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+    position: static;
+
+}
+/* Estilos del logo */
+.header .logo {
+    cursor: pointer;
+}
+
+
+/* Estilos del Titulo */
+.header div h1 {
+    display: inline-block;
+    color: beige;
+    padding: 0 20px;
+    transition: all 0.3s;
+    font-weight: 800;
+    
+    transition: color 0.3s, transform 0.3s; /* Transición de color y transformación */
+}
+
+.header div h1:hover {
+    color: #ffae00;
+    cursor: pointer;
+    
+    transform: scale(1.5) translateX(0); /* Incrementa el tamaño en hover y bloquea el movimiento en X */
+}
+
+.RS{
+    margin-top: -15%;
+    width: 150px;
+    margin-bottom: 5%;
+}
+
+.container {
+    max-width: 600px;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10%;
+}
+
+#btn-mas{
+    display: none;
+}
+.BTN{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.redes a, .btn-mas label{
+    display: block;
+    text-decoration: none;
+    background: #931e1e;
+    color: #fff;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.4);
+    transition: all 500ms ease;
+}
+.redes a:hover{
+    background: #fff;
+    color: #939393;
+}
+.redes a{
+    margin-bottom: -15px;
+    opacity: 0;
+    visibility: hidden;
+}
+#btn-mas:checked~ .redes a{
+    margin-bottom: 10px;
+    opacity: 1;
+    visibility: visible;
+}
+.btn-mas label{
+    cursor: pointer;
+    background: #939393;
+    font-size: 23px;
+}
+#btn-mas:checked ~ .btn-mas label{
+    transform: rotate(135deg);
+    font-size: 25px;
+}
