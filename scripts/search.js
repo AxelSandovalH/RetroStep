@@ -15,12 +15,14 @@ $(document).ready(function(){
                         type: 'POST',
                         data: { search },
                         success: function(response) {
+                            $('#fetched-sneaker-container').hide();
+
                             console.log(response)
 
                             let sneakers = JSON.parse(response);
                             if (sneakers.length > 0) {
                                 let template = '';
-                                // console.log(sneakers);
+                                console.log(sneakers);
                                 sneakers.forEach(sneaker => {
                                 template += `
                                 <div id="sneaker-card" class="sneaker-card">
@@ -63,19 +65,16 @@ $(document).ready(function(){
 
                     })
                 } else {
-                    $("#not-found-msg").hide();
                     $('#fetched-sneaker-container').hide();
                     $(".TablaContainerSneakers").show();
                 }
-            
         })
     }
 
     loadFetchedSneakers()
 
      // Eliminar sneaker
-
-    $('#fetched-sneaker-container').on('click', '.eliminar', function () {
+    $('#fetched-sneaker-container').off('click', '.eliminar').on('click', '.eliminar', function () {
         // Obtener el ID del sneaker
         let sneakerId = $(this).data('sneaker-id');
         let confirmDelete = confirm('¿Seguro que quieres borrar este sneaker?');
@@ -89,8 +88,8 @@ $(document).ready(function(){
                 success: function (response) {
                     // Manejar la respuesta después de la eliminación
                     console.log(response);
-                    
-                    loadFetchedSneakers()
+                    location.reload(true);
+
                     // Actualizar la vista después de la eliminación
                 },
                 error: function (error) {
@@ -103,7 +102,5 @@ $(document).ready(function(){
         }
         
     });
-
-    loadFetchedSneakers();
 
 })
