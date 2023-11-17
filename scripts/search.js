@@ -2,24 +2,27 @@ $(document).ready(function(){
     // EJEMPLO EN EL QUE SE REFLEJA TODO LO QUE ESCRIBE EL USUARIO Y SE ACTUALIZA EN INPUT DE LA NAVBAR
     // A través del input con id = "search", en cada tecleo ("keyup") hará una función
     function loadFetchedSneakers(){
+        $("#not-found-msg").hide();
 
         $('#search-input').keyup(function() {
         
-                $("#fetched-sneaker-table").hide();
                 $('.TablaContainerSneakers').hide();
                 // Se guarda el valor (val) del input en una variable para mostrarla en la consola 
                 let search = $('#search-input').val()
-        
                 if(search){
                     $.ajax({
                         url: 'scripts/sneaker-search.php',
                         type: 'POST',
                         data: { search },
                         success: function(response) {
+                            $('#fetched-sneaker-container').hide();
+
+                            console.log(response)
+
                             let sneakers = JSON.parse(response);
                             if (sneakers.length > 0) {
                                 let template = '';
-                                // console.log(sneakers);
+                                console.log(sneakers);
                                 sneakers.forEach(sneaker => {
                                 template += `
                                 <div id="sneaker-card" class="sneaker-card">
@@ -38,8 +41,8 @@ $(document).ready(function(){
                                             <a class="link_editar" href="updateSneaker.php?sneaker_id=${sneaker.sneaker_id}">
                                                 <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                                             </a>
-                                            <a class="link_borrar" href="deleteSneaker.php?sneaker_id=${sneaker.sneaker_id}&confirmed=yes" onclick="return confirm('¿Seguro que quieres borrar?')">
-                                                <button class="eliminar"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
+                                            <a class="link_borrar">
+                                                <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
                                             </a>
 
 
@@ -51,7 +54,9 @@ $(document).ready(function(){
                                 $('#fetched-sneaker-container').html(template);
 
                             } else {
-                                $('#fetched-sneaker-container').html('<h2> No se encontraron resultados </h2>');
+                                // $('#fetched-sneaker-container').html('<h2> No se encontraron resultados </h2>');
+                                $('#fetched-sneaker-container').hide();
+                                $('#not-found-msg').show();
                             }
                         },
                         error: function(error) {
@@ -63,9 +68,39 @@ $(document).ready(function(){
                     $('#fetched-sneaker-container').hide();
                     $(".TablaContainerSneakers").show();
                 }
-            
         })
     }
 
     loadFetchedSneakers()
+
+     // Eliminar sneaker
+    $('#fetched-sneaker-container').off('click', '.eliminar').on('click', '.eliminar', function () {
+        // Obtener el ID del sneaker
+        let sneakerId = $(this).data('sneaker-id');
+        let confirmDelete = confirm('¿Seguro que quieres borrar este sneaker?');
+
+        if (confirmDelete) {
+        // Realizar la solicitud de eliminación mediante Ajax
+            $.ajax({
+                url: 'deleteSneaker.php', // Ajusta la URL según tu estructura
+                type: 'POST',
+                data: { sneaker_id: sneakerId },
+                success: function (response) {
+                    // Manejar la respuesta después de la eliminación
+                    console.log(response);
+                    location.reload(true);
+
+                    // Actualizar la vista después de la eliminación
+                },
+                error: function (error) {
+                    console.error(error);
+                    // Manejar el error
+                }
+            });
+        } else {
+            return false;
+        }
+        
+    });
+
 })

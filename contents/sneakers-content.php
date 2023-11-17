@@ -89,6 +89,8 @@
     <div id="fetched-sneaker-container" class="fetched-sneaker-container">
     </div>
 
+    <div id="not-found-msg" class="not-found-msg"><h2> No se encontraron resultados </h2></div>
+
     <!-- <div class="container">
         <input type="checkbox" id="btn-mas">
         <div class="options">

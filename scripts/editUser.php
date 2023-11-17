@@ -1,52 +1,25 @@
 <?php
-require_once "../connection.php"; 
+require_once "../connection.php";
 
-// Valida la existencia de algún campo que ocasione conflicto
-if(!empty($_POST)){
-
-    $idU = $_POST["idUser"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["user_id"])) {
+    $user_id = $_POST["user_id"];
     $username = $_POST["username"];
-    $rol = $_POST["rol"];
-    $password = $_POST["password"];
+    $rol = $_POST["selectEditRole"];
     $email = $_POST["email"];
 
-    $query = mysqli_query($connection, 
-    "SELECT * FROM users 
-    WHERE (id != $idU AND  username = '$username' AND email = '$email')");
+    $query = "UPDATE users SET username = ?, rol = ?, email = ? WHERE id = ?";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("sssi", $username, $rol, $email, $user_id);
 
-    $result = mysqli_fetch_array($query);
-
-    if($result > 0){
-        echo 'Username or Email already exists';
+    if ($stmt->execute()) {
+        echo "User updated successfully";
+    } else {
+        echo "Error updating user: " . $stmt->error;
     }
 
-    // Si pasa la validación, procede a capturar los datos.
-    else{
-        $sql_update = mysqli_query($connection, 
-        "UPDATE users 
-        SET
-        username = '$username',
-        rol = $rol,
-        password = '$password',
-        email = '$email'
-        
-        WHERE id = $idU ");
-
-        if($sql_update){
-            echo 'User successfully updated';
-        }
-        else{
-            echo 'Update: error';
-        }
-    }
+    $stmt->close();
+    $connection->close();
+} else {
+    echo "Invalid Request";
 }
-
-
-$idUser = $_GET['id'];
-
-$sql = mysqli_query($connection,    
-"SELECT u.username, u.rol, u.password, u.email
-FROM users u
-WHERE id = $idUser");
 ?>
-
