@@ -17,7 +17,7 @@
         <input type="checkbox" id="filterTab" class="tab-checkbox">
         <div class="filter-container">
             <label for="brand-filter">Marca:</label>
-            <select id="brand-filter">
+            <select id="brand-filter" class="filter-dropdown">
                 <option value="">Todas las marcas</option>
                 <?php
                 require_once "connection.php";
@@ -31,7 +31,7 @@
                 ?>
             </select>
             <label for="size-filter">Talla:</label>
-            <select id="size-filter">
+            <select id="size-filter" class="filter-dropdown">
                 <option value="">Todas las tallas</option>
                 <?php
                 require_once "connection.php";
@@ -46,7 +46,7 @@
             </select>
 
             <label for="model-filter">Modelo:</label>
-            <select id="model-filter">
+            <select id="model-filter" class="filter-dropdown">
                 <option value="">Todos los modelos</option>
                 <?php
                 require_once "connection.php";
@@ -61,7 +61,7 @@
             </select>
 
             <label for="category-filter">Categoría:</label>
-            <select id="category-filter">
+            <select id="category-filter" class="filter-dropdown">
                 <option value="">Todas las categorías</option>
                 <?php
                 require_once "connection.php";
@@ -88,6 +88,9 @@
 
     <div id="fetched-sneaker-container" class="fetched-sneaker-container">
     </div>
+    
+    <div id="filtered-sneaker-container" class="filtered-sneaker-container">
+    </div>
 
     <div id="not-found-msg" class="not-found-msg"><h2> No se encontraron resultados </h2></div>
 
@@ -109,4 +112,5 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="scripts/showSneakers.js"></script>
 <script src="scripts/search.js"></script>
+<script src="scripts/filter.js"></script>
 </html>
