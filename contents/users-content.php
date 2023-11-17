@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody class="no-uppercase">
-                        <!-- getUsersA.php -->
+                        <!-- getUsers.php -->
                     </tbody>
                 </table>
             </div>
@@ -44,7 +44,7 @@
 <script src="scripts/ajaxUsers.js"></script>
 
 <?php include_once("modalNewUser.php"); ?>
-
+<?php include_once("modalEditUser.php"); ?>
 
 
 			 

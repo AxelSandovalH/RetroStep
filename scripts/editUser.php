@@ -34,7 +34,6 @@ if(!empty($_POST)){
 
         if($sql_update){
             echo 'User successfully updated';
-            header("location: users.php");
         }
         else{
             echo 'Update: error';
@@ -42,33 +41,12 @@ if(!empty($_POST)){
     }
 }
 
-// Valida que el id en la url exista o tenga valor
-if(empty($_GET['id'])){
-
-    header("location: users.php");
-
-}
 
 $idUser = $_GET['id'];
 
-$sql = mysqli_query($connection, 
+$sql = mysqli_query($connection,    
 "SELECT u.username, u.rol, u.password, u.email
 FROM users u
 WHERE id = $idUser");
-
-// Valida que existan columnas con información dentro de la BD
-$result_sql = mysqli_num_rows($sql);
-
-if($result_sql == 0){
-    header("location: users.php");
-}else{
-
-    while($column = mysqli_fetch_array($sql)){
-        $username = $column["username"];
-        $rol = $column["rol"];
-        $password = $column["password"];
-        $email = $column["email"];
-    }
-}
 ?>
 
