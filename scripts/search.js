@@ -5,7 +5,7 @@ $(document).ready(function(){
         $("#not-found-msg").hide();
 
         $('#search-input').keyup(function() {
-        
+                $("#not-found-msg").hide();
                 $('.TablaContainerSneakers').hide();
                 // Se guarda el valor (val) del input en una variable para mostrarla en la consola 
                 let search = $('#search-input').val()
