@@ -22,8 +22,8 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="sneaker-actions">
-                                    <a class="link_editar" href="updateSneaker.php?sneaker_id=${sneaker.sneaker_id}">
-                                        <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                                    <a class="link_editar">
+                                        <button class="editar" data-toggle="modal" data-target="#editSneakerModal"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                                     </a>
                                     <a class="link_borrar">
                                         <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
