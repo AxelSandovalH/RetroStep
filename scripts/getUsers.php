@@ -57,7 +57,27 @@
                     console.error(error)
                 }
             });
-        }); 
+        });
+
+        // Captura el clic en el botón "Editar"
+        $('#editUserBtn').click(function() {
+            var userId = $(this).data('id'); // Obtiene el ID del usuario 
+
+            // Realiza una solicitud AJAX para obtener los datos del usuario
+            $.ajax({
+                type: 'GET',
+                url: 'scripts/getUserData.php', // Ruta al script que obtiene los datos del usuario
+                data: { id: userId }, // Envia el ID del usuario al script
+                success: function(response) {
+                    // Carga los datos del usuario en el modal
+                    $('#userForm').html(response);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        });
+
 
     }); 
 
