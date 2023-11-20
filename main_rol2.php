@@ -11,7 +11,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="img/logoR.png" class="img-fluid"/><span>RetroStep</span></h3>
+                <h3><img src="img/LogoRS.png" class="img-fluid"/><span>RetroStep</span></h3>
             </div>
             <ul class="list-unstyled components">
 			<li  <?php if ($current_page == 'main_rol2.php') echo 'class="active"'; ?>>

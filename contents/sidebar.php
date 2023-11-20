@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
-                <a href="main.php"><h3><img src="img/logoRS.png" class="img-fluid"/><span>RetroStep</span></h3></a>
+                <a href="main.php"><h3><img src="img/LogoRS.png" class="img-fluid"/><span>RetroStep</span></h3></a>
             </div>
             <ul class="list-unstyled components">
 
