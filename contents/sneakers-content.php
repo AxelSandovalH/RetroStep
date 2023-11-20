@@ -94,18 +94,7 @@
 
     <div id="not-found-msg" class="not-found-msg"><h2> No se encontraron resultados </h2></div>
 
-    <!-- <div class="container">
-        <input type="checkbox" id="btn-mas">
-        <div class="options">
-            <a href="newSneaker.php" class="edit"><i class="fa-solid fa-file-circle-plus"></i></a>
-            <a href="users.php" class="users"><i class="fa-solid fa-users"></i></a>
-            <a href="#" class="add size"></a>
-            <a href="#" class="add model"></a>
-        </div>
-        <div class="btn-mas">
-            <label for="btn-mas" class="fa fa-plus"></label>
-        </div>
-    </div> -->
+ 
 
 </body>
 
