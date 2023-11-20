@@ -112,6 +112,12 @@ require_once("connection.php");
             </div>
         </div>
     </div>
+    <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary_Save" id="btnSaveSneaker" style="background-color: #2964ff;color: #ffff;">Save</button>
+    </div>
+    </div>
+</div> -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

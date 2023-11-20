@@ -160,7 +160,7 @@ if ($result->num_rows > 0) {
         </div>
 
         <div class="col-lg-5 col-md-12">
-            <div class="card" style="min-height: 485px;">
+            <div class="card">
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Activities</h4>
                 </div>
@@ -186,8 +186,6 @@ if ($result->num_rows > 0) {
 <?php include_once("modalNewBrand.php"); ?>
 
 <?php include_once("modalNewCategory.php"); ?>
-
-
 
 			 
 			 

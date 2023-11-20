@@ -9,13 +9,19 @@
 <div class="main-content">
     <div class="col-md-12">
         <div class="card" style="min-height: 485px;">
-            <div class="card-header card-header-text">
-
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addUserModal">
+            <div class="card-header card-header-text" style="
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-content: space-between;
+            flex-direction: row;
+            ">
+ 
+                <h4 class="card-title">Users</h4>
+                <button class="btn btn-primary1 btn-lg" data-toggle="modal" data-target="#addUserModal">
                     <i class="fas fa-plus"></i> Add User
                 </button>
 
-                <h4 class="card-title">Users</h4>
 
             </div>
             <div class="card-content table-responsive">
