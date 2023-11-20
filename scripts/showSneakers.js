@@ -21,7 +21,16 @@ $(document).ready(function() {
                                     <p>Stock: ${sneaker.stock_quantity}</p>
                                 </div>
 
-                              
+                                <div class="sneaker-actions">
+                                    <a class="link_editar">
+                                        <button id="editSneakerBtn" class="editar" data-toggle="modal" data-target="#editSneakerModal" data-sneaker-id="${sneaker.sneaker_id}" data-id-stock="${sneaker.id_stock}"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                                    </a>
+                                    <a class="link_borrar">
+                                        <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}" data-size-number="${sneaker.size_number}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
+                                    </a>
+
+
+                                </div>
                             </div>
                     `;
                 });
