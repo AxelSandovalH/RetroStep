@@ -1,11 +1,11 @@
 <?php 
-include_once('contents/header.php');
+    include_once('contents/header.php');
 ?>
         
 
 <!-- SIDE BAR -->
 <?php
-$current_page = basename($_SERVER['PHP_SELF']);
+    $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
@@ -25,6 +25,64 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <!--top--navbar----design--------->
 <?php include_once('contents/top-header.php');?>		   
 		   
+<style>
+    /* Desactivar mayúsculas automáticas */
+    .no-uppercase {
+      text-transform: none !important;
+    }
+
+</style>
+
+<?php
+    // Incluye el archivo de conexión
+    require_once "connection.php";
+
+    // Consulta SQL para obtener la cantidad de marcas no archivadas
+    $registeredBrandsQuery = "SELECT COUNT(*) AS registered_brands FROM brand";
+
+    // Consulta SQL para obtener la cantidad total de stock no archivado
+    $totalStockQuery = "SELECT SUM(stock.stock_quantity) AS total_stock FROM stock INNER JOIN sneaker
+                        ON stock.sneaker_id = sneaker.sneaker_id
+                        WHERE stock.deleted_at IS NULL";
+
+    // Consulta SQL para obtener el valor total del stock no archivado
+    $stockValueQuery = "SELECT SUM(s.price * st.stock_quantity) AS stock_value 
+                        FROM sneaker s 
+                        JOIN stock st ON s.sneaker_id = st.sneaker_id 
+                        WHERE st.deleted_at IS NULL";
+
+    // Consulta SQL para obtener la cantidad de usuarios no archivados
+    $registeredUsersQuery = "SELECT COUNT(*) AS registered_users FROM users WHERE deleted_at IS NULL";
+
+
+
+
+    // Función para ejecutar la consulta preparada y obtener el resultado
+    function executeQuery($connection, $query) {
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        return $result;
+    }
+
+    // Ejecutar las consultas y obtener los resultados
+    $registeredBrandsResult = executeQuery($connection, $registeredBrandsQuery);
+    $totalStockResult = executeQuery($connection, $totalStockQuery);
+    $stockValueResult = executeQuery($connection, $stockValueQuery);
+    $registeredUsersResult = executeQuery($connection, $registeredUsersQuery);
+
+    // Obtener los resultados
+    $registeredBrands = $registeredBrandsResult->fetch_assoc()['registered_brands'];
+    $totalStock = $totalStockResult->fetch_assoc()['total_stock'];
+    $stockValue = $stockValueResult->fetch_assoc()['stock_value'];
+    $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
+
+    // Cerrar la conexión
+
+?>
+
+
 <div class="main-content">
     <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -36,7 +94,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Registered brands</strong></p>
-                    <h3 class="card-title">70,340</h3>
+                    <h3 class="card-title"><?php echo $registeredBrands; ?></h3>
                 </div>
             </div>
         </div>
@@ -48,9 +106,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         <span class="material-icons">inventory</span>
                     </div>
                 </div>
-                <div class "card-content">
+                <div class="card-content">
                     <p class="category"><strong>Total stock</strong></p>
-                    <h3 class="card-title">102</h3>
+                    <h3 class="card-title"><?php echo $totalStock; ?></h3>
                 </div>
             </div>
         </div>
@@ -64,7 +122,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Stock value</strong></p>
-                    <h3 class="card-title">$23,344</h3>
+                    <h3 class="card-title">$<?php echo number_format($stockValue, 2); ?></h3>
                 </div>
             </div>
         </div>
@@ -78,7 +136,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 </div>
                 <div class="card-content">
                     <p class="category"><strong>Registered users</strong></p>
-                    <h3 class="card-title">5</h3>
+                    <h3 class="card-title"><?php echo $registeredUsers; ?></h3>
                 </div>
             </div>
         </div>
@@ -91,37 +149,34 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Inventory</h4>
                     <?php
-// Incluye tu archivo de conexión a la base de datos
-require_once "connection.php";
+                        // Incluye tu archivo de conexión a la base de datos
+                        require_once "connection.php";
 
-// Verifica la conexión
-if ($connection->connect_error) {
-    die("Error de conexión a la base de datos: " . $connection->connect_error);
-}
+                        // Verifica la conexión
+                        if ($connection->connect_error) {
+                            die("Error de conexión a la base de datos: " . $connection->connect_error);
+                        }
 
-// Consulta para obtener la fecha del último sneaker
-$sql = "SELECT MAX(created_at) AS fecha_ultimo_sneaker FROM sneaker";
-$result = $connection->query($sql);
+                        // Consulta para obtener la fecha del último sneaker
+                        $sql = "SELECT MAX(created_at) AS fecha_ultimo_sneaker FROM sneaker";
+                        $result = $connection->query($sql);
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    if ($row["fecha_ultimo_sneaker"] !== null) {
-        $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
-    } else {
-        $fecha_ultimo_sneaker = "No hay registros";
-    }
-} else {
-    $fecha_ultimo_sneaker = "No hay registros";
-}
-?>
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            if ($row["fecha_ultimo_sneaker"] !== null) {
+                                $fecha_ultimo_sneaker = date("dS F, Y", strtotime($row["fecha_ultimo_sneaker"]));
+                            } else {
+                                $fecha_ultimo_sneaker = "No hay registros";
+                            }
+                        } else {
+                            $fecha_ultimo_sneaker = "No hay registros";
+                        }
+                        ?>
 
-
-
-
-                    <p class="category">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
+                    <p class="no-uppercase">Last sneaker was added on: <?php echo $fecha_ultimo_sneaker; ?></p>
                 </div>
                 <div class="card-content table-responsive">
-                    <table class="table table-hover">
+                    <table id="sneakerTable" class="table table-hover">
                         <thead class="text-primary">
                             <tr>
                                 <th>Name</th>
@@ -132,25 +187,7 @@ if ($result->num_rows > 0) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            require_once "connection.php";
-                            $sql = "SELECT * from sneaker
-                                    INNER JOIN stock
-                                    ON sneaker.sneaker_id = stock.sneaker_id
-                                    WHERE sneaker.deleted_at IS NULL
-                                    ORDER BY sneaker.updated_at DESC;";
-                            $result = mysqli_query($connection, $sql);
-
-                            while ($column = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr>
-                                <td><?php echo $column['sneaker_name']; ?></td>
-                                <td><?php echo $column['brand_name']; ?></td>
-                                <td><?php echo $column['size_number']; ?></td>
-                                <td><?php echo $column['price']; ?></td>
-                                <td><?php echo $column['stock_quantity']; ?></td>
-                            </tr>
-                            <?php } ?>
+                            <!-- getInventory.php -->
                         </tbody>
                     </table>
                 </div>
@@ -180,12 +217,14 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="scripts/ajaxMain.js"></script>
 
-<?php include_once("modalNewBrand.php"); ?>
 
-<?php include_once("modalNewCategory.php"); ?>
-
-			 
-			 
-			 <!---footer---->
+<?php include_once("modalNewSneaker.php"); ?>
+	 
+			<!---footer---->
 <?php include_once('contents/footer.php');?>	

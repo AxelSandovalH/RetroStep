@@ -106,6 +106,4 @@
 <script src="scripts/search.js"></script>
 <script src="scripts/filter.js"></script>
 
-<?php include_once("modalEditSneaker.php"); ?>
-
 </html>
