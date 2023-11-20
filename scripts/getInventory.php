@@ -1,10 +1,11 @@
 <?php
     require_once "../connection.php";
-    $sql = "SELECT * FROM sneaker
-            INNER JOIN stock
-            ON sneaker.sneaker_id = stock.sneaker_id
-            WHERE sneaker.deleted_at IS NULL
-            ORDER BY sneaker.updated_at DESC;";
+    $sql = "SELECT stock.*, sneaker.sneaker_name, sneaker.brand_name, sneaker.price
+            FROM stock
+            INNER JOIN sneaker ON stock.sneaker_id = sneaker.sneaker_id
+            WHERE stock.deleted_at IS NULL
+            ORDER BY stock.updated_at DESC
+            LIMIT 7;";
     $result = mysqli_query($connection, $sql);
 
     while ($column = mysqli_fetch_array($result)) {

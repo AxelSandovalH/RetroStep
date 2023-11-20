@@ -43,7 +43,7 @@ $(document).ready(function(){
                                                 <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                                             </a>
                                             <a class="link_borrar">
-                                                <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
+                                               <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}" data-size-number="${sneaker.size_number}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
                                             </a>
 
 
@@ -78,6 +78,8 @@ $(document).ready(function(){
     $('#fetched-sneaker-container').off('click', '.eliminar').on('click', '.eliminar', function () {
         // Obtener el ID del sneaker
         let sneakerId = $(this).data('sneaker-id');
+        let sizeNumber = $(this).data('size-number');
+
         let confirmDelete = confirm('¿Seguro que quieres borrar este sneaker?');
 
         if (confirmDelete) {
@@ -85,7 +87,7 @@ $(document).ready(function(){
             $.ajax({
                 url: 'deleteSneaker.php', // Ajusta la URL según tu estructura
                 type: 'POST',
-                data: { sneaker_id: sneakerId },
+                data: { sneaker_id: sneakerId, size_number: sizeNumber },
                 success: function (response) {
                     // Manejar la respuesta después de la eliminación
                     console.log(response);
