@@ -15,7 +15,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
             </div>
             <ul class="list-unstyled components">
 			<li  <?php if ($current_page == 'main_rol2.php') echo 'class="active"'; ?>>
-                    <a href="main_rol2.php" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                    <a href="main_rol2.php" class="dashboard"><i class="material-icons">dashboard</i><span>Main</span></a>
                 </li>
                 
                 <li <?php if ($current_page == 'sneakers_rol2.php') echo 'class="active"';   // Lógica para que cambie según la página en que te encuentras?>> 
