@@ -1,13 +1,7 @@
-<?php 
-// include("scripts/routeProtection.php");
-include("connection.php");
-include_once('contents/header.php');?>
+<?php include_once('contents/header.php');?>
 		
 		<!-------------------------sidebar------------>
-
-
-<!-- SIDE BAR -->
-<?php
+        <?php
 $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
@@ -21,11 +15,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 
                 <li <?php if ($current_page == 'sneakers_rol2.php') echo 'class="active"';   // Lógica para que cambie según la página en que te encuentras?>> 
                     <a href="sneakers_rol2.php">
-					<i class="material-icons">apps</i><span>Inventory</span></a>
+					<i class="material-icons">apps</i><span>Inventory</span></a>          
 </nav>
-
-
-<!--top--navbar----design--------->
+        
+		
+		<!--------page-content---------------->
+		
+		
+		   
+		   <!--top--navbar----design--------->
 <?php include_once('contents/top-header.php');?>		   
 		   
 

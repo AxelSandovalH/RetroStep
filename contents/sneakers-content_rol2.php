@@ -20,10 +20,10 @@
     <div class="TablaContainerSneakers">
         <?php
         require_once "connection.php";
-        $sql = "SELECT * from sneaker
-                INNER JOIN stock
-                ON sneaker.sneaker_id = stock.sneaker_id
-                WHERE deleted_at IS NULL;";
+        $sql ="SELECT * FROM sneaker
+        INNER JOIN stock ON sneaker.sneaker_id = stock.sneaker_id
+        WHERE sneaker.deleted_at IS NULL;";
+
         $result = mysqli_query($connection, $sql);
 
         while ($column = mysqli_fetch_array($result)) {
