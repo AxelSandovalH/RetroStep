@@ -128,13 +128,20 @@ LOCK TABLES `size` WRITE;
 /*!40000 ALTER TABLE `size` DISABLE KEYS */;
 INSERT INTO `size` VALUES
 (6.00,'2023-10-23 02:29:05','2023-10-23 02:29:05'),
+(6.50,'2023-11-20 06:03:28','2023-11-20 06:03:28'),
+(7.00,'2023-11-20 06:03:50','2023-11-20 06:03:50'),
+(7.50,'2023-11-20 06:04:15','2023-11-20 06:04:15'),
+(8.00,'2023-11-20 06:04:33','2023-11-20 06:04:33'),
 (8.50,'2023-10-25 23:50:37','2023-10-25 23:50:37'),
 (9.00,'2023-10-25 13:26:27','2023-10-25 13:26:27'),
 (9.50,'2023-10-25 13:32:49','2023-10-25 13:32:49'),
 (10.00,'2023-10-23 02:16:04','2023-10-23 02:16:04'),
+(10.50,'2023-11-20 06:05:37','2023-11-20 06:05:37'),
 (11.00,'2023-10-23 00:51:31','2023-10-23 00:51:31'),
 (11.50,'2023-10-25 23:17:37','2023-10-25 23:17:37'),
-(20.00,'2023-10-23 00:56:34','2023-10-23 00:56:34');
+(12.00,'2023-11-20 06:05:45','2023-11-20 06:05:45'),
+(12.50,'2023-11-20 06:05:48','2023-11-20 06:05:48'),
+(13.00,'2023-11-20 06:05:51','2023-11-20 06:05:51');
 /*!40000 ALTER TABLE `size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +157,6 @@ CREATE TABLE `sneaker` (
   `sneaker_name` varchar(35) NOT NULL,
   `brand_name` varchar(15) NOT NULL,
   `category_name` varchar(20) DEFAULT NULL,
-  `size_number` decimal(10,2) NOT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `imagen_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -158,12 +164,10 @@ CREATE TABLE `sneaker` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`sneaker_id`),
   KEY `sneaker_category_name_foreign` (`category_name`),
-  KEY `sneaker_size_number_foreign_idx` (`size_number`),
   KEY `sneaker_brand_name_foreign` (`brand_name`),
   CONSTRAINT `sneaker_brand_name_foreign` FOREIGN KEY (`brand_name`) REFERENCES `brand` (`brand_name`),
-  CONSTRAINT `sneaker_category_name_foreign` FOREIGN KEY (`category_name`) REFERENCES `category` (`category_name`),
-  CONSTRAINT `sneaker_size_number_foreign` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `sneaker_category_name_foreign` FOREIGN KEY (`category_name`) REFERENCES `category` (`category_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,17 +177,51 @@ CREATE TABLE `sneaker` (
 LOCK TABLES `sneaker` WRITE;
 /*!40000 ALTER TABLE `sneaker` DISABLE KEYS */;
 INSERT INTO `sneaker` VALUES
-(70,'Yeezy 350 ','Adidas','Lifestyle',11.00,3200.00,'../img/','2023-10-25 23:33:31','2023-10-25 23:33:31','2023-10-25 23:41:16'),
-(71,'Yeezy 350 1','Adidas','Lifestyle',6.00,3200.00,'../img/','2023-10-25 23:35:42','2023-10-25 23:35:42','2023-11-20 00:11:00'),
-(72,'Yeezy 350 2','Adidas','Lifestyle',9.00,3200.00,'img/yeezy350v2.png','2023-10-25 23:40:58','2023-10-25 23:40:58',NULL),
-(75,'Jordan 1 C','Nike','Basketball',10.00,3300.00,'img/AirJordanOne.png','2023-10-25 23:50:37','2023-10-25 23:50:37','2023-11-17 21:24:43'),
-(76,'Jordan 4','Nike','Basketball',6.00,3200.00,'img/klpkkgao.png','2023-11-07 23:17:06','2023-11-07 23:17:06','2023-11-18 00:42:01'),
-(77,'Yeezy 350 v2','Adidas','Lifestyle',6.00,3200.00,'img/yeezy350v2.png','2023-11-07 23:22:06','2023-11-07 23:22:06',NULL),
-(78,'Jordan 1 TS','Nike','Lifestyle',6.00,3200.00,'img/Jordan1_Travis.jpeg','2023-11-07 23:26:37','2023-11-07 23:26:37',NULL),
-(113,'Jordan 5','Nike','Basketball',9.50,3200.00,'img/img01.jpg','2023-11-10 13:35:44','2023-11-10 13:35:44',NULL),
-(120,'Jordan 1 TS','Nike','Basketball',9.50,3200.00,'img/Jordan1_Travis.jpeg','2023-11-10 18:57:48','2023-11-10 18:57:48',NULL),
-(122,'New Balance 550','New Balance','Lifestyle',6.00,4500.00,'img/NB550.jpg','2023-11-17 17:45:12','2023-11-17 17:45:12',NULL);
+(146,'Yeezy 350 V2 Bred','Adidas','Lifestyle',4500.00,'img/yeezy350v2.png','2023-11-20 05:57:28','2023-11-20 05:57:28',NULL),
+(147,'Blazer Low Triple Black','Nike','Lifestyle',2300.00,'img/blazerNegro.jpg','2023-11-20 06:00:50','2023-11-20 06:00:50',NULL),
+(148,'Air Force 1 Low BW','Nike','Lifestyle',3000.00,'img/airForceOneLowbw.jpg','2023-11-20 06:08:38','2023-11-20 06:08:38',NULL),
+(149,'Puma Suede Black','Puma','Lifestyle',2400.00,'img/puma suede blck.png','2023-11-20 06:10:49','2023-11-20 06:10:49',NULL);
 /*!40000 ALTER TABLE `sneaker` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sneaker_size`
+--
+
+DROP TABLE IF EXISTS `sneaker_size`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sneaker_size` (
+  `sneaker_id` int(10) NOT NULL,
+  `size_number` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`size_number`,`sneaker_id`),
+  CONSTRAINT `sneaker_size_ibfk_2` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sneaker_size`
+--
+
+LOCK TABLES `sneaker_size` WRITE;
+/*!40000 ALTER TABLE `sneaker_size` DISABLE KEYS */;
+INSERT INTO `sneaker_size` VALUES
+(147,6.00),
+(149,6.50),
+(149,7.00),
+(149,7.50),
+(149,8.00),
+(146,8.50),
+(146,9.00),
+(146,9.50),
+(147,9.50),
+(147,10.00),
+(148,10.50),
+(148,11.00),
+(147,11.50),
+(148,12.00),
+(148,13.00);
+/*!40000 ALTER TABLE `sneaker_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -200,12 +238,13 @@ CREATE TABLE `stock` (
   `stock_quantity` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_stock`),
   KEY `stock_sneaker_id_foreign_idx` (`sneaker_id`),
   KEY `stock_size_number_foreign_idx` (`size_number`),
   CONSTRAINT `stock_size_number_foreign` FOREIGN KEY (`size_number`) REFERENCES `size` (`size_number`),
   CONSTRAINT `stock_sneaker_id_foreign` FOREIGN KEY (`sneaker_id`) REFERENCES `sneaker` (`sneaker_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,16 +254,21 @@ CREATE TABLE `stock` (
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
 INSERT INTO `stock` VALUES
-(35,70,11.00,67,'2023-10-25 23:33:31','2023-10-25 23:33:31'),
-(36,71,6.00,67,'2023-10-25 23:35:42','2023-10-25 23:35:42'),
-(37,72,9.00,67,'2023-10-25 23:40:58','2023-10-25 23:40:58'),
-(40,75,10.00,32,'2023-10-25 23:50:37','2023-10-25 23:50:37'),
-(41,76,6.00,12,'2023-11-07 23:17:06','2023-11-07 23:17:06'),
-(42,77,6.00,12,'2023-11-07 23:22:06','2023-11-07 23:22:06'),
-(43,78,6.00,12,'2023-11-07 23:26:37','2023-11-07 23:26:37'),
-(45,113,9.50,32,'2023-11-10 13:35:44','2023-11-10 13:35:44'),
-(52,120,9.50,12,'2023-11-10 18:57:48','2023-11-10 18:57:48'),
-(54,122,6.00,21,'2023-11-17 17:45:12','2023-11-17 17:45:12');
+(1,146,8.50,40,'2023-11-20 05:57:28','2023-11-20 05:57:28','2023-11-20 13:17:53'),
+(2,146,9.00,40,'2023-11-20 05:57:28','2023-11-20 05:57:28',NULL),
+(3,146,9.50,40,'2023-11-20 05:57:28','2023-11-20 05:57:28',NULL),
+(4,147,6.00,80,'2023-11-20 06:00:50','2023-11-20 06:00:50',NULL),
+(5,147,9.50,80,'2023-11-20 06:00:50','2023-11-20 06:00:50',NULL),
+(6,147,10.00,80,'2023-11-20 06:00:50','2023-11-20 06:00:50','2023-11-20 13:17:56'),
+(7,147,11.50,80,'2023-11-20 06:00:50','2023-11-20 06:00:50',NULL),
+(8,148,10.50,78,'2023-11-20 06:08:38','2023-11-20 06:08:38',NULL),
+(9,148,11.00,78,'2023-11-20 06:08:38','2023-11-20 06:08:38',NULL),
+(10,148,12.00,78,'2023-11-20 06:08:38','2023-11-20 06:08:38',NULL),
+(11,148,13.00,78,'2023-11-20 06:08:38','2023-11-20 06:08:38',NULL),
+(12,149,6.50,45,'2023-11-20 06:10:49','2023-11-20 06:10:49',NULL),
+(13,149,7.00,45,'2023-11-20 06:10:49','2023-11-20 06:10:49',NULL),
+(14,149,7.50,45,'2023-11-20 06:10:49','2023-11-20 06:10:49',NULL),
+(15,149,8.00,45,'2023-11-20 06:10:49','2023-11-20 06:10:49',NULL);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,4 +321,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-19 13:04:02
+-- Dump completed on 2023-11-20  0:21:20
