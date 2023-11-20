@@ -63,29 +63,10 @@
     <title>RetroStep</title>
 </head>
 <body>
-    <header class="header">
-        
-        <div>
-            <a href="index.php">
-                <h1 class="Titulo">
-                    RetroStep
-                </h1>
-            </a>
-           
-        </div>
-        
-        <div class="logo">
-            <img src="./img/" alt="">
-        </div>
-       
-        
-    </header>
-    
-
     <div id="Login">
         <header>Login</header>
         
-        <form action="" method="post">
+        <form id="LoginForm" action="" method="post">
             <label for="Usuario" >Usuario</label>
             <input type="text" name="usuario" >
             <label for="Password">Password</label>
@@ -93,7 +74,6 @@
             <input type="password" name="clave" >
             
             <div class="buttons">
-                <button type="reset" id="Cancelar">Cancelar</button>
                 <button id = "Succes" type="submit" >Verificar</button>
             </div>
 
