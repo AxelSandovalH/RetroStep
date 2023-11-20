@@ -18,7 +18,7 @@
                         SET sneaker_name = ?, brand_name = ?, category_name = ?, size_number = ?, price = ?, imagen_url = ? 
                         WHERE sneaker_id = ?";
         $stmtSneaker = $connection->prepare($querySneaker);
-        $stmtSneaker->bind_param("sssssii", $sneakerName, $brand, $category, $size, $price, $imagen_url, $sneaker_id);
+        $stmtSneaker->bind_param("sssssii", $sneakerName, $brand, $category, $size, $price, $img, $sneaker_id);
 
         // Actualizar tabla stock
         $queryStock = "UPDATE stock 

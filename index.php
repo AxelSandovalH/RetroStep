@@ -29,6 +29,7 @@
                     // $_SESSION['nombre'] = $data['nombre'];
                     $_SESSION['email'] = $data['email'];
                     $_SESSION['user'] = $data['username'];
+                    $_SESSION['rol'] = $data['rol'];
 
                     if($data['rol'] == 1){
                         header('location: main.php');

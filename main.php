@@ -1,3 +1,15 @@
+<?php 
+	session_start();
+
+	// PROTECCIÓN DE RUTAS
+
+	if ($_SESSION['rol'] == 2) {
+		header("Location: acceso_denegado.php");
+		exit();
+	}
+?>
+
+
 <?php include_once('contents/header.php');?>
 		
 		<!-------------------------sidebar------------>
@@ -19,4 +31,4 @@
 			 <!---footer---->
 <?php include_once('contents/footer.php');?>			 
 			 
-			
+           
