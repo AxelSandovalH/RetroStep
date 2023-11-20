@@ -20,11 +20,7 @@
             <select id="brand-filter" class="filter-dropdown">
                 <option value="">Todas las marcas</option>
                 <?php
-<<<<<<< HEAD
-                require_once "connection.php"; // Incluye el archivo connection.php solo una vez
-=======
                 require_once "connection.php";
->>>>>>> 8c2df9aee1a3a78b2d180bbd849ec5fe8f93ff34
                 $sql = "SELECT DISTINCT brand_name FROM sneaker WHERE sneaker.deleted_at IS NULL";
                 $result = mysqli_query($connection, $sql);
 
@@ -84,7 +80,6 @@
 
     <div class="TablaContainerSneakers">
         <?php
-        require_once "connection.php";
         $sql = "SELECT * FROM sneaker
                 INNER JOIN stock ON sneaker.sneaker_id = stock.sneaker_id
                 WHERE sneaker.deleted_at IS NULL;";
@@ -112,3 +107,17 @@
         <?php
         }
         ?>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script src="scripts/showSneakers.js"></script>
+        <script src="scripts/search.js"></script>
+        <script src="scripts/filter.js"></script>
+
+        <?php include_once("modalEditSneaker.php"); ?>
+
+</body>
+
+</html>
