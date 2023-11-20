@@ -31,16 +31,25 @@ if (!empty($categoryFilter)) {
 $result = mysqli_query($connection, $sql);
 
 // Crear un array para almacenar los resultados
-$sneakers = array();
+$json = array();
 
 // Recorrer los resultados y agregarlos al array
 while ($row = mysqli_fetch_assoc($result)) {
-    $sneakers[] = $row;
+    $json[] = array(
+        'imagen_url' => $row['imagen_url'],
+        'sneaker_id' => $row["sneaker_id"],
+        'sneaker_name' => $row['sneaker_name'],
+        'brand_name' => $row['brand_name'],
+        'size_number' => $row['size_number'],
+        'price'=> $row['price'],
+        'stock_quantity'=> $row['stock_quantity'],
+        'id_stock'=> $row['id_stock']
+    );
 }
 
 // Convertir el array a formato JSON y enviarlo como respuesta
-echo json_encode($sneakers);
-
+$jsonstring = json_encode($json);
+echo $jsonstring;
 // Cerrar la conexión
 mysqli_close($connection);
 ?>
