@@ -139,7 +139,7 @@ if ($result->num_rows > 0) {
                             $sql = "SELECT * from sneaker
                                     INNER JOIN stock
                                     ON sneaker.sneaker_id = stock.sneaker_id
-                                    WHERE deleted_at IS NULL
+                                    WHERE sneaker.deleted_at IS NULL
                                     ORDER BY sneaker.updated_at DESC;";
                             $result = mysqli_query($connection, $sql);
 

@@ -8,16 +8,16 @@ $modelFilter = $_GET['sneaker_name'];
 $categoryFilter = $_GET['category_name'];
 
 // Construir la consulta SQL con los filtros seleccionados
-$sql = "SELECT * FROM sneaker 
-        INNER JOIN stock ON sneaker.sneaker_id = stock.sneaker_id 
-        WHERE sneaker.deleted_at IS NULL";
+$sql = "SELECT * FROM stock 
+        INNER JOIN sneaker ON stock.sneaker_id = sneaker.sneaker_id 
+        WHERE stock.deleted_at IS NULL";
 
 if (!empty($brandFilter)) {
     $sql .= " AND sneaker.brand_name = '$brandFilter'";
 }
 
 if (!empty($sizeFilter)) {
-    $sql .= " AND sneaker.size_number = '$sizeFilter'";
+    $sql .= " AND stock.size_number = '$sizeFilter'";
 }
 
 if (!empty($modelFilter)) {

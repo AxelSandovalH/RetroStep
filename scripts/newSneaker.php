@@ -1,47 +1,55 @@
 <?php
 require_once("../connection.php");
 
-// Espera a que haya una acción tipo POST para realizar la verificación
-if (!empty($_POST)) {
-    // Recoge los datos del formulario
-    $sneaker_name = $_POST["sneaker_name"];
-    $brand_name = $_POST["brand_name"];
-    $price = $_POST["price"];
-    $stock_quantity = $_POST["stock_quantity"];
-    $size_number = $_POST["size_number"];
-    $category_name = $_POST["category_name"];
+// Verifica si se ha enviado el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera los datos del formulario
+    $sneakerName = $_POST['sneaker_name'];
+    $brandName = $_POST['brand_name'];
+    $categoryName = $_POST['category_name'];
+    $price = $_POST['price'];
+    $stockQuantity = $_POST['stock_quantity'];
 
+    // Puedes manejar la imagen de la forma que prefieras, aquí se muestra cómo obtener el nombre de la imagen
     // Rutas y carpetas
     $nombre_imagen = $_FILES['image']['name'];
     $ruta_completa = __DIR__ . "/../img/" . $nombre_imagen;
 
     // Ajusta la ruta relativa para mostrarla en la página
     $ruta = 'img/' . $nombre_imagen;
-
     // Mueve la imagen al directorio de destino
     move_uploaded_file($_FILES['image']['tmp_name'], $ruta_completa);
 
-    // Verifica si la sneaker ya existe
-    $querySelect = mysqli_query($connection, "SELECT * FROM sneaker WHERE sneaker_name = '$sneaker_name' and deleted_at is NULL");
+    // Puedes procesar la lista de tallas seleccionadas de la misma manera que en el formulario
+    $selectedSizes = $_POST['size_number'];
 
-    if (mysqli_num_rows($querySelect) > 0) {
-        echo 'That model already exists.';
-    } else {
-        // Inserta la nueva sneaker en la base de datos
-        $queryInsert = mysqli_multi_query($connection,
-            "INSERT INTO sneaker (brand_name, sneaker_name, price, size_number, category_name, imagen_url)
-             VALUES ('$brand_name', '$sneaker_name', $price, $size_number, '$category_name', '$ruta');
-            SET @sneaker_id = LAST_INSERT_ID();
-            INSERT INTO stock (sneaker_id, stock_quantity, size_number) VALUES (@sneaker_id, $stock_quantity, $size_number);");
+    // Realiza la inserción en la tabla 'sneaker'
+    $sqlInsertSneaker = "INSERT INTO sneaker (sneaker_name, brand_name, category_name, price, imagen_url, created_at, updated_at) 
+                         VALUES ('$sneakerName', '$brandName', '$categoryName', $price, '$ruta', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
 
-        // Muestra el resultado
-        if ($queryInsert) {
-            echo 'Sneaker saved successfully';
-           
-        } else {
-            echo "Error: " . mysqli_error($connection);
-            echo "Filas afectadas: " . mysqli_affected_rows($connection);
+    if (mysqli_query($connection, $sqlInsertSneaker)) {
+        // Obtiene el ID del sneaker recién insertado
+        $sneakerId = mysqli_insert_id($connection);
+
+        // Realiza la inserción en la tabla 'stock y sneaker_size' para cada talla seleccionada
+        foreach ($selectedSizes as $size) {
+            $sqlInsertStock = "INSERT INTO stock (sneaker_id, size_number, stock_quantity, created_at, updated_at) 
+                               VALUES ($sneakerId, $size, $stockQuantity, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
+            mysqli_query($connection, $sqlInsertStock);
+            
+            $sqlInsertSneakerSize = "INSERT INTO sneaker_size (sneaker_id, size_number) 
+                                     VALUES ($sneakerId, $size);";
+
+            mysqli_query($connection, $sqlInsertSneakerSize);
         }
+
+        echo "Sneaker added successfully!";
+    } else {
+        echo "Error adding sneaker: " . mysqli_error($connection);
     }
+
+} else {
+    echo "Invalid request method";
 }
+
 ?>
