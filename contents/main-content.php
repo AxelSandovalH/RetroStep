@@ -16,13 +16,13 @@ $registeredBrandsQuery = "SELECT COUNT(*) AS registered_brands FROM brand";
 // Consulta SQL para obtener la cantidad total de stock no archivado
 $totalStockQuery = "SELECT SUM(stock.stock_quantity) AS total_stock FROM stock INNER JOIN sneaker
                     ON stock.sneaker_id = sneaker.sneaker_id
-                    WHERE sneaker.deleted_at IS NULL";
+                    WHERE stock.deleted_at IS NULL";
 
 // Consulta SQL para obtener el valor total del stock no archivado
 $stockValueQuery = "SELECT SUM(s.price * st.stock_quantity) AS stock_value 
                     FROM sneaker s 
                     JOIN stock st ON s.sneaker_id = st.sneaker_id 
-                    WHERE s.deleted_at IS NULL";
+                    WHERE st.deleted_at IS NULL";
 
 // Consulta SQL para obtener la cantidad de usuarios no archivados
 $registeredUsersQuery = "SELECT COUNT(*) AS registered_users FROM users WHERE deleted_at IS NULL";
