@@ -17,7 +17,7 @@
         <input type="checkbox" id="filterTab" class="tab-checkbox">
         <div class="filter-container">
             <label for="brand-filter">Marca:</label>
-            <select id="brand-filter">
+            <select id="brand-filter" class="filter-dropdown">
                 <option value="">Todas las marcas</option>
                 <?php
                 require_once "connection.php";
@@ -31,7 +31,7 @@
                 ?>
             </select>
             <label for="size-filter">Talla:</label>
-            <select id="size-filter">
+            <select id="size-filter" class="filter-dropdown">
                 <option value="">Todas las tallas</option>
                 <?php
                 require_once "connection.php";
@@ -46,7 +46,7 @@
             </select>
 
             <label for="model-filter">Modelo:</label>
-            <select id="model-filter">
+            <select id="model-filter" class="filter-dropdown">
                 <option value="">Todos los modelos</option>
                 <?php
                 require_once "connection.php";
@@ -61,7 +61,7 @@
             </select>
 
             <label for="category-filter">Categoría:</label>
-            <select id="category-filter">
+            <select id="category-filter" class="filter-dropdown">
                 <option value="">Todas las categorías</option>
                 <?php
                 require_once "connection.php";
@@ -88,27 +88,23 @@
 
     <div id="fetched-sneaker-container" class="fetched-sneaker-container">
     </div>
+    
+    <div id="filtered-sneaker-container" class="filtered-sneaker-container">
+    </div>
 
     <div id="not-found-msg" class="not-found-msg"><h2> No se encontraron resultados </h2></div>
 
-    <!-- <div class="container">
-        <input type="checkbox" id="btn-mas">
-        <div class="options">
-            <a href="newSneaker.php" class="edit"><i class="fa-solid fa-file-circle-plus"></i></a>
-            <a href="users.php" class="users"><i class="fa-solid fa-users"></i></a>
-            <a href="#" class="add size"></a>
-            <a href="#" class="add model"></a>
-        </div>
-        <div class="btn-mas">
-            <label for="btn-mas" class="fa fa-plus"></label>
-        </div>
-    </div> -->
+ 
 
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 <script src="scripts/showSneakers.js"></script>
 <script src="scripts/search.js"></script>
+<script src="scripts/filter.js"></script>
 
 <?php include_once("modalEditSneaker.php"); ?>
 

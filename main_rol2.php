@@ -9,11 +9,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="img/logoR.png" class="img-fluid"/><span>RetroStep</span></h3>
+                <h3><img src="img/LogoRS.png" class="img-fluid"/><span>RetroStep</span></h3>
             </div>
             <ul class="list-unstyled components">
 			<li  <?php if ($current_page == 'main_rol2.php') echo 'class="active"'; ?>>
-                    <a href="main_rol2.php" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                    <a href="main_rol2.php" class="dashboard"><i class="material-icons">dashboard</i><span>Main</span></a>
                 </li>
                 
                 <li <?php if ($current_page == 'sneakers_rol2.php') echo 'class="active"';   // Lógica para que cambie según la página en que te encuentras?>> 
@@ -137,7 +137,7 @@ if ($result->num_rows > 0) {
                             $sql = "SELECT * from sneaker
                                     INNER JOIN stock
                                     ON sneaker.sneaker_id = stock.sneaker_id
-                                    WHERE deleted_at IS NULL
+                                    WHERE sneaker.deleted_at IS NULL
                                     ORDER BY sneaker.updated_at DESC;";
                             $result = mysqli_query($connection, $sql);
 
@@ -158,7 +158,7 @@ if ($result->num_rows > 0) {
         </div>
 
         <div class="col-lg-5 col-md-12">
-            <div class="card" style="min-height: 485px;">
+            <div class="card">
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Activities</h4>
                 </div>
@@ -184,8 +184,6 @@ if ($result->num_rows > 0) {
 <?php include_once("modalNewBrand.php"); ?>
 
 <?php include_once("modalNewCategory.php"); ?>
-
-
 
 			 
 			 

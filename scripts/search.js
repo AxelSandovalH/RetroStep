@@ -5,8 +5,9 @@ $(document).ready(function(){
         $("#not-found-msg").hide();
 
         $('#search-input').keyup(function() {
-        
+                $("#not-found-msg").hide();
                 $('.TablaContainerSneakers').hide();
+                $("#filtered-sneaker-container").hide();
                 // Se guarda el valor (val) del input en una variable para mostrarla en la consola 
                 let search = $('#search-input').val()
                 if(search){
@@ -38,11 +39,11 @@ $(document).ready(function(){
                                         </div>
 
                                         <div class="sneaker-actions">
-                                            <a class="link_editar" href="updateSneaker.php?sneaker_id=${sneaker.sneaker_id}">
-                                                <button class="editar"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                                            <a class="link_editar">
+                                                <button id="editSneakerBtn" class="editar" data-toggle="modal" data-target="#editSneakerModal" data-sneaker-id="${sneaker.sneaker_id}" data-id-stock="${sneaker.id_stock}"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                                             </a>
                                             <a class="link_borrar">
-                                                <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
+                                               <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}" data-size-number="${sneaker.size_number}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
                                             </a>
 
 
@@ -77,6 +78,8 @@ $(document).ready(function(){
     $('#fetched-sneaker-container').off('click', '.eliminar').on('click', '.eliminar', function () {
         // Obtener el ID del sneaker
         let sneakerId = $(this).data('sneaker-id');
+        let sizeNumber = $(this).data('size-number');
+
         let confirmDelete = confirm('¿Seguro que quieres borrar este sneaker?');
 
         if (confirmDelete) {
@@ -84,7 +87,7 @@ $(document).ready(function(){
             $.ajax({
                 url: 'deleteSneaker.php', // Ajusta la URL según tu estructura
                 type: 'POST',
-                data: { sneaker_id: sneakerId },
+                data: { sneaker_id: sneakerId, size_number: sizeNumber },
                 success: function (response) {
                     // Manejar la respuesta después de la eliminación
                     console.log(response);
@@ -102,5 +105,35 @@ $(document).ready(function(){
         }
         
     });
+
+    $('#fetched-sneaker-container').off('click', '.editar').on('click', '.editar', function () {
+
+        // Save changes when the "Save" button in the edit modal is clicked
+        $("#saveEditSneakerBtn").off('click').on('click', function () {
+            let formData = new FormData($("#editSneakerForm")[0]);
+            // Use AJAX to update sneaker data in the database
+            $.ajax({
+                type: "POST",
+                url: "scripts/editSneaker.php", // Create a new script to handle sneaker edits
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                    // Handle the response if needed
+                    alert(response);
+                    // Close the modal and refresh the sneaker table
+                    console.log(response);
+                    location.reload(true);
+
+                    $("#editSneakerModal").modal('hide');
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
 
 })

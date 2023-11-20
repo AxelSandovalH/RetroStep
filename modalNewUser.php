@@ -43,7 +43,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btnSaveUser">Save</button>
+        <button type="button" class="btn btn-primary_Save" id="btnSaveUser" style="background-color: #2964ff;color: #ffff;">Save</button>
     </div>
     </div>
 </div>

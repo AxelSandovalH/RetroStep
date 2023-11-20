@@ -5,10 +5,7 @@
 					       <nav class="d-flex">
 						      <ul class="m-0 p-0">
 							     <li><a href="#">Inicio</a></li>
-								  <li><a href="#">Nosotros</a></li>
-								   <li><a href="#">Portafolio</a></li>
-								   <li><a href="#">Blog</a></li>
-									<li><a href="exit.php">Cerrar sesión</a></li>
+								 <li><a href="exit.php">Cerrar sesión</a></li>
 							  <ul>
 						   </nav>
 					   </div>

@@ -221,6 +221,12 @@ hr {
     justify-content: space-evenly; /* Espaciado entre las tarjetas y el borde izquierdo de la pantalla */
 }
 
+#filtered-sneaker-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Espaciado entre las tarjetas y el borde izquierdo de la pantalla */
+}
+
 .not-found-msg {
     display: flex;
     flex-wrap: wrap;

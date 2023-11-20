@@ -1,10 +1,10 @@
 <?php 
     include("../connection.php");
 
-    $query = "SELECT * from sneaker
-    INNER JOIN stock
-    ON sneaker.sneaker_id = stock.sneaker_id
-    WHERE sneaker.deleted_at IS NULL";
+    $query = "SELECT * from stock
+    INNER JOIN sneaker
+    ON stock.sneaker_id = sneaker.sneaker_id
+    WHERE stock.deleted_at IS NULL";
     $result = mysqli_query($connection, $query);
 
     if(!$result){
@@ -20,7 +20,8 @@
             'brand_name' => $row['brand_name'],
             'size_number' => $row['size_number'],
             'price'=> $row['price'],
-            'stock_quantity'=> $row['stock_quantity']
+            'stock_quantity'=> $row['stock_quantity'],
+            'id_stock'=> $row['id_stock']
         );
     }
     $jsonstring = json_encode($json);

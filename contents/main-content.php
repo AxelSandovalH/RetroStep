@@ -16,13 +16,13 @@ $registeredBrandsQuery = "SELECT COUNT(*) AS registered_brands FROM brand";
 // Consulta SQL para obtener la cantidad total de stock no archivado
 $totalStockQuery = "SELECT SUM(stock.stock_quantity) AS total_stock FROM stock INNER JOIN sneaker
                     ON stock.sneaker_id = sneaker.sneaker_id
-                    WHERE sneaker.deleted_at IS NULL";
+                    WHERE stock.deleted_at IS NULL";
 
 // Consulta SQL para obtener el valor total del stock no archivado
 $stockValueQuery = "SELECT SUM(s.price * st.stock_quantity) AS stock_value 
                     FROM sneaker s 
                     JOIN stock st ON s.sneaker_id = st.sneaker_id 
-                    WHERE s.deleted_at IS NULL";
+                    WHERE st.deleted_at IS NULL";
 
 // Consulta SQL para obtener la cantidad de usuarios no archivados
 $registeredUsersQuery = "SELECT COUNT(*) AS registered_users FROM users WHERE deleted_at IS NULL";
@@ -168,7 +168,7 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
         </div>
 
         <div class="col-lg-5 col-md-12">
-            <div class="card" style="min-height: 485px;">
+            <div class="card">
                 <div class="card-header card-header-text">
                     <h4 class="card-title">Activities</h4>
                 </div>
@@ -191,7 +191,9 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="scripts/ajaxMain.js"></script>
 
 <?php include_once("modalNewBrand.php"); ?>

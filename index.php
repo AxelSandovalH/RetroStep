@@ -55,12 +55,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+<script src="https://kit.fontawesome.com/c7fad14ccd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styleIndex.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
+    <link rel="shortcut icon" href="img/LogoRS.png"/>
+    <title>RetroStep</title>
 </head>
 <body>
     <header class="header">
@@ -96,10 +97,14 @@
                 <button type="reset" id="Cancelar">Cancelar</button>
                 <button id = "Succes" type="submit" >Verificar</button>
             </div>
+
+            <div class="terminos">
+                Al ingresar, estás aceptando los <a href="Term.html" target="_blank">términos y condiciones</a>.
+            </div>
+
         </form>
     </div>
-    
-    
+
     <script src="app.js"></script>
 </body>
 </html>

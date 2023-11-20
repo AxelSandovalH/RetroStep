@@ -9,9 +9,11 @@
             </div>
             <div class="modal-body">
                 <!-- Form to edit sneaker details -->
-                <form id="editSneakerForm">
+                <form id="editSneakerForm" enctype="multipart/form-data">
                     <!-- Fields for sneaker details -->
                     <input type="hidden" id="editSneakerId" name="sneaker_id">
+                    <input type="hidden" id="editIdStock" name="id_stock">
+                    <input type="hidden" id="editImagenUrl" name="imagen_url">
 
                     <div class="form-group">
                         <label for="editSneakerName">Sneaker Name</label>
@@ -89,8 +91,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="editImage">Image</label>
-                        <input type="file" name="imagen_url" id="editImage" class="form-control">
+                        <label for="imageFile">Image</label>
+                        <input type="file" name="imageFile" id="imageFile" class="form-control">
                     </div>
 
                     <!-- Add other fields as needed -->

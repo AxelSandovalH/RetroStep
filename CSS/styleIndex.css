@@ -11,7 +11,7 @@
 
 body {
     /* Imagen de fondo */
-    background-image: url("/img/snkrsBackground.jpg") ; 
+    background-image: url("img/snkrsBackground.jpg") ; 
     background-size: cover;
 }
 /* Estilos del encabezado */
@@ -140,4 +140,20 @@ body {
 #Login #Cancelar:hover {
     background-color: #a12020;
     transform: scale(1.1);
+}
+
+.terminos {
+    margin-top: 5%;
+    color: rgb(0, 0, 0); 
+    font-size: 12px;
+    text-align: center;
+}
+
+.terminos a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.terminos a:hover {
+    text-decoration: underline; 
 }
