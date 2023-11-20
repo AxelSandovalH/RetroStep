@@ -18,6 +18,7 @@
         <td><button id="deleteUserBtn" class="btn btn-outline-danger deleteUserBtn">Delete</button></td>
     </tr>
     
+    
 <?php } ?>
 
 <script>
