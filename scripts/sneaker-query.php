@@ -20,7 +20,8 @@
             'brand_name' => $row['brand_name'],
             'size_number' => $row['size_number'],
             'price'=> $row['price'],
-            'stock_quantity'=> $row['stock_quantity']
+            'stock_quantity'=> $row['stock_quantity'],
+            'id_stock'=> $row['id_stock']
         );
     }
     $jsonstring = json_encode($json);

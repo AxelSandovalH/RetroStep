@@ -23,7 +23,7 @@ $(document).ready(function() {
 
                                 <div class="sneaker-actions">
                                     <a class="link_editar">
-                                        <button class="editar" data-toggle="modal" data-target="#editSneakerModal"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                                        <button id="editSneakerBtn" class="editar" data-toggle="modal" data-target="#editSneakerModal" data-sneaker-id="${sneaker.sneaker_id}" data-id-stock="${sneaker.id_stock}"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
                                     </a>
                                     <a class="link_borrar">
                                         <button class="eliminar" data-sneaker-id="${sneaker.sneaker_id}" data-size-number="${sneaker.size_number}"><i class="fa-regular fa-circle-xmark"></i> Delete</button>
@@ -75,6 +75,66 @@ $(document).ready(function() {
         } else {
             return false;
         }
+    });
+
+
+    // Editar Sneaker
+    $("#sneaker-container").off('click', '#editSneakerBtn').on('click', '#editSneakerBtn', function () {
+        let id = $(this).data('sneaker-id');
+        let idStock = $(this).data('id-stock');
+
+        // Use AJAX to fetch sneaker data and populate the modal fields
+        $.ajax({
+            type: "GET",
+            url: 'scripts/getSneakerById.php', // Create a new script to get sneaker details by ID
+            data: { sneaker_id: id, id_stock: idStock },
+            success: function (response) {
+                console.log("Respuesta getSneakerById:");
+                console.log(response)
+                // Populate the modal fields with the sneaker data
+                let sneakerData = JSON.parse(response);
+                console.log("JSON parse: ");
+                console.log(sneakerData);
+                $("#editSneakerName").val(sneakerData.sneaker_name);
+                $("#editBrandName").val(sneakerData.brand_name);
+                $("#editSizeNumber").val(sneakerData.size_number);
+                $("#editCategoryName").val(sneakerData.category_name);
+                $("#editPrice").val(sneakerData.price);
+                $("#editStock").val(sneakerData.stock_quantity);
+                $("#editIdStock").val(sneakerData.id_stock);
+                $("#editImagenUrl").val(sneakerData.imagen_url);
+                // Populate other fields as needed
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    });
+
+
+    // Save changes when the "Save" button in the edit modal is clicked
+    $("#saveEditSneakerBtn").off('click').on('click', function () {
+        let formData = new FormData($("#editSneakerForm")[0]);
+        // Use AJAX to update sneaker data in the database
+        $.ajax({
+            type: "POST",
+            url: "scripts/editSneaker.php", // Create a new script to handle sneaker edits
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+                // Handle the response if needed
+                alert(response);
+                // Close the modal and refresh the sneaker table
+                loadSneakers();
+
+                $("#editSneakerModal").modal('hide');
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
     });
 
 });
