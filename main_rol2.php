@@ -1,13 +1,11 @@
 <?php 
-// include("scripts/routeProtection.php");
-include("connection.php");
-include_once('contents/header.php');
+    include_once('contents/header.php');
 ?>
         
 
 <!-- SIDE BAR -->
 <?php
-$current_page = basename($_SERVER['PHP_SELF']);
+    $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav id="sidebar">
             <div class="sidebar-header">
@@ -44,7 +42,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         transition: all 250ms;
         overflow: hidden;
-        margin: 25px;
+        margin: 15px;
     }
 
     .custom-category::before {
@@ -71,7 +69,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     }
 
     .custom-brand {
-        margin: 25px;
+        margin: 15px;
         width: 100%;
         padding: 15px 25px;
         border: unset;
@@ -112,7 +110,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     }
 
     .custom-sneaker {
-        margin: 25px;
+        margin: 15px;
         width: 100%;
         padding: 15px 25px;
         border: unset;
@@ -149,6 +147,47 @@ $current_page = basename($_SERVER['PHP_SELF']);
     }
 
     .custom-sneaker:hover::before {
+        width: 100%;
+    }
+
+    .pdf {
+        margin: 15px;
+        width: 100%;
+        padding: 15px 25px;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #a787ff;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+        overflow: hidden;
+    }
+
+    .pdf::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
+
+    .pdf:hover {
+        color: #e8e8e8;
+    }
+
+    .pdf:hover::before {
         width: 100%;
     }
 
@@ -323,6 +362,12 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                         <button role="button" class="custom-sneaker" data-toggle="modal" data-target="#addSneakerModal">
                             Add Sneaker
                         </button>
+
+                        <a href="create_pdf.php">
+                            <button class="pdf">
+                                Create report
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
