@@ -31,10 +31,10 @@
                 <input type="email" class="form-control" id="email" name="email">
             </div>
             <div class="form-group">
-                <label for="rol">Rol</label>
+                <label for="rol">Role</label>
                 <select id="rol" name="rol" value="<?php echo $rol; ?>" required>
-                    <option value="1">Administrador</option>
-                    <option value="2">Vendedor</option>
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
                 </select>
             </div>
             <!-- Agrega más campos según tus necesidades -->
