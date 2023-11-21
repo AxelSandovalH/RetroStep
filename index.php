@@ -10,7 +10,7 @@
 
         if(!empty($_POST)){
             if(empty($_POST['usuario']) || empty($_POST['clave'])){
-                $alert = 'Ingrese su usuario y clave';
+                $alert = 'Insert your user and password';
             }
             else{
                 require_once "connection.php";
@@ -65,21 +65,22 @@
 </head>
 <body>
     <div id="Login">
-        <header><strong>Login</strong></header>
+        <header><strong>Hello there!</strong></header>
         
         <form id="LoginForm" action="" method="post">
-            <label for="Usuario" >Usuario</label>
+        <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
+
+            <label for="Usuario" >User</label>
             <input type="text" name="usuario" >
             <label for="Password">Password</label>
-            <div class="alert"><?php echo isset ($alert) ? $alert : '';  ?></div>
             <input type="password" name="clave" >
             
             <div class="buttons">
-                <button id = "Succes" type="submit" >Verificar</button>
+                <button id = "Succes" type="submit" >Log in</button>
             </div>
 
             <div class="terminos">
-                Al ingresar, estás aceptando los <a href="Term.html" target="_blank">términos y condiciones</a>.
+                By logging-in you are accepting our <a href="Term.html" target="_blank">terms and conditions</a>.
             </div>
 
         </form>
