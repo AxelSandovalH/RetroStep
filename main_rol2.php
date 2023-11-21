@@ -3,7 +3,7 @@
 ?>
         
 
-<!-- SIDE BAR -->
+                                            <!-- SIDE BAR -->
 <?php
     $current_page = basename($_SERVER['PHP_SELF']);
 ?>
@@ -22,11 +22,10 @@
 </nav>
 		   
 
-<!--top--navbar----design--------->
-<?php include_once('contents/top-header.php');?>		   
-
+                                            <!-- TOP NAV BAR -->
+<?php include_once("contents/top-header_rol2.php"); ?>
+                                            <!-- MAIN CONTENT -->
 <style>
-
 .custom-category {
         padding: 15px 25px;
         width: 100%;
@@ -154,6 +153,7 @@
         margin: 15px;
         width: 100%;
         padding: 15px 25px;
+        text-align: center;
         border: unset;
         border-radius: 15px;
         color: #212121;
@@ -363,10 +363,8 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                             Add Sneaker
                         </button>
 
-                        <a href="create_pdf.php">
-                            <button class="pdf">
-                                Create report
-                            </button>
+                        <a href="create_pdf.php" class="pdf">
+                            Create report
                         </a>
                     </div>
                 </div>

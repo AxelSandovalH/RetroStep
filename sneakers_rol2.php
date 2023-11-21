@@ -25,7 +25,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 		
 		   
 		   <!--top--navbar----design--------->
-<?php include_once('contents/top-header.php');?>		   
+<?php include_once('contents/top-header_rol2.php');?>		   
 		   
 
 <!--------main-content------------->
