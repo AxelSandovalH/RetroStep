@@ -1,3 +1,7 @@
+<?php
+    // include("scripts/routeProtection.php");
+    include("connection.php");
+?>
 
 <!-- Modal para Add Brand -->
 <div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModalLabel" aria-hidden="true">
@@ -28,7 +32,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+        <button type="submit" class="btn btn-primary_Save" id="btnSave" style="background-color: #2964ff;color: #ffff;">Save</button>
     </div>
     </div>
 </div>

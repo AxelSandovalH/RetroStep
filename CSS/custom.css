@@ -85,7 +85,6 @@ a,a:hover,a:focus{
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
 
@@ -212,7 +211,7 @@ overflow:auto;
 	line-height: 30px;
 	border-radius:5px;
     font-size: 15px;
-	position:relative;'
+	position:relative;
     font-weight: 400;
     display: block;
 }
@@ -265,13 +264,14 @@ overflow:auto;
   }
   
   .navbar{
-	  background-color:#2196f3;
+	  background-color:#2b2bc0;
 	  color:#fff;
   }
   
   .navbar-brand{
-	  color:#fff;
-	  margin-left:20px;
+	color:rgb(255, 255, 255);
+	margin-left: 2.2rem;
+	margin-top: 0.5rem;
   }
   
   .navbar button{
@@ -357,10 +357,8 @@ overflow:auto;
 .navbar-nav li a{
 	position:relative;
 	display:block;
-	padding:10px 15px!important;
+	padding:10px 50px!important;
 }
-
-
 
 
   /*==========================================================
@@ -495,7 +493,6 @@ overflow:auto;
 .card .card-header-text h4{
 	margin-top:0;
 	margin-bottom:3px;
-	font-size:19px;
 	font-weight:400;
 	color:#222222;
 	text-decoration:none;
@@ -515,6 +512,46 @@ overflow:auto;
 	position:relative;
 }
 
+.card-content .activity-buttons{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary1{
+	margin-bottom: 0%;
+	color: #fff;
+	background-color:#2196f3;
+}
+
+.btn-primary{
+	/* margin-bottom: 5%; */
+	/* width: 50%; */
+	/* padding: 3%; */
+	margin: 17px;
+}
+
+.btn-primary_Save{
+	/* margin-bottom: 5%; */
+	/* width: 50%; */
+	/* padding: 3%; */
+	margin: 17px;
+}
+
+.btn-success{
+	margin-bottom: 5%;
+	width: 50%;
+	padding: 3%;
+}
+
+.btn-info{
+	margin-bottom: 5%;
+	width: 50%;
+	padding: 3%;
+}
 
 .steamline .sl-primary{
 	border-left-color:#188ae2;

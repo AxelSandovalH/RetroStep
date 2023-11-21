@@ -1,7 +1,19 @@
-<?php include_once('header.php');?>
+<?php 
+	session_start();
+
+	// PROTECCIÓN DE RUTAS
+
+	if ($_SESSION['rol'] == 2) {
+		header("Location: acceso_denegado.php");
+		exit();
+	}
+?>
+
+
+<?php include_once('contents/header.php');?>
 		
 		<!-------------------------sidebar------------>
-<?php include_once('sidebar.php');?>
+<?php include_once('contents/sidebar.php');?>
 		     <!-- Sidebar  -->
         
 		
@@ -10,13 +22,13 @@
 		
 		   
 		   <!--top--navbar----design--------->
-<?php include_once('top-header.php');?>		   
+<?php include_once('contents/top-header.php');?>		   
 		   
 		   <!--------main-content------------->
-<?php include_once('main-content.php');?>		   
+<?php include_once('contents/main-content.php');?>		   
 		   
 			 
 			 <!---footer---->
-<?php include_once('footer.php');?>			 
+<?php include_once('contents/footer.php');?>			 
 			 
-			
+           

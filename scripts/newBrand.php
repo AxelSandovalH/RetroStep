@@ -1,4 +1,5 @@
 <?php
+// include("scripts/routeProtection.php");
 require_once("../connection.php");
 
 if (!empty($_POST)) {
