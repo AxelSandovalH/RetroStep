@@ -64,7 +64,7 @@
 </head>
 <body>
     <div id="Login">
-        <header>Login</header>
+        <header><strong>Login</strong></header>
         
         <form id="LoginForm" action="" method="post">
             <label for="Usuario" >Usuario</label>
