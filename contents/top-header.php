@@ -1,3 +1,10 @@
+<style>
+        /* Agrega estilos CSS adicionales si es necesario */
+        .custom-logout {
+            margin-left: auto; /* Ajusta este valor según tus necesidades */
+        }
+</style>
+
 <div id="content">
 		   
 		   <!--top--navbar----design--------->
@@ -17,21 +24,15 @@
 
 				 <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarcollapse">
 				    
-					<ul class="nav navbar-nav ml-auto">
+					<ul class="nav navbar-nav ml-auto custom-logout">
 					
-					<li class="nav-item">
-					  <a class="nav-link" href="sneakers.php"><span class="material-icons">apps</span></a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="users.php"><span class="material-icons">person</span></a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="exit.php" style="margin-left:550%"><span class="material-icons">logout</span></a>
-					</li>
+						<li class="nav-item ml-auto">
+						<a class="nav-link" href="exit.php"><span class="material-icons">logout</span></a>
+						</li>
 				    
 					</ul>
 				 
-				 </div>
+				</div>
 				 
 			  </nav>
 		   </div>

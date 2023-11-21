@@ -269,8 +269,9 @@ overflow:auto;
   }
   
   .navbar-brand{
-	  color:rgb(255, 255, 255);
-	  margin-left: 60px;
+	color:rgb(255, 255, 255);
+	margin-left: 2.2rem;
+	margin-top: 0.5rem;
   }
   
   .navbar button{
