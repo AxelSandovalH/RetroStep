@@ -153,6 +153,7 @@
         margin: 15px;
         width: 100%;
         padding: 15px 25px;
+        text-align: center;
         border: unset;
         border-radius: 15px;
         color: #212121;
@@ -362,10 +363,8 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                             Add Sneaker
                         </button>
 
-                        <a href="create_pdf.php">
-                            <button class="pdf">
-                                Create report
-                            </button>
+                        <a href="create_pdf.php" class="pdf">
+                            Create report
                         </a>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
         border-radius: 15px;
         color: #212121;
         z-index: 1;
-        background: #59ff98;
+        background: #e8e8e8;
         position: relative;
         font-weight: 1000;
         font-size: 17px;
@@ -32,7 +32,7 @@
         height: 100%;
         width: 0;
         border-radius: 15px;
-        background-color: #212121;
+        background-color: #0d80fe;
         z-index: -1;
         -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
@@ -55,7 +55,7 @@
         border-radius: 15px;
         color: #212121;
         z-index: 1;
-        background: #48dcff;
+        background: #e8e8e8;
         position: relative;
         font-weight: 1000;
         font-size: 17px;
@@ -73,7 +73,7 @@
         height: 100%;
         width: 0;
         border-radius: 15px;
-        background-color: #212121;
+        background-color: #0d80fe;
         z-index: -1;
         -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
@@ -96,7 +96,7 @@
         border-radius: 15px;
         color: #212121;
         z-index: 1;
-        background: #a787ff;
+        background: #e8e8e8;
         position: relative;
         font-weight: 1000;
         font-size: 17px;
@@ -114,7 +114,7 @@
         height: 100%;
         width: 0;
         border-radius: 15px;
-        background-color: #212121;
+        background-color: #0d80fe;
         z-index: -1;
         -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
@@ -138,6 +138,7 @@
         border-radius: 15px;
         color: #212121;
         z-index: 1;
+        text-align: center;
         background: #e8e8e8;
         position: relative;
         font-weight: 1000;
@@ -156,7 +157,7 @@
         height: 100%;
         width: 0;
         border-radius: 15px;
-        background-color: #212121;
+        background-color: #0d80fe;
         z-index: -1;
         -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
@@ -351,10 +352,8 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                             Add Sneaker
                         </button>
 
-                        <a href="create_pdf.php">
-                        <button class="pdf">
+                        <a href="create_pdf.php" class="pdf">
                             Create report
-                        </button>
                         </a>
                     </div>
                 </div>
