@@ -1,7 +1,8 @@
 <style>
         /* Agrega estilos CSS adicionales si es necesario */
         .custom-logout {
-            margin-left: auto; /* Ajusta este valor según tus necesidades */
+            margin-left: auto; 
+			margin-top: 0.5rem;
         }
 </style>
 

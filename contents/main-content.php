@@ -1,10 +1,138 @@
 <style>
     /* Desactivar mayúsculas automáticas */
     .no-uppercase {
-      text-transform: none !important;
+        text-transform: none !important;
     }
 
+    /* Estilos para los botones de las actividades */
+    /* Estilos para los botones de las actividades */
+    .custom-category {
+        padding: 15px 25px;
+        width: 100%;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #59ff98;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+        overflow: hidden;
+        margin: 25px;
+    }
+
+    .custom-category::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
+
+    .custom-category:hover {
+        color: #e8e8e8;
+    }
+
+    .custom-category:hover::before {
+        width: 100%;
+    }
+
+    .custom-brand {
+        margin: 25px;
+        width: 100%;
+        padding: 15px 25px;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #48dcff;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+        overflow: hidden;
+    }
+
+    .custom-brand::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
+
+    .custom-brand:hover {
+        color: #e8e8e8;
+    }
+
+    .custom-brand:hover::before {
+        width: 100%;
+    }
+
+    .custom-sneaker {
+        margin: 25px;
+        width: 100%;
+        padding: 15px 25px;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #a787ff;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+        overflow: hidden;
+    }
+
+    .custom-sneaker::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        transition: all 250ms;
+    }
+
+    .custom-sneaker:hover {
+        color: #e8e8e8;
+    }
+
+    .custom-sneaker:hover::before {
+        width: 100%;
+    }
+
+
 </style>
+
+
 
 <?php
 // Incluye el archivo de conexión
@@ -18,11 +146,9 @@ $totalStockQuery = "SELECT SUM(stock.stock_quantity) AS total_stock FROM stock I
                     ON stock.sneaker_id = sneaker.sneaker_id
                     WHERE stock.deleted_at IS NULL";
 
-// Consulta SQL para obtener el valor total del stock no archivado
-$stockValueQuery = "SELECT SUM(s.price * st.stock_quantity) AS stock_value 
-                    FROM sneaker s 
-                    JOIN stock st ON s.sneaker_id = st.sneaker_id 
-                    WHERE st.deleted_at IS NULL";
+// Consulta SQL para obtener la cantidad de categorías no archivadas
+$registeredCategoriesQuery = "SELECT COUNT(*) AS registered_categories FROM category";
+
 
 // Consulta SQL para obtener la cantidad de usuarios no archivados
 $registeredUsersQuery = "SELECT COUNT(*) AS registered_users FROM users WHERE deleted_at IS NULL";
@@ -42,13 +168,13 @@ function executeQuery($connection, $query) {
 // Ejecutar las consultas y obtener los resultados
 $registeredBrandsResult = executeQuery($connection, $registeredBrandsQuery);
 $totalStockResult = executeQuery($connection, $totalStockQuery);
-$stockValueResult = executeQuery($connection, $stockValueQuery);
+$registeredCategoriesResult = executeQuery($connection, $registeredCategoriesQuery);
 $registeredUsersResult = executeQuery($connection, $registeredUsersQuery);
 
 // Obtener los resultados
 $registeredBrands = $registeredBrandsResult->fetch_assoc()['registered_brands'];
 $totalStock = $totalStockResult->fetch_assoc()['total_stock'];
-$stockValue = $stockValueResult->fetch_assoc()['stock_value'];
+$registeredCategories = $registeredCategoriesResult->fetch_assoc()['registered_categories'];
 $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
 
 // Cerrar la conexión
@@ -86,16 +212,16 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg-3 col-md-6 col-sm-6" style="height: 185px;">
             <div class="card card-stats">
                 <div class="card-header">
                     <div class="icon icon-success">
-                        <span class="material-icons">attach_money</span>
+                        <span class="material-icons">category</span>
                     </div>
                 </div>
                 <div class="card-content">
-                    <p class="category"><strong>Stock value</strong></p>
-                    <h3 class="card-title">$<?php echo number_format($stockValue, 2); ?></h3>
+                    <p class="category"><strong>Registered categories</strong></p>
+                    <h3 class="card-title"><?php echo $registeredCategories; ?></h3>
                 </div>
             </div>
         </div>
@@ -174,14 +300,14 @@ $registeredUsers = $registeredUsersResult->fetch_assoc()['registered_users'];
                 </div>
                 <div class="card-content">
                     <div class="activity-buttons">
-                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addBrandModal">
-                            <i class="fas fa-plus"></i> Add Brand
+                        <button class="custom-brand" role="button" data-toggle="modal" data-target="#addBrandModal">
+                            Add Brand
                         </button>
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#addCategoryModal">
-                            <i class="fas fa-plus"></i> Add Category
+                        <button role="button" class="custom-category" data-toggle="modal" data-target="#addCategoryModal">
+                            Add Category
                         </button>
-                        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#addSneakerModal">
-                            <i class="fas fa-plus"></i> Add Sneaker
+                        <button role="button" class="custom-sneaker" data-toggle="modal" data-target="#addSneakerModal">
+                            Add Sneaker
                         </button>
                     </div>
                 </div>
