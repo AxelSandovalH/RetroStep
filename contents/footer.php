@@ -4,8 +4,8 @@
 				       <div class="col-md-6">
 					       <nav class="d-flex">
 						      <ul class="m-0 p-0">
-							     <li><a href="#">Inicio</a></li>
-								 <li><a href="exit.php">Cerrar sesión</a></li>
+							     <li><a href="#">Go to the top</a></li>
+								 <li><a href="exit.php">Log out</a></li>
 							  <ul>
 						   </nav>
 					   </div>
